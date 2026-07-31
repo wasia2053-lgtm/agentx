@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'FreshChunky';
+  src: url('/fonts/FreshChunky-Regular-BF69e8470be9b15.otf') format('opentype');
+  font-display: swap;
+}
+
+:root {
+  --bg-base: #000000;
+  --bg-raised: #050505;
+  --bg-strong: #141414;
+  --text-primary: #ffffff;
+  --text-muted: #a3a3a3;
+  --border: rgba(255,255,255,0.08);
+  --glass-bg: rgba(8,8,8,0.80);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 200vh; /* For scroll testing */
+}
+
+#root {
+  width: 100%;
+}

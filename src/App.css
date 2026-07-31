@@ -1,0 +1,4 @@
+.app-container {
+  background-color: var(--bg-base);
+  min-height: 200vh;
+}

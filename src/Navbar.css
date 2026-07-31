@@ -1,0 +1,168 @@
+.navbar-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: fit-content;
+  max-width: 860px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  padding: 5px 6px;
+  display: flex;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.navbar-container.scrolled {
+  border-color: rgba(255,255,255,0.13);
+  backdrop-filter: blur(28px) saturate(160%);
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+/* Logo Section */
+.logo-section {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.logo-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.9;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-family: 'FreshChunky', sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/* Nav Links Desktop */
+.nav-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+@media (max-width: 767px) {
+  .nav-links-desktop {
+    display: none;
+  }
+}
+
+.nav-link-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #a3a3a3;
+  padding: 8px 14px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 180ms ease;
+  border: 1px solid transparent;
+}
+
+.nav-link-pill:hover {
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+}
+
+.nav-link-pill.active {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* CTA Button */
+.cta-button {
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  margin-right: 2px;
+  margin-left: 8px;
+  transition: all 180ms ease;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .mobile-toggle {
+    display: block;
+    margin-right: 8px;
+  }
+}
+
+/* Mobile Menu Dropdown */
+.mobile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -5%; /* To make it full width on mobile if needed, but here it's inside fit-content */
+  width: 110%; 
+  background: #050505;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 9998;
+}
+
+/* For actual full width on mobile, we'd need to adjust the container or use a portal */
+@media (max-width: 767px) {
+  .mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
+    border-radius: 24px;
+  }
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.mobile-link {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: #a3a3a3;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 12px;
+}
+
+.mobile-link:hover {
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+}
