@@ -53,6 +53,7 @@ const PROJECTS: CardStackItem[] = [
     title: "Estelles Lighting",
     description: "Website design, development, and SEO for a lighting brand — product pages and site structure built for search visibility.",
     gradient: "linear-gradient(135deg, #1a0533 0%, #3d1166 50%, #6b21a8 100%)",
+    image: "/estelles-lighting.jpg",
     href: "https://estelleslighting.com/",
   },
 ];
