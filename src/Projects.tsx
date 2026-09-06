@@ -8,6 +8,7 @@ const PROJECTS: CardStackItem[] = [
     title: "Tainted Flesh Body Art",
     description: "Full website design, development, and local SEO for a tattoo studio in Wilmington, DE — built to convert visitors into booked consultations.",
     gradient: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
+    image: "https://taintedfleshbodyartnorth.com/wp-content/uploads/2026/05/Picture-for-how-it-works-section.jpg",
     href: "https://taintedfleshbodyartnorth.com/",
   },
   {
@@ -16,6 +17,7 @@ const PROJECTS: CardStackItem[] = [
     title: "Pixiest Photography",
     description: "Portfolio website and local SEO for a Delaware-based photographer — service pages built around wedding, event, and drone photography search terms.",
     gradient: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
+    image: "https://pixiestphotography.com/wp-content/uploads/2025/11/Event-Photography-in-Newark-Delaware.jpg",
     href: "https://pixiestphotography.com/",
   },
   {
@@ -24,6 +26,7 @@ const PROJECTS: CardStackItem[] = [
     title: "Black Eden 420",
     description: "Full e-commerce build for a licensed cannabis delivery service in California — product catalog, ordering flow, and location-based SEO across service areas.",
     gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
+    image: "https://blackeden420.com/wp-content/uploads/2025/11/Black-Eden.png",
     href: "https://blackeden420.com/",
   },
   {
@@ -32,6 +35,7 @@ const PROJECTS: CardStackItem[] = [
     title: "DM Power Construction",
     description: "Website design and development for a Massachusetts home renovation contractor — project galleries, service pages, and local SEO for the Greater Boston area.",
     gradient: "linear-gradient(135deg, #200122 0%, #6f0000 100%)",
+    image: "https://www.dmpowerconstruction.com/wp-content/uploads/2025/07/IMG-20250714-WA0005.jpg",
     href: "https://www.dmpowerconstruction.com/",
   },
   {
@@ -40,6 +44,7 @@ const PROJECTS: CardStackItem[] = [
     title: "The Bean Guys",
     description: "Website build for a mobile coffee cart and event catering brand serving the Dallas-Fort Worth area — booking flow and content across service and location pages.",
     gradient: "linear-gradient(135deg, #0d0d0d 0%, #1a3a2a 50%, #0a2a1a 100%)",
+    image: "https://images.squarespace-cdn.com/content/v1/67ad5879262782591823fa86/c3ba25f8-9d5c-49b6-847a-46faa15ff257/Bean+Guys-9.jpg",
     href: "https://www.thebeanguys.com/",
   },
   {

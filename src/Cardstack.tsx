@@ -6,7 +6,8 @@ export type CardStackItem = {
   title: string;
   description?: string;
   tag?: string;
-  gradient: string; // CSS gradient string
+  gradient: string; // CSS gradient string (used as fallback/overlay base)
+  image?: string;   // optional real project image URL
   href?: string;
 };
 
@@ -48,22 +49,35 @@ function signedOffset(i: number, active: number, len: number, loop: boolean) {
 function GradientCard({ item, active }: { item: CardStackItem; active: boolean }) {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 16, overflow: "hidden" }}>
-      {/* Gradient background */}
+      {/* Background: real project image if available, else gradient */}
       <div style={{ position: "absolute", inset: 0, background: item.gradient }} />
+      {item.image && (
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `url("${item.image}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }} />
+      )}
 
       {/* Noise overlay */}
       <div style={{
         position: "absolute", inset: 0,
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`,
         backgroundSize: "200px 200px",
-        opacity: 0.4,
+        opacity: item.image ? 0.15 : 0.4,
         pointerEvents: "none",
       }} />
 
+      {/* Darken photo so tag/title/description stay readable */}
+      {item.image && (
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)", pointerEvents: "none" }} />
+      )}
+
       {/* Bottom gradient for text */}
       <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0, height: "60%",
-        background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)",
+        position: "absolute", bottom: 0, left: 0, right: 0, height: item.image ? "75%" : "60%",
+        background: `linear-gradient(to top, rgba(0,0,0,${item.image ? 0.92 : 0.75}) 0%, transparent 100%)`,
         pointerEvents: "none",
       }} />
 
