@@ -139,10 +139,10 @@ function DotCard({ target, suffix, label, duration, delay, active }: DotCardProp
 
 /* ── Stats ──────────────────────────────────────────────────────── */
 const STATS: DotCardProps[] = [
-  { target:50, suffix:'+',  label:'Projects Delivered',  duration:1800, delay:0,   active:false },
-  { target:98, suffix:'%',  label:'Client Satisfaction', duration:2000, delay:150, active:false },
-  { target:0,  suffix:'/7', label:'AI Systems Running',  duration:500,  delay:300, active:false },
-  { target:3,  suffix:'x',  label:'Avg ROI for Clients', duration:1400, delay:450, active:false },
+  { target:6,  suffix:'+',  label:'Live Websites Delivered', duration:1400, delay:0,   active:false },
+  { target:100,suffix:'%',  label:'Projects Still Live Today', duration:1400, delay:150, active:false },
+  { target:2,  suffix:'+',  label:'Core Skills: Dev & SEO', duration:1000, delay:300, active:false },
+  { target:0,  suffix:'/7', label:'Direct Founder Access',   duration:500,  delay:450, active:false },
 ];
 
 /* ── Section ────────────────────────────────────────────────────── */

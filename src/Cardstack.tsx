@@ -117,6 +117,27 @@ function GradientCard({ item, active }: { item: CardStackItem; active: boolean }
             {item.description}
           </div>
         )}
+        {active && item.href && item.href !== "#" && (
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              marginTop: 14,
+              fontFamily: "'Inter',sans-serif", fontSize: 12, fontWeight: 600,
+              color: "#ffffff",
+              textDecoration: "none",
+              border: "1px solid rgba(255,255,255,0.3)",
+              borderRadius: 100, padding: "6px 14px",
+              background: "rgba(255,255,255,0.08)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            Visit Site ↗
+          </a>
+        )}
       </div>
     </div>
   );

@@ -5,7 +5,8 @@ import Hero from './Hero';
 import Services from './Services';
 import Projects from './Projects';
 import About from './About';
-import Testimonials from './Testimonials';
+// Testimonials hidden until real client testimonials are collected — see Testimonials.tsx
+// import Testimonials from './Testimonials';
 import Contact from './Contact';
 import Footer from './Footer';
 
@@ -23,7 +24,6 @@ function App() {
       <Projects />
       <Achievements />
       <About />
-      <Testimonials />
       <Contact />
       <Footer />
     </div>

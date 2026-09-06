@@ -8,9 +8,7 @@ interface TeamMember {
 
 const TEAM: TeamMember[] = [
     { name: 'Wasi Ahmed', role: 'Founder & Lead Developer', initials: 'WA' },
-    { name: 'Team Member', role: 'AI & Automation Lead', initials: 'AI' },
-    { name: 'Team Member', role: 'Design Lead', initials: 'GD' },
-    { name: 'Team Member', role: 'Growth & SEO', initials: 'SE' },
+    { name: 'Ali Ahmed', role: 'SEO Lead', initials: 'AA' },
 ];
 
 const VALUES = [
