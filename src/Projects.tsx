@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { CardStack } from "./Cardstack";
 import type { CardStackItem } from "./Cardstack";
 
@@ -59,6 +60,24 @@ const PROJECTS: CardStackItem[] = [
 ];
 
 export default function Projects() {
+  const [vw, setVw] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const onResize = () => setVw(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const isMobile = vw < 640;
+  const cardWidth = isMobile ? Math.min(300, vw - 56) : 480;
+  const cardHeight = isMobile ? Math.round(cardWidth * (300 / 480)) : 300;
+  const spreadDeg = isMobile ? 24 : 42;
+  const depthPx = isMobile ? 40 : 120;
+  // Higher overlap + fewer visible side-cards = the stage needs less total width,
+  // so it doesn't have to scale the active card down so much to fit.
+  const overlap = isMobile ? 0.8 : 0.72;
+  const maxVisible = isMobile ? 3 : 5;
+
   return (
     <>
       <style>{`
@@ -163,12 +182,12 @@ export default function Projects() {
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 900 }}>
           <CardStack
             items={PROJECTS}
-            cardWidth={480}
-            cardHeight={300}
-            spreadDeg={42}
-            overlap={0.52}
-            depthPx={120}
-            maxVisible={5}
+            cardWidth={cardWidth}
+            cardHeight={cardHeight}
+            spreadDeg={spreadDeg}
+            overlap={overlap}
+            depthPx={depthPx}
+            maxVisible={maxVisible}
             autoAdvance
             intervalMs={3200}
             pauseOnHover

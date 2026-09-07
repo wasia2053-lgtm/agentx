@@ -309,8 +309,8 @@ export default function Footer() {
                             </div>
 
                             <div className="agx-ft-secondary-row">
-                                <MagneticButton as="a" href="#" className="agx-ft-pill agx-ft-pill-sm">Privacy Policy</MagneticButton>
-                                <MagneticButton as="a" href="#" className="agx-ft-pill agx-ft-pill-sm">Terms of Service</MagneticButton>
+                                <MagneticButton as="a" href="/privacy-policy.html" className="agx-ft-pill agx-ft-pill-sm">Privacy Policy</MagneticButton>
+                                <MagneticButton as="a" href="/terms-of-service.html" className="agx-ft-pill agx-ft-pill-sm">Terms of Service</MagneticButton>
                                 <MagneticButton as="a" href="#contact" className="agx-ft-pill agx-ft-pill-sm">Support</MagneticButton>
                             </div>
                         </div>

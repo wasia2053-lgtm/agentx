@@ -2,8 +2,8 @@ import { useState } from 'react';
 import FloatingPaths from './FloatingPaths';
 
 const INFO = [
-    { label: 'Email', value: 'hello@agentx.com' },
-    { label: 'Phone', value: '+92 300 0000000' },
+    { label: 'Email', value: 'wasia2053@gmail.com' },
+    { label: 'Phone', value: '+92 311 3013137' },
     { label: 'Location', value: 'Karachi, Pakistan' },
 ];
 
@@ -22,7 +22,7 @@ export default function Contact() {
         setError('');
         setSending(true);
         try {
-            const res = await fetch('https://formspree.io/f/xrpgyrkk', {
+            const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
                 method: 'POST',
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),
