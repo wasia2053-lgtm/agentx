@@ -157,7 +157,7 @@ export default function Projects() {
         />
 
         {/* ── Header ── */}
-        <div style={{ textAlign: "center", marginBottom: 80, position: "relative", zIndex: 1 }}>
+        <div style={{ textAlign: "center", marginBottom: isMobile ? 32 : 80, position: "relative", zIndex: 1 }}>
           <p style={{
             fontFamily: "'Inter',sans-serif",
             fontSize: 10, fontWeight: 600,
@@ -188,6 +188,7 @@ export default function Projects() {
             overlap={overlap}
             depthPx={depthPx}
             maxVisible={maxVisible}
+            minStageHeight={isMobile ? 240 : 420}
             autoAdvance
             intervalMs={3200}
             pauseOnHover

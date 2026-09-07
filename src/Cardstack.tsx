@@ -17,6 +17,7 @@ type CardStackProps = {
   maxVisible?: number;
   cardWidth?: number;
   cardHeight?: number;
+  minStageHeight?: number;
   overlap?: number;
   spreadDeg?: number;
   perspectivePx?: number;
@@ -46,7 +47,7 @@ function signedOffset(i: number, active: number, len: number, loop: boolean) {
   return Math.abs(alt) < Math.abs(raw) ? alt : raw;
 }
 
-function GradientCard({ item, active }: { item: CardStackItem; active: boolean }) {
+function GradientCard({ item, active, cardWidth, cardHeight }: { item: CardStackItem; active: boolean; cardWidth: number; cardHeight: number }) {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 16, overflow: "hidden" }}>
       {/* Background: real project image if available, else gradient */}
@@ -107,52 +108,65 @@ function GradientCard({ item, active }: { item: CardStackItem; active: boolean }
       )}
 
       {/* Content */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0,
-        padding: "24px 24px 28px",
-        zIndex: 10,
-      }}>
-        <div style={{
-          fontFamily: "'Inter',sans-serif",
-          fontSize: 22, fontWeight: 700,
-          color: "#ffffff", letterSpacing: "-0.02em",
-          lineHeight: 1.15, marginBottom: 8,
-          textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-        }}>
-          {item.title}
-        </div>
-        {item.description && (
+      {(() => {
+        const isSmall = cardWidth < 340;
+        const titleSize = isSmall ? Math.max(15, Math.round(cardWidth / 15)) : 22;
+        const descSize = isSmall ? 11 : 13;
+        const descLines = isSmall ? (cardHeight < 200 ? 2 : 3) : 4;
+        const padding = isSmall ? "14px 16px 16px" : "24px 24px 28px";
+        return (
           <div style={{
-            fontFamily: "'Inter',sans-serif",
-            fontSize: 13, color: "rgba(255,255,255,0.75)",
-            lineHeight: 1.6,
-            textShadow: "0 1px 4px rgba(0,0,0,0.5)",
+            position: "absolute", bottom: 0, left: 0, right: 0,
+            padding,
+            zIndex: 10,
           }}>
-            {item.description}
+            <div style={{
+              fontFamily: "'Inter',sans-serif",
+              fontSize: titleSize, fontWeight: 700,
+              color: "#ffffff", letterSpacing: "-0.02em",
+              lineHeight: 1.15, marginBottom: isSmall ? 4 : 8,
+              textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+            }}>
+              {item.title}
+            </div>
+            {item.description && (
+              <div style={{
+                fontFamily: "'Inter',sans-serif",
+                fontSize: descSize, color: "rgba(255,255,255,0.75)",
+                lineHeight: 1.5,
+                textShadow: "0 1px 4px rgba(0,0,0,0.5)",
+                display: "-webkit-box",
+                WebkitLineClamp: descLines,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }}>
+                {item.description}
+              </div>
+            )}
+            {active && item.href && item.href !== "#" && (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  marginTop: isSmall ? 8 : 14,
+                  fontFamily: "'Inter',sans-serif", fontSize: isSmall ? 11 : 12, fontWeight: 600,
+                  color: "#ffffff",
+                  textDecoration: "none",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  borderRadius: 100, padding: isSmall ? "5px 12px" : "6px 14px",
+                  background: "rgba(255,255,255,0.08)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                Visit Site ↗
+              </a>
+            )}
           </div>
-        )}
-        {active && item.href && item.href !== "#" && (
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 6,
-              marginTop: 14,
-              fontFamily: "'Inter',sans-serif", fontSize: 12, fontWeight: 600,
-              color: "#ffffff",
-              textDecoration: "none",
-              border: "1px solid rgba(255,255,255,0.3)",
-              borderRadius: 100, padding: "6px 14px",
-              background: "rgba(255,255,255,0.08)",
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            Visit Site ↗
-          </a>
-        )}
-      </div>
+        );
+      })()}
     </div>
   );
 }
@@ -163,6 +177,7 @@ export function CardStack({
   maxVisible       = 5,
   cardWidth        = 500,
   cardHeight       = 320,
+  minStageHeight   = 420,
   overlap          = 0.5,
   spreadDeg        = 44,
   perspectivePx    = 1100,
@@ -207,7 +222,7 @@ export function CardStack({
 
   const neededWidth = cardWidth + maxOffset * cardSpacing * 2 + 40;
   const scaleFactor = containerWidth ? Math.min(1, containerWidth / neededWidth) : 1;
-  const stageHeight = Math.max(420, cardHeight + 100) * scaleFactor;
+  const stageHeight = Math.max(minStageHeight, cardHeight + 100) * scaleFactor;
 
   const next = React.useCallback(() => { if (!len) return; setActive(a => wrapIndex(a + 1, len)); }, [len]);
   const prev = React.useCallback(() => { if (!len) return; setActive(a => wrapIndex(a - 1, len)); }, [len]);
@@ -294,7 +309,7 @@ export function CardStack({
                   {...dragProps}
                 >
                   <div style={{ width: "100%", height: "100%", transform: `translateZ(${z}px)`, transformStyle: "preserve-3d" }}>
-                    <GradientCard item={item} active={isActive} />
+                    <GradientCard item={item} active={isActive} cardWidth={cardWidth} cardHeight={cardHeight} />
                   </div>
                 </motion.div>
               );
