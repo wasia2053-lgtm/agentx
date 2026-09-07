@@ -45,93 +45,29 @@ function DotCard({ target, suffix, label, duration, delay, active }: DotCardProp
     `${count}+`;
 
   return (
-    <div style={{ position:'relative', width:'100%' }}>
-
-      {/* ── Moving dot ── */}
-      <div style={{
-        position:     'absolute',
-        width:        10,
-        height:       10,
-        borderRadius: '50%',
-        background:   '#ffffff',
-        boxShadow:    '0 0 14px 5px rgba(255,255,255,0.55)',
-        zIndex:       10,
-        pointerEvents:'none',
-        animation:    dotGo ? 'agxDotMove 4s ease-in-out infinite' : 'none',
-        opacity:      dotGo ? 1 : 0,
-        transition:   'opacity 0.5s',
-        /* start position matches 0%/100% keyframe */
-        top:   '12px',
-        right: '12px',
-      }} />
+    <div className="agx-dotcard-outer">
+      {/* ── Moving dot — travels the 4 corners, exact path from reference ── */}
+      <div
+        className="agx-dotcard-dot"
+        style={{ animationPlayState: dotGo ? 'running' : 'paused', opacity: dotGo ? 1 : 0 }}
+      />
 
       {/* ── Card ── */}
-      <div style={{
-        position:       'relative',
-        background:     '#0d0d0d',
-        border:         '1px solid rgba(255,255,255,0.08)',
-        borderRadius:   16,
-        padding:        '52px 20px 44px',
-        display:        'flex',
-        flexDirection:  'column',
-        alignItems:     'center',
-        justifyContent: 'center',
-        overflow:       'hidden',
-        minHeight:      200,
-      }}>
+      <div className="agx-dotcard-card">
+        {/* Ray / spotlight behind number */}
+        <div className="agx-dotcard-ray" />
 
-        {/* Ray / spotlight */}
-        <div style={{
-          position:     'absolute',
-          inset:        0,
-          background:   'radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255,255,255,0.10) 0%, transparent 65%)',
-          pointerEvents:'none',
-          animation:    'agxRayPulse 3.5s ease-in-out infinite',
-        }} />
-
-        {/* Corner lines */}
-        {/* top-left */}
-        <div style={{ position:'absolute', top:0,    left:0,  width:24, height:1, background:'rgba(255,255,255,0.18)' }} />
-        <div style={{ position:'absolute', top:0,    left:0,  width:1,  height:24, background:'rgba(255,255,255,0.18)' }} />
-        {/* top-right */}
-        <div style={{ position:'absolute', top:0,    right:0, width:24, height:1, background:'rgba(255,255,255,0.18)' }} />
-        <div style={{ position:'absolute', top:0,    right:0, width:1,  height:24, background:'rgba(255,255,255,0.18)' }} />
-        {/* bottom-left */}
-        <div style={{ position:'absolute', bottom:0, left:0,  width:24, height:1, background:'rgba(255,255,255,0.18)' }} />
-        <div style={{ position:'absolute', bottom:0, left:0,  width:1,  height:24, background:'rgba(255,255,255,0.18)' }} />
-        {/* bottom-right */}
-        <div style={{ position:'absolute', bottom:0, right:0, width:24, height:1, background:'rgba(255,255,255,0.18)' }} />
-        <div style={{ position:'absolute', bottom:0, right:0, width:1,  height:24, background:'rgba(255,255,255,0.18)' }} />
+        {/* Corner tick-mark frame (top-left + bottom-right brackets) */}
+        <div className="agx-dotcard-line agx-dc-topl" />
+        <div className="agx-dotcard-line agx-dc-leftl" />
+        <div className="agx-dotcard-line agx-dc-bottoml" />
+        <div className="agx-dotcard-line agx-dc-rightl" />
 
         {/* Number */}
-        <div style={{
-          fontFamily:    "'Inter', sans-serif",
-          fontSize:      'clamp(44px, 5vw, 68px)',
-          fontWeight:    700,
-          color:         '#ffffff',
-          letterSpacing: '-0.03em',
-          lineHeight:    1,
-          position:      'relative',
-          zIndex:        1,
-          marginBottom:  12,
-        }}>
-          {display}
-        </div>
+        <div className="agx-dotcard-text">{display}</div>
 
         {/* Label */}
-        <div style={{
-          fontFamily:    "'Inter', sans-serif",
-          fontSize:      10,
-          fontWeight:    600,
-          letterSpacing: '0.16em',
-          textTransform: 'uppercase',
-          color:         '#555',
-          position:      'relative',
-          zIndex:        1,
-          textAlign:     'center',
-        }}>
-          {label}
-        </div>
+        <div className="agx-dotcard-label">{label}</div>
       </div>
     </div>
   );
@@ -172,10 +108,10 @@ export default function Achievements() {
         }
 
         @keyframes agxDotMove {
-          0%,100% { top:12px; right:12px; }
-          25%     { top:12px; right:calc(100% - 24px); }
-          50%     { top:calc(100% - 24px); right:calc(100% - 24px); }
-          75%     { top:calc(100% - 24px); right:12px; }
+          0%, 100% { top: 10%; right: 10%; }
+          25%      { top: 10%; right: calc(100% - 35px); }
+          50%      { top: calc(100% - 30px); right: calc(100% - 35px); }
+          75%      { top: calc(100% - 30px); right: 10%; }
         }
         @keyframes agxRayPulse {
           0%,100% { opacity:0.55; }
@@ -184,6 +120,84 @@ export default function Achievements() {
         @keyframes agxSecGlow {
           0%,100% { opacity:0.1; transform:translateX(-50%) scale(1); }
           50%     { opacity:0.2; transform:translateX(-50%) scale(1.06); }
+        }
+
+        .agx-dotcard-outer {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1 / 0.92;
+          min-height: 190px;
+        }
+        .agx-dotcard-dot {
+          position: absolute;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: #ffffff;
+          box-shadow: 0 0 16px 5px rgba(180,220,255,0.65), 0 0 4px 1px #fff;
+          z-index: 10;
+          pointer-events: none;
+          animation: agxDotMove 4.5s ease-in-out infinite;
+          transition: opacity 0.5s;
+          top: 10%;
+          right: 10%;
+        }
+        .agx-dotcard-card {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(ellipse 140% 100% at 50% -10%, #1c1c1c 0%, #0a0a0a 55%, #060606 100%);
+          border: 1px solid rgba(255,255,255,0.10);
+          border-radius: 18px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 40px -20px rgba(0,0,0,0.6);
+        }
+        .agx-dotcard-ray {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 42%, rgba(160,210,255,0.16) 0%, rgba(160,210,255,0.05) 35%, transparent 65%);
+          pointer-events: none;
+          animation: agxRayPulse 3.5s ease-in-out infinite;
+        }
+        .agx-dotcard-line {
+          position: absolute;
+          background: rgba(255,255,255,0.16);
+          pointer-events: none;
+        }
+        .agx-dc-topl    { top: 22px;    left: 22px;  width: 36px; height: 1px; }
+        .agx-dc-leftl   { top: 22px;    left: 22px;  width: 1px;  height: 36px; }
+        .agx-dc-bottoml { bottom: 22px; right: 22px; width: 36px; height: 1px; }
+        .agx-dc-rightl  { bottom: 22px; right: 22px; width: 1px;  height: 36px; }
+        .agx-dotcard-text {
+          position: relative;
+          z-index: 1;
+          font-family: 'Inter', sans-serif;
+          font-size: clamp(38px, 4.6vw, 60px);
+          font-weight: 700;
+          letter-spacing: -0.03em;
+          line-height: 1;
+          margin-bottom: 12px;
+          background: linear-gradient(180deg, #ffffff 0%, #bfe3ff 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          filter: drop-shadow(0 0 18px rgba(150,205,255,0.35));
+        }
+        .agx-dotcard-label {
+          position: relative;
+          z-index: 1;
+          font-family: 'Inter', sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #666;
+          text-align: center;
+          padding: 0 14px;
         }
 
         .agx-ach-grid {
