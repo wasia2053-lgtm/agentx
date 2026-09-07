@@ -10,18 +10,32 @@ const INFO = [
 export default function Contact() {
     const [form, setForm] = useState({ name: '', email: '', message: '' });
     const [sent, setSent] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // TODO: wire this up to your backend / email service (e.g. Formspree, EmailJS, or a custom API route)
-        console.log('Contact form submitted:', form);
-        setSent(true);
-        setForm({ name: '', email: '', message: '' });
-        setTimeout(() => setSent(false), 4000);
+        setError('');
+        setSending(true);
+        try {
+            const res = await fetch('https://formspree.io/f/xrpgyrkk', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify(form),
+            });
+            if (!res.ok) throw new Error('Submission failed');
+            setSent(true);
+            setForm({ name: '', email: '', message: '' });
+            setTimeout(() => setSent(false), 4000);
+        } catch (err) {
+            setError('Something went wrong. Please try again or email us directly.');
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -58,6 +72,22 @@ export default function Contact() {
         }
         .agx-ct-submit:hover { opacity: 0.85; transform: translateY(-2px); }
         .agx-ct-submit:active { transform: translateY(0); }
+        .agx-ct-grid {
+          display: grid;
+          grid-template-columns: minmax(220px, 340px) minmax(280px, 480px);
+          gap: 48px;
+          justify-content: center;
+          max-width: 920px;
+          margin: 0 auto;
+        }
+        .agx-ct-grid > * { min-width: 0; }
+        @media (max-width: 720px) {
+          .agx-ct-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: 100%;
+          }
+        }
       `}</style>
 
             <section
@@ -86,15 +116,8 @@ export default function Contact() {
 
                 {/* ── Content grid ── */}
                 <div
-                    style={{
-                        position: 'relative', zIndex: 1,
-                        display: 'grid',
-                        gridTemplateColumns: 'minmax(220px, 340px) minmax(280px, 480px)',
-                        gap: 48,
-                        justifyContent: 'center',
-                        maxWidth: 920,
-                        margin: '0 auto',
-                    }}
+                    className="agx-ct-grid"
+                    style={{ position: 'relative', zIndex: 1 }}
                 >
                     {/* Info panel */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
@@ -103,7 +126,7 @@ export default function Contact() {
                                 <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', color: '#555', textTransform: 'uppercase', margin: '0 0 6px' }}>
                                     {i.label}
                                 </p>
-                                <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: '#fff', margin: 0 }}>
+                                <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: '#fff', margin: 0, overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                                     {i.value}
                                 </p>
                             </div>
@@ -153,9 +176,14 @@ export default function Contact() {
                             required
                             style={{ resize: 'vertical', fontFamily: "'Inter',sans-serif" }}
                         />
-                        <button className="agx-ct-submit" type="submit">
-                            {sent ? 'Message Sent ✓' : 'Send Message'}
+                        <button className="agx-ct-submit" type="submit" disabled={sending} style={{ opacity: sending ? 0.6 : 1, cursor: sending ? 'not-allowed' : 'pointer' }}>
+                            {sending ? 'Sending...' : sent ? 'Message Sent ✓' : 'Send Message'}
                         </button>
+                        {error && (
+                            <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: '#ff6b6b', margin: '4px 0 0', textAlign: 'center' }}>
+                                {error}
+                            </p>
+                        )}
                     </form>
                 </div>
             </section>

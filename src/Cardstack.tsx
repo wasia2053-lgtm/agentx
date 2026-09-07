@@ -184,12 +184,30 @@ export function CardStack({
 
   const [active,   setActive]   = React.useState(() => wrapIndex(initialIndex, len));
   const [hovering, setHovering] = React.useState(false);
+  const stageRef = React.useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = React.useState<number | null>(null);
+
+  React.useLayoutEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    setContainerWidth(el.getBoundingClientRect().width);
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width;
+      if (w) setContainerWidth(w);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   React.useEffect(() => { setActive(a => wrapIndex(a, len)); }, [len]);
 
   const maxOffset   = Math.max(0, Math.floor(maxVisible / 2));
   const cardSpacing = Math.max(10, Math.round(cardWidth * (1 - overlap)));
   const stepDeg     = maxOffset > 0 ? spreadDeg / maxOffset : 0;
+
+  const neededWidth = cardWidth + maxOffset * cardSpacing * 2 + 40;
+  const scaleFactor = containerWidth ? Math.min(1, containerWidth / neededWidth) : 1;
+  const stageHeight = Math.max(420, cardHeight + 100) * scaleFactor;
 
   const next = React.useCallback(() => { if (!len) return; setActive(a => wrapIndex(a + 1, len)); }, [len]);
   const prev = React.useCallback(() => { if (!len) return; setActive(a => wrapIndex(a - 1, len)); }, [len]);
@@ -210,7 +228,8 @@ export function CardStack({
     >
       {/* Stage */}
       <div
-        style={{ position: "relative", width: "100%", height: Math.max(420, cardHeight + 100) }}
+        ref={stageRef}
+        style={{ position: "relative", width: "100%", height: stageHeight, overflow: "hidden" }}
         tabIndex={0}
         onKeyDown={e => { if (e.key === "ArrowLeft") prev(); if (e.key === "ArrowRight") next(); }}
       >
@@ -218,6 +237,8 @@ export function CardStack({
           position: "absolute", inset: 0,
           display: "flex", alignItems: "flex-end", justifyContent: "center",
           perspective: `${perspectivePx}px`,
+          transform: `scale(${scaleFactor})`,
+          transformOrigin: "center bottom",
         }}>
           <AnimatePresence initial={false}>
             {items.map((item, i) => {

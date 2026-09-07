@@ -22,14 +22,20 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background-color: var(--bg-base);
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  min-height: 200vh; /* For scroll testing */
+  width: 100%;
 }
 
 #root {
   width: 100%;
+  overflow-x: hidden;
 }
