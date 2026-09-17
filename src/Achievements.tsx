@@ -100,10 +100,17 @@ export default function Achievements() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         @font-face {
-          font-family: 'FreshChunky';
-          src: url('/fonts/FreshChunky-Regular-BF69e8470be9b15.otf') format('opentype');
+          font-family: 'ClashDisplay';
+          src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
+          font-weight: 700;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'ClashDisplay';
+          src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
+          font-weight: 600;
           font-display: swap;
         }
 
@@ -175,7 +182,7 @@ export default function Achievements() {
         .agx-dotcard-text {
           position: relative;
           z-index: 1;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: clamp(38px, 4.6vw, 60px);
           font-weight: 700;
           letter-spacing: -0.03em;
@@ -190,7 +197,7 @@ export default function Achievements() {
         .agx-dotcard-label {
           position: relative;
           z-index: 1;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 10px;
           font-weight: 600;
           letter-spacing: 0.16em;
@@ -245,13 +252,13 @@ export default function Achievements() {
 
         {/* Header */}
         <div style={{ textAlign:'center', marginBottom:64, position:'relative', zIndex:1 }}>
-          <p style={{ fontFamily:"'Inter',sans-serif", fontSize:10, fontWeight:600, letterSpacing:'0.22em', color:'#555', textTransform:'uppercase', margin:'0 0 14px' }}>
+          <p style={{ fontFamily:"'Poppins', sans-serif", fontSize:10, fontWeight:600, letterSpacing:'0.22em', color:'#555', textTransform:'uppercase', margin:'0 0 14px' }}>
             By The Numbers
           </p>
-          <h2 style={{ fontFamily:"'FreshChunky',sans-serif", fontSize:'clamp(36px,5vw,58px)', color:'#ffffff', margin:'0 0 14px', lineHeight:1.05 }}>
+          <h2 style={{ fontFamily:"'ClashDisplay',sans-serif", fontSize:'clamp(36px,5vw,58px)', color:'#ffffff', margin:'0 0 14px', lineHeight:1.05 }}>
             Our Achievements
           </h2>
-          <p style={{ fontFamily:"'Inter',sans-serif", fontSize:14, color:'#555', margin:0 }}>
+          <p style={{ fontFamily:"'Poppins', sans-serif", fontSize:14, color:'#555', margin:0 }}>
             Results that speak louder than words
           </p>
         </div>

@@ -66,11 +66,11 @@ function ServiceCard({ item, index }: { item: CardItem; index: number }) {
 
       {/* Top row */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative", zIndex: 1 }}>
-        <span style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: "#484848", letterSpacing: "0.06em" }}>
+        <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: "#484848", letterSpacing: "0.06em" }}>
           {svc.num} / 0{N}
         </span>
         <span style={{
-          fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600,
+          fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600,
           letterSpacing: "0.15em", color: "#555",
           background: "rgba(255,255,255,0.05)",
           border: "1px solid rgba(255,255,255,0.09)",
@@ -83,7 +83,7 @@ function ServiceCard({ item, index }: { item: CardItem; index: number }) {
       {/* Content */}
       <div style={{ marginTop: "auto", position: "relative", zIndex: 1 }}>
         <h3 style={{
-          fontFamily: "'Inter',sans-serif",
+          fontFamily: "'Poppins', sans-serif",
           fontSize: "clamp(22px,2.8vw,32px)",
           fontWeight: 700, color: "#ffffff",
           lineHeight: 1.1, margin: "0 0 12px",
@@ -92,7 +92,7 @@ function ServiceCard({ item, index }: { item: CardItem; index: number }) {
           {svc.title}
         </h3>
         <p style={{
-          fontFamily: "'Inter',sans-serif",
+          fontFamily: "'Poppins', sans-serif",
           fontSize: 13, color: "#a3a3a3",
           lineHeight: 1.8, margin: "0 0 24px", maxWidth: 390,
         }}>
@@ -142,8 +142,8 @@ export default function Services() {
   return (
     <>
       <style>{`
-        @font-face { font-family:'FreshChunky'; src:url('/fonts/FreshChunky-Regular-BF69e8470be9b15.otf') format('opentype'); font-display:swap; }
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @font-face { font-family:'ClashDisplay'; src:url('/fonts/ClashDisplay-Regular-BF69e8470be9b15.otf') format('opentype'); font-display:swap; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         .agx-sv-btn { width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 200ms,border-color 200ms;font-size:16px; }
         .agx-sv-btn:hover { background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.25); }
         .agx-sv-dot { height:6px;border-radius:3px;cursor:pointer;transition:width 350ms ease,background 350ms ease; }
@@ -161,9 +161,9 @@ export default function Services() {
 
         {/* ── Header ── */}
         <div style={{ textAlign: "center", marginBottom: 80, position: "relative", zIndex: 1 }}>
-          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.22em", color: "#555", textTransform: "uppercase", margin: "0 0 14px" }}>What We Do</p>
-          <h2 style={{ fontFamily: "'FreshChunky',sans-serif", fontSize: "clamp(36px,5vw,58px)", color: "#ffffff", margin: "0 0 14px", lineHeight: 1.05 }}>Our Services</h2>
-          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#555", margin: 0 }}>Six ways AgentX transforms your business</p>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.22em", color: "#555", textTransform: "uppercase", margin: "0 0 14px" }}>What We Do</p>
+          <h2 style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: "clamp(36px,5vw,58px)", color: "#ffffff", margin: "0 0 14px", lineHeight: 1.05 }}>Our Services</h2>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "#555", margin: 0 }}>Six ways AgentX transforms your business</p>
         </div>
 
         {/* ── Card stack ── */}
@@ -191,7 +191,7 @@ export default function Services() {
           <button className="agx-sv-btn" onClick={goNext} aria-label="Next">→</button>
         </div>
 
-        <p style={{ position: "relative", zIndex: 1, fontFamily: "'Inter',sans-serif", fontSize: 11, color: "#333", marginTop: 14 }}>
+        <p style={{ position: "relative", zIndex: 1, fontFamily: "'Poppins', sans-serif", fontSize: 11, color: "#333", marginTop: 14 }}>
           {paused ? "⏸ Paused" : "Auto-advancing · hover to pause"}
         </p>
       </section>

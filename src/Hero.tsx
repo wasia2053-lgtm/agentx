@@ -13,17 +13,24 @@ export default function Hero() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
         @font-face {
-          font-family: 'FreshChunky';
-          src: url('/fonts/FreshChunky-Regular-BF69e8470be9b15.otf') format('opentype');
+          font-family: 'ClashDisplay';
+          src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
+          font-weight: 700;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'ClashDisplay';
+          src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
+          font-weight: 600;
           font-display: swap;
         }
         .agx-cta {
           position: relative; display: inline-flex; align-items: center;
           height: 40px; padding-left: 20px; padding-right: 48px;
           border-radius: 100px; background: #ffffff; color: #000000;
-          font-family: 'Inter',sans-serif; font-size: 13px; font-weight: 600;
+          font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
           text-decoration: none; overflow: hidden; white-space: nowrap;
           cursor: pointer; flex-shrink: 0; border: none;
           transition: padding 450ms ease;
@@ -56,16 +63,16 @@ export default function Hero() {
           <div style={{ flex: '0 0 52%', display: 'flex', flexDirection: 'column', gap: 24, zIndex: 10 }}>
 
             <motion.div {...anim(0.2)}>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 100, padding: '6px 16px', fontFamily: "'Inter',sans-serif", fontSize: 12, fontWeight: 500, color: '#a3a3a3' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 100, padding: '6px 16px', fontFamily: "'Poppins', sans-serif", fontSize: 12, fontWeight: 500, color: '#a3a3a3' }}>
                 ⚡ AI-Powered Agency
               </span>
             </motion.div>
 
-            <motion.h1 {...anim(0.35)} style={{ fontFamily: "'FreshChunky',sans-serif", fontSize: 'clamp(40px,5vw,78px)', color: '#fff', lineHeight: 1.05, letterSpacing: '-0.01em', margin: 0 }}>
+            <motion.h1 {...anim(0.35)} style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: 'clamp(40px,5vw,78px)', color: '#fff', lineHeight: 1.05, letterSpacing: '-0.01em', margin: 0 }}>
               We Build AI That<br />Works For You.
             </motion.h1>
 
-            <motion.p {...anim(0.5)} style={{ fontFamily: "'Inter',sans-serif", fontSize: 16, fontWeight: 400, color: '#a3a3a3', maxWidth: 460, lineHeight: 1.75, margin: 0 }}>
+            <motion.p {...anim(0.5)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 400, color: '#a3a3a3', maxWidth: 460, lineHeight: 1.75, margin: 0 }}>
               From chatbots to voice agents — AgentX automates your business so you grow faster, not harder.
             </motion.p>
 
@@ -75,7 +82,7 @@ export default function Hero() {
                 <span className="agx-dot"><ArrowUpRight size={14} /></span>
               </a>
               <a href="#projects"
-                style={{ display: 'inline-flex', alignItems: 'center', height: 40, padding: '0 20px', borderRadius: 100, background: 'transparent', border: '1px solid rgba(255,255,255,0.18)', color: '#fff', fontFamily: "'Inter',sans-serif", fontSize: 13, fontWeight: 500, textDecoration: 'none', transition: 'border-color 200ms', whiteSpace: 'nowrap' }}
+                style={{ display: 'inline-flex', alignItems: 'center', height: 40, padding: '0 20px', borderRadius: 100, background: 'transparent', border: '1px solid rgba(255,255,255,0.18)', color: '#fff', fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 500, textDecoration: 'none', transition: 'border-color 200ms', whiteSpace: 'nowrap' }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)')}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)')}
               >

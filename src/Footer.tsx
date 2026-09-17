@@ -27,7 +27,7 @@ const STYLES = `
   overflow: hidden;
   background: #000000;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -79,7 +79,7 @@ const STYLES = `
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
-  font-family: 'FreshChunky', sans-serif;
+  font-family: 'ClashDisplay', sans-serif;
   font-size: min(24vw, 260px);
   line-height: 0.75;
   letter-spacing: -0.01em;
@@ -109,7 +109,7 @@ const STYLES = `
   display: flex;
   width: max-content;
   animation: agxFtMarquee 40s linear infinite;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.3em;
@@ -137,7 +137,7 @@ const STYLES = `
 }
 
 .agx-ft-heading {
-  font-family: 'FreshChunky', sans-serif;
+  font-family: 'ClashDisplay', sans-serif;
   font-size: clamp(32px, 6.5vw, 82px);
   line-height: 1.03;
   margin: 0 0 44px;
@@ -163,7 +163,7 @@ const STYLES = `
   backdrop-filter: blur(16px);
   color: #ffffff;
   text-decoration: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   transition: background 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, box-shadow 0.4s, color 0.4s;
 }
 .agx-ft-pill:hover {
@@ -186,7 +186,7 @@ const STYLES = `
   gap: 18px;
 }
 .agx-ft-copy {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
   text-transform: uppercase; color: #555;
   order: 2;
@@ -197,7 +197,7 @@ const STYLES = `
   cursor: default; order: 1;
 }
 .agx-ft-credit span {
-  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase; color: #777;
 }
 .agx-ft-brand { color: #ffffff !important; }

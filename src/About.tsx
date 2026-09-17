@@ -21,7 +21,7 @@ export default function About() {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         .agx-ab-card { transition: transform 300ms ease, border-color 300ms ease, background 300ms ease; }
         .agx-ab-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.04); }
         .agx-ab-avatar { transition: transform 300ms ease, box-shadow 300ms ease; }
@@ -41,13 +41,13 @@ export default function About() {
 
                 {/* ── Header ── */}
                 <div style={{ textAlign: 'center', marginBottom: 72, position: 'relative', zIndex: 1 }}>
-                    <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
                         Who We Are
                     </p>
-                    <h2 style={{ fontFamily: "'FreshChunky',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 18px', lineHeight: 1.05 }}>
+                    <h2 style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 18px', lineHeight: 1.05 }}>
                         About AgentX
                     </h2>
-                    <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: '#a3a3a3', margin: '0 auto', maxWidth: 560, lineHeight: 1.8 }}>
+                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: '#a3a3a3', margin: '0 auto', maxWidth: 560, lineHeight: 1.8 }}>
                         We're a full-stack digital agency building AI automation, chatbots, voice agents, websites, and
                         brand identities for businesses that refuse to stand still.
                     </p>
@@ -74,13 +74,13 @@ export default function About() {
                                 background: 'rgba(255,255,255,0.02)',
                             }}
                         >
-                            <span style={{ fontFamily: "'Inter',sans-serif", fontSize: 11, color: '#484848', letterSpacing: '0.06em' }}>
+                            <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, color: '#484848', letterSpacing: '0.06em' }}>
                                 {v.num}
                             </span>
-                            <h3 style={{ fontFamily: "'Inter',sans-serif", fontSize: 17, fontWeight: 700, color: '#fff', margin: '14px 0 8px' }}>
+                            <h3 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, fontWeight: 700, color: '#fff', margin: '14px 0 8px' }}>
                                 {v.title}
                             </h3>
-                            <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: '#a3a3a3', lineHeight: 1.7, margin: 0 }}>
+                            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: '#a3a3a3', lineHeight: 1.7, margin: 0 }}>
                                 {v.desc}
                             </p>
                         </div>
@@ -88,7 +88,7 @@ export default function About() {
                 </div>
 
                 {/* ── Team ── */}
-                <p style={{ textAlign: 'center', fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 36px', position: 'relative', zIndex: 1 }}>
+                <p style={{ textAlign: 'center', fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 36px', position: 'relative', zIndex: 1 }}>
                     The Team
                 </p>
                 <div
@@ -120,15 +120,15 @@ export default function About() {
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     background: 'rgba(255,255,255,0.06)',
                                     border: '1px solid rgba(255,255,255,0.12)',
-                                    fontFamily: "'Inter',sans-serif", fontSize: 16, fontWeight: 700, color: '#fff',
+                                    fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 700, color: '#fff',
                                 }}
                             >
                                 {m.initials}
                             </div>
-                            <h4 style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, fontWeight: 600, color: '#fff', margin: '0 0 4px' }}>
+                            <h4 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, fontWeight: 600, color: '#fff', margin: '0 0 4px' }}>
                                 {m.name}
                             </h4>
-                            <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: '#777', margin: 0 }}>
+                            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: '#777', margin: 0 }}>
                                 {m.role}
                             </p>
                         </div>

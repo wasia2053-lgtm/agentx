@@ -41,14 +41,14 @@ export default function Contact() {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         .agx-ct-input {
           width: 100%; box-sizing: border-box;
           background: rgba(255,255,255,0.03);
           border: 1px solid rgba(255,255,255,0.1);
           border-radius: 10px;
           padding: 14px 16px;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 13px;
           color: #ffffff;
           outline: none;
@@ -63,7 +63,7 @@ export default function Contact() {
           border: none;
           border-radius: 10px;
           padding: 14px 16px;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 13px;
           font-weight: 600;
           letter-spacing: 0.02em;
@@ -103,13 +103,13 @@ export default function Contact() {
 
                 {/* ── Header ── */}
                 <div style={{ textAlign: 'center', marginBottom: 72, position: 'relative', zIndex: 1 }}>
-                    <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
                         Get In Touch
                     </p>
-                    <h2 style={{ fontFamily: "'FreshChunky',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 14px', lineHeight: 1.05 }}>
+                    <h2 style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 14px', lineHeight: 1.05 }}>
                         Contact Us
                     </h2>
-                    <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: '#555', margin: 0 }}>
+                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: '#555', margin: 0 }}>
                         Have a project in mind? Let's build it together.
                     </p>
                 </div>
@@ -123,16 +123,16 @@ export default function Contact() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
                         {INFO.map((i) => (
                             <div key={i.label}>
-                                <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', color: '#555', textTransform: 'uppercase', margin: '0 0 6px' }}>
+                                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', color: '#555', textTransform: 'uppercase', margin: '0 0 6px' }}>
                                     {i.label}
                                 </p>
-                                <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: '#fff', margin: 0, overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
+                                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, color: '#fff', margin: 0, overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                                     {i.value}
                                 </p>
                             </div>
                         ))}
                         <div style={{ width: 36, height: 1.5, background: 'rgba(255,255,255,0.25)', borderRadius: 2, marginTop: 8 }} />
-                        <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: '#a3a3a3', lineHeight: 1.8, margin: 0 }}>
+                        <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: '#a3a3a3', lineHeight: 1.8, margin: 0 }}>
                             We usually reply within 24 hours. For urgent inquiries, reach out directly via email or phone.
                         </p>
                     </div>
@@ -174,13 +174,13 @@ export default function Contact() {
                             value={form.message}
                             onChange={handleChange}
                             required
-                            style={{ resize: 'vertical', fontFamily: "'Inter',sans-serif" }}
+                            style={{ resize: 'vertical', fontFamily: "'Poppins', sans-serif" }}
                         />
                         <button className="agx-ct-submit" type="submit" disabled={sending} style={{ opacity: sending ? 0.6 : 1, cursor: sending ? 'not-allowed' : 'pointer' }}>
                             {sending ? 'Sending...' : sent ? 'Message Sent ✓' : 'Send Message'}
                         </button>
                         {error && (
-                            <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: '#ff6b6b', margin: '4px 0 0', textAlign: 'center' }}>
+                            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: '#ff6b6b', margin: '4px 0 0', textAlign: 'center' }}>
                                 {error}
                             </p>
                         )}

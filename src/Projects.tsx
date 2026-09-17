@@ -81,8 +81,8 @@ export default function Projects() {
   return (
     <>
       <style>{`
-        @font-face { font-family:'FreshChunky'; src:url('/fonts/FreshChunky-Regular-BF69e8470be9b15.otf') format('opentype'); font-display:swap; }
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @font-face { font-family:'ClashDisplay'; src:url('/fonts/ClashDisplay-Regular-BF69e8470be9b15.otf') format('opentype'); font-display:swap; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
         @keyframes agxGlowBreathe {
           0%,100% { opacity:0.18; transform:scale(1); }
@@ -159,7 +159,7 @@ export default function Projects() {
         {/* ── Header ── */}
         <div style={{ textAlign: "center", marginBottom: isMobile ? 32 : 80, position: "relative", zIndex: 1 }}>
           <p style={{
-            fontFamily: "'Inter',sans-serif",
+            fontFamily: "'Poppins', sans-serif",
             fontSize: 10, fontWeight: 600,
             letterSpacing: "0.22em", color: "#555",
             textTransform: "uppercase", margin: "0 0 14px",
@@ -167,13 +167,13 @@ export default function Projects() {
             Our Work
           </p>
           <h2 style={{
-            fontFamily: "'FreshChunky',sans-serif",
+            fontFamily: "'ClashDisplay',sans-serif",
             fontSize: "clamp(36px,5vw,58px)",
             color: "#ffffff", margin: "0 0 14px", lineHeight: 1.05,
           }}>
             Featured Projects
           </h2>
-          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#555", margin: 0 }}>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "#555", margin: 0 }}>
             Real results we've delivered for real clients
           </p>
         </div>
@@ -200,7 +200,7 @@ export default function Projects() {
         {/* ── Drag hint ── */}
         <p style={{
           position: "relative", zIndex: 1,
-          fontFamily: "'Inter',sans-serif",
+          fontFamily: "'Poppins', sans-serif",
           fontSize: 11, color: "#333",
           marginTop: 16,
         }}>
