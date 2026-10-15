@@ -4,58 +4,58 @@ import type { CardStackItem } from "./Cardstack";
 
 const PROJECTS: CardStackItem[] = [
   {
-    id: 1,
-    tag: "WEB + SEO",
-    title: "Tainted Flesh Body Art",
-    description: "Full website design, development, and local SEO for a tattoo studio in Wilmington, DE — built to convert visitors into booked consultations.",
-    gradient: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
-    image: "https://taintedfleshbodyartnorth.com/wp-content/uploads/2026/05/Picture-for-how-it-works-section.jpg",
-    href: "https://taintedfleshbodyartnorth.com/",
-  },
-  {
     id: 2,
     tag: "WEB + SEO",
     title: "Pixiest Photography",
-    description: "Portfolio website and local SEO for a Delaware-based photographer — service pages built around wedding, event, and drone photography search terms.",
+    description: "SEO + development work for a Delaware-based photographer — service pages built around wedding, event, and drone photography search terms.",
     gradient: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
     image: "https://pixiestphotography.com/wp-content/uploads/2025/11/Event-Photography-in-Newark-Delaware.jpg",
     href: "https://pixiestphotography.com/",
   },
   {
-    id: 3,
-    tag: "WEB + E-COMMERCE",
-    title: "Black Eden 420",
-    description: "Full e-commerce build for a licensed cannabis delivery service in California — product catalog, ordering flow, and location-based SEO across service areas.",
-    gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
-    image: "https://blackeden420.com/wp-content/uploads/2025/11/Black-Eden.png",
-    href: "https://blackeden420.com/",
-  },
-  {
-    id: 4,
-    tag: "WEB + SEO",
-    title: "DM Power Construction",
-    description: "Website design and development for a Massachusetts home renovation contractor — project galleries, service pages, and local SEO for the Greater Boston area.",
-    gradient: "linear-gradient(135deg, #200122 0%, #6f0000 100%)",
-    image: "https://www.dmpowerconstruction.com/wp-content/uploads/2025/07/IMG-20250714-WA0005.jpg",
-    href: "https://www.dmpowerconstruction.com/",
-  },
-  {
     id: 5,
     tag: "WEB + SEO",
     title: "The Bean Guys",
-    description: "Website build for a mobile coffee cart and event catering brand serving the Dallas-Fort Worth area — booking flow and content across service and location pages.",
+    description: "SEO + development work for a mobile coffee cart and event catering brand serving the Dallas-Fort Worth area — booking flow and content across service and location pages.",
     gradient: "linear-gradient(135deg, #0d0d0d 0%, #1a3a2a 50%, #0a2a1a 100%)",
     image: "https://images.squarespace-cdn.com/content/v1/67ad5879262782591823fa86/c3ba25f8-9d5c-49b6-847a-46faa15ff257/Bean+Guys-9.jpg",
     href: "https://www.thebeanguys.com/",
   },
   {
+    id: 4,
+    tag: "WEB + SEO",
+    title: "DM Power Construction",
+    description: "SEO + development work for a Massachusetts home renovation contractor — project galleries, service pages, and local SEO for the Greater Boston area.",
+    gradient: "linear-gradient(135deg, #200122 0%, #6f0000 100%)",
+    image: "https://www.dmpowerconstruction.com/wp-content/uploads/2025/07/IMG-20250714-WA0005.jpg",
+    href: "https://www.dmpowerconstruction.com/",
+  },
+  {
+    id: 1,
+    tag: "WEB + SEO",
+    title: "Tainted Flesh Body Art",
+    description: "SEO + development work for a tattoo studio in Wilmington, DE — built to convert visitors into booked consultations.",
+    gradient: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
+    image: "https://taintedfleshbodyartnorth.com/wp-content/uploads/2026/05/Picture-for-how-it-works-section.jpg",
+    href: "https://taintedfleshbodyartnorth.com/",
+  },
+  {
     id: 6,
     tag: "WEB + SEO",
     title: "Estelles Lighting",
-    description: "Website design, development, and SEO for a lighting brand — product pages and site structure built for search visibility.",
+    description: "SEO + development work for a lighting brand — product pages and site structure built for search visibility.",
     gradient: "linear-gradient(135deg, #1a0533 0%, #3d1166 50%, #6b21a8 100%)",
     image: "/estelles-lighting.jpg",
     href: "https://estelleslighting.com/",
+  },
+  {
+    id: 3,
+    tag: "WEB + E-COMMERCE",
+    title: "Black Eden 420",
+    description: "E-commerce + SEO work for a licensed cannabis delivery service in California — product catalog, ordering flow, and location-based SEO across service areas.",
+    gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
+    image: "https://blackeden420.com/wp-content/uploads/2025/11/Black-Eden.png",
+    href: "https://blackeden420.com/",
   },
 ];
 
@@ -171,10 +171,10 @@ export default function Projects() {
             fontSize: "clamp(36px,5vw,58px)",
             color: "#ffffff", margin: "0 0 14px", lineHeight: 1.05,
           }}>
-            Featured Projects
+            Projects We&apos;ve Worked On
           </h2>
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "#555", margin: 0 }}>
-            Real results we've delivered for real clients
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "#a3a3a3", margin: 0 }}>
+            SEO + development work delivered for real clients — projects by AnaxDesign.
           </p>
         </div>
 
@@ -199,7 +199,8 @@ export default function Projects() {
 
         {/* ── Drag hint ── */}
         <p style={{
-          position: "relative", zIndex: 1,
+          position: "relative",
+          zIndex: 1,
           fontFamily: "'Poppins', sans-serif",
           fontSize: 11, color: "#333",
           marginTop: 16,

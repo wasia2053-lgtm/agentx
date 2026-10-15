@@ -44,6 +44,12 @@ export default function Hero() {
           transition: right 450ms ease, transform 450ms ease;
         }
         .agx-hi { display: flex; align-items: center; width: 100%; height: 100%; padding: 0 80px; gap: 40px; position: relative; z-index: 10; }
+        @keyframes agxOrbMorph {
+          0%, 100% { transform: scale(1) rotate(0deg); border-radius: 50%; }
+          33% { transform: scale(1.12) rotate(8deg); border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%; }
+          66% { transform: scale(0.94) rotate(-6deg); border-radius: 54% 46% 48% 52% / 48% 54% 46% 52%; }
+        }
+        .agx-orb { animation: agxOrbMorph 14s ease-in-out infinite; }
         @media (max-width: 900px) {
           .agx-hi { flex-direction: column; padding: 120px 28px 40px; align-items: flex-start; gap: 0; }
           .agx-hr { width: 100% !important; height: 50vh !important; min-width: unset !important; flex: none !important; }
@@ -69,16 +75,16 @@ export default function Hero() {
             </motion.div>
 
             <motion.h1 {...anim(0.35)} style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: 'clamp(40px,5vw,78px)', color: '#fff', lineHeight: 1.05, letterSpacing: '-0.01em', margin: 0 }}>
-              We Build AI That<br />Works For You.
+              More leads while<br />you sleep.
             </motion.h1>
 
-            <motion.p {...anim(0.5)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 400, color: '#a3a3a3', maxWidth: 460, lineHeight: 1.75, margin: 0 }}>
-              From chatbots to voice agents — AgentX automates your business so you grow faster, not harder.
+            <motion.p {...anim(0.5)} style={{ fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 400, color: '#c9c9d1', maxWidth: 460, lineHeight: 1.75, margin: 0 }}>
+              AgentX builds your website, trains your AI chatbot, and ranks you on Google — one team, one bundle, done for you.
             </motion.p>
 
             <motion.div {...anim(0.65)} style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-              <a href="#contact" className="agx-cta">
-                <span style={{ position: 'relative', zIndex: 10 }}>Get Started</span>
+              <a href="https://calendly.com/wasia2053/30min" target="_blank" rel="noreferrer" className="agx-cta">
+                <span style={{ position: 'relative', zIndex: 10 }}>Book a free strategy call</span>
                 <span className="agx-dot"><ArrowUpRight size={14} /></span>
               </a>
               <a href="#projects"
@@ -91,9 +97,14 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — Robot */}
+          {/* RIGHT — Robot + orb glow (robot side only, never behind the text) */}
           <div className="agx-hr" style={{ flex: '1 1 48%', height: '100%', position: 'relative', overflow: 'hidden' }}>
-            <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
+            <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="agx-orb" style={{ width: 520, height: 520, borderRadius: '50%', background: 'radial-gradient(circle at 35% 35%, rgba(255,92,168,0.32) 0%, rgba(255,138,61,0.26) 35%, rgba(139,92,255,0.28) 65%, transparent 72%)', filter: 'blur(48px)' }} />
+            </div>
+            <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}>
+              <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
+            </div>
             <div style={{ position: 'absolute', left: 0, top: 0, width: 140, height: '100%', background: 'linear-gradient(to right, #000, transparent)', pointerEvents: 'none', zIndex: 10 }} />
           </div>
 

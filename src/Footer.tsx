@@ -300,12 +300,19 @@ export default function Footer() {
 
                         <div ref={linksRef} className="agx-ft-links">
                             <div className="agx-ft-cta-row">
-                                <MagneticButton as="a" href="#contact" className="agx-ft-pill agx-ft-pill-primary">
+                                <MagneticButton as="a" href="https://calendly.com/wasia2053/30min" target="_blank" rel="noreferrer" className="agx-ft-pill agx-ft-pill-primary">
                                     Book a Call <ArrowUpRight size={16} />
                                 </MagneticButton>
                                 <MagneticButton as="a" href="#projects" className="agx-ft-pill agx-ft-pill-primary">
                                     View Our Work <ArrowUpRight size={16} />
                                 </MagneticButton>
+                            </div>
+
+                            <div className="agx-ft-secondary-row">
+                                <MagneticButton as="a" href="#services" className="agx-ft-pill agx-ft-pill-sm">Services</MagneticButton>
+                                <MagneticButton as="a" href="#projects" className="agx-ft-pill agx-ft-pill-sm">Work</MagneticButton>
+                                <MagneticButton as="a" href="#process" className="agx-ft-pill agx-ft-pill-sm">Process</MagneticButton>
+                                <MagneticButton as="a" href="#faq" className="agx-ft-pill agx-ft-pill-sm">FAQ</MagneticButton>
                             </div>
 
                             <div className="agx-ft-secondary-row">

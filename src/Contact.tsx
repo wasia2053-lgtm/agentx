@@ -22,7 +22,7 @@ export default function Contact() {
         setError('');
         setSending(true);
         try {
-            const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            const res = await fetch('https://formspree.io/f/xrpgyrkk', {
                 method: 'POST',
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),
@@ -137,56 +137,76 @@ export default function Contact() {
                         </p>
                     </div>
 
-                    {/* Form */}
-                    <form
-                        onSubmit={handleSubmit}
-                        style={{
-                            display: 'flex', flexDirection: 'column', gap: 14,
-                            border: '1px solid rgba(255,255,255,0.08)',
-                            borderRadius: 18,
-                            padding: 28,
-                            background: 'rgba(255,255,255,0.02)',
-                        }}
-                    >
-                        <input
-                            className="agx-ct-input"
-                            type="text"
-                            name="name"
-                            placeholder="Your Name"
-                            value={form.name}
-                            onChange={handleChange}
-                            required
-                        />
-                        <input
-                            className="agx-ct-input"
-                            type="email"
-                            name="email"
-                            placeholder="Your Email"
-                            value={form.email}
-                            onChange={handleChange}
-                            required
-                        />
-                        <textarea
-                            className="agx-ct-input"
-                            name="message"
-                            placeholder="Tell us about your project..."
-                            rows={5}
-                            value={form.message}
-                            onChange={handleChange}
-                            required
-                            style={{ resize: 'vertical', fontFamily: "'Poppins', sans-serif" }}
-                        />
-                        <button className="agx-ct-submit" type="submit" disabled={sending} style={{ opacity: sending ? 0.6 : 1, cursor: sending ? 'not-allowed' : 'pointer' }}>
-                            {sending ? 'Sending...' : sent ? 'Message Sent ✓' : 'Send Message'}
-                        </button>
-                        {error && (
-                            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: '#ff6b6b', margin: '4px 0 0', textAlign: 'center' }}>
-                                {error}
-                            </p>
-                        )}
-                    </form>
+                    {/* Form column: Calendly shortcut + form */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                        <a
+                            href="https://calendly.com/wasia2053/30min"
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{
+                                display: 'block', textAlign: 'center',
+                                padding: '14px 16px', borderRadius: 10,
+                                border: '1px solid rgba(255,255,255,0.15)',
+                                background: 'rgba(255,255,255,0.04)',
+                                color: '#ffffff',
+                                fontFamily: "'Poppins', sans-serif", fontSize: 13, fontWeight: 600,
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Prefer to talk? Book a free strategy call →
+                        </a>
+
+                        {/* Form */}
+                        <form
+                            onSubmit={handleSubmit}
+                            style={{
+                                display: 'flex', flexDirection: 'column', gap: 14,
+                                border: '1px solid rgba(255,255,255,0.08)',
+                                borderRadius: 18,
+                                padding: 28,
+                                background: 'rgba(255,255,255,0.02)',
+                            }}
+                        >
+                            <input
+                                className="agx-ct-input"
+                                type="text"
+                                name="name"
+                                placeholder="Your Name"
+                                value={form.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                className="agx-ct-input"
+                                type="email"
+                                name="email"
+                                placeholder="Your Email"
+                                value={form.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <textarea
+                                className="agx-ct-input"
+                                name="message"
+                                placeholder="Tell us about your project..."
+                                rows={5}
+                                value={form.message}
+                                onChange={handleChange}
+                                required
+                                style={{ resize: 'vertical', fontFamily: "'Poppins', sans-serif" }}
+                            />
+                            <button className="agx-ct-submit" type="submit" disabled={sending} style={{ opacity: sending ? 0.6 : 1, cursor: sending ? 'not-allowed' : 'pointer' }}>
+                                {sending ? 'Sending...' : sent ? 'Message Sent ✓' : 'Send Message'}
+                            </button>
+                            {error && (
+                                <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: '#ff6b6b', margin: '4px 0 0', textAlign: 'center' }}>
+                                    {error}
+                                </p>
+                            )}
+                        </form>
+                    </div>
                 </div>
             </section>
         </>
     );
-}   
+}

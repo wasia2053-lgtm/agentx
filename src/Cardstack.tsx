@@ -120,6 +120,22 @@ function GradientCard({ item, active, cardWidth, cardHeight }: { item: CardStack
             padding,
             zIndex: 10,
           }}>
+            {/* Live badge */}
+            {item.href && item.href !== "#" && (
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                marginBottom: isSmall ? 6 : 10,
+                background: "rgba(0,0,0,0.35)",
+                border: "1px solid rgba(255,255,255,0.18)",
+                borderRadius: 100, padding: "4px 10px",
+                backdropFilter: "blur(8px)",
+              }}>
+                <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ade80", boxShadow: "0 0 8px rgba(74,222,128,0.9)" }} />
+                <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", color: "#d1fae5" }}>
+                  LIVE
+                </span>
+              </div>
+            )}
             <div style={{
               fontFamily: "'Poppins', sans-serif",
               fontSize: titleSize, fontWeight: 700,
