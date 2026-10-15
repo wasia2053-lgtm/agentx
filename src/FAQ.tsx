@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Reveal } from './Reveal';
 
 interface QA {
   q: string;
@@ -37,38 +38,34 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-      `}</style>
+    <section
+      id="faq"
+      style={{
+        background: '#000000',
+        position: 'relative',
+        overflow: 'hidden',
+        padding: '120px 24px 100px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      {/* Header */}
+      <Reveal style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
+        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+          Questions
+        </p>
+        <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
+          Frequently asked questions
+        </h2>
+        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
+          Everything you need to know before booking your free call.
+        </p>
+      </Reveal>
 
-      <section
-        id="faq"
-        style={{
-          background: '#000000',
-          position: 'relative',
-          overflow: 'hidden',
-          padding: '120px 24px 100px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
-            Questions
-          </p>
-          <h2 style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 14px', lineHeight: 1.05 }}>
-            Frequently asked questions
-          </h2>
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
-            Everything you need to know before booking your free call.
-          </p>
-        </div>
-
-        {/* Accordion */}
-        <div style={{ width: '100%', maxWidth: 760, position: 'relative', zIndex: 1 }}>
+      {/* Accordion */}
+      <Reveal style={{ width: '100%', maxWidth: 760, position: 'relative', zIndex: 1 }}>
+        <div>
           {FAQS.map((item, i) => {
             const isOpen = open === i;
             return (
@@ -93,7 +90,7 @@ export default function FAQ() {
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
                     padding: '20px 24px',
                     background: 'transparent', border: 'none', cursor: 'pointer',
-                    fontFamily: "'Poppins', sans-serif", fontSize: 15, fontWeight: 600,
+                    fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 600,
                     color: '#ffffff', textAlign: 'left',
                   }}
                 >
@@ -119,7 +116,7 @@ export default function FAQ() {
                   style={{ overflow: 'hidden' }}
                 >
                   <p style={{
-                    fontFamily: "'Poppins', sans-serif", fontSize: 14,
+                    fontFamily: "'Archivo', sans-serif", fontSize: 14,
                     color: '#c9c9d1', lineHeight: 1.8,
                     margin: 0, padding: '0 24px 20px',
                   }}>
@@ -130,7 +127,7 @@ export default function FAQ() {
             );
           })}
         </div>
-      </section>
-    </>
+      </Reveal>
+    </section>
   );
 }

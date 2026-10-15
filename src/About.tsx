@@ -1,140 +1,126 @@
-import DottedSurface from './DottedSurface';
-
-interface TeamMember {
-    name: string;
-    role: string;
-    initials: string;
-}
-
-const TEAM: TeamMember[] = [
-    { name: 'Wasi Ahmed', role: 'Founder & Lead Developer', initials: 'WA' },
-    { name: 'Ali Ahmed', role: 'SEO Lead', initials: 'AA' },
-];
+import { Reveal } from './Reveal';
+import { AboutVisual } from './Visuals';
 
 const VALUES = [
-    { num: '01', title: 'Innovation First', desc: 'We chase what\u2019s next, not what\u2019s comfortable \u2014 modern stacks, modern results.' },
-    { num: '02', title: 'Built To Scale', desc: 'Every system we ship is engineered to grow with your business, not against it.' },
-    { num: '03', title: 'Client Obsessed', desc: 'Your goals set the roadmap. We measure success by your outcomes, not our output.' },
+  {
+    title: 'Conversion-first',
+    desc: 'Every design decision is measured by one metric: does it turn your visitors into customers?',
+  },
+  {
+    title: 'Fast and responsive',
+    desc: 'Your site stays lightning-fast and pixel-perfect on phones, tablets, and desktops.',
+  },
+  {
+    title: 'Built to be found',
+    desc: 'SEO isn’t an add-on — it’s baked into every page, so Google can find you and customers can too.',
+  },
+];
+
+const TEAM = [
+  { initials: 'WA', name: 'Wasi Ahmed', role: 'Founder — Development' },
+  { initials: 'AA', name: 'Ali Ahmed', role: 'Founder — SEO' },
 ];
 
 export default function About() {
-    return (
-        <>
-            <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        .agx-ab-card { transition: transform 300ms ease, border-color 300ms ease, background 300ms ease; }
-        .agx-ab-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.04); }
-        .agx-ab-avatar { transition: transform 300ms ease, box-shadow 300ms ease; }
-        .agx-ab-card:hover .agx-ab-avatar { transform: scale(1.06); box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 20px 40px rgba(0,0,0,0.6); }
-      `}</style>
+  return (
+    <section
+      id="about"
+      style={{
+        background: '#000000',
+        position: 'relative',
+        overflow: 'hidden',
+        padding: '120px 24px 100px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      {/* Header */}
+      <Reveal style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
+        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+          About AgentX
+        </p>
+        <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
+          A small team, obsessed with results
+        </h2>
+        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 560, lineHeight: 1.8 }}>
+          AgentX is an AI-powered agency. We don’t sell websites — we build systems that bring you customers.
+        </p>
+      </Reveal>
 
-            <section
-                id="about"
-                style={{
-                    background: '#050505',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    padding: '120px 24px 110px',
-                }}
+      {/* Visual */}
+      <Reveal style={{ width: '100%', maxWidth: 1080, position: 'relative', zIndex: 1 }}>
+        <AboutVisual style={{ height: 220 }} />
+      </Reveal>
+
+      {/* Team positioning */}
+      <Reveal style={{ textAlign: 'center', margin: '56px 0 0', position: 'relative', zIndex: 1, maxWidth: 720 }}>
+        <h3 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(24px,3vw,34px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+          You work directly with the people who build it.
+        </h3>
+        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, lineHeight: 1.8 }}>
+          Wasi leads development, Ali leads SEO. No account-manager telephone game — the people you talk to are the people who build your website, chatbot, and rankings.
+        </p>
+      </Reveal>
+
+      {/* Values */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, width: '100%', maxWidth: 1080, marginTop: 48, position: 'relative', zIndex: 1 }}>
+        {VALUES.map((v, i) => (
+          <Reveal key={v.title} delay={i * 0.08} style={{ height: '100%' }}>
+            <div
+              style={{
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: 20,
+                padding: '28px 26px',
+                background: 'rgba(255,255,255,0.02)',
+                height: '100%',
+                transition: 'transform 300ms ease, border-color 300ms ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-6px)';
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.22)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+              }}
             >
-                <DottedSurface />
+              <h3 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 20, fontWeight: 800, color: '#ffffff', margin: '0 0 10px', lineHeight: 1.2, letterSpacing: '-0.02em' }}>{v.title}</h3>
+              <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>{v.desc}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
 
-                {/* ── Header ── */}
-                <div style={{ textAlign: 'center', marginBottom: 72, position: 'relative', zIndex: 1 }}>
-                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
-                        Who We Are
-                    </p>
-                    <h2 style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 18px', lineHeight: 1.05 }}>
-                        About AgentX
-                    </h2>
-                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: '#a3a3a3', margin: '0 auto', maxWidth: 560, lineHeight: 1.8 }}>
-                        We're a full-stack digital agency building AI automation, chatbots, voice agents, websites, and
-                        brand identities for businesses that refuse to stand still.
-                    </p>
-                </div>
-
-                {/* ── Values ── */}
-                <div
-                    style={{
-                        position: 'relative', zIndex: 1,
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                        gap: 20,
-                        maxWidth: 980, margin: '0 auto 90px',
-                    }}
-                >
-                    {VALUES.map((v) => (
-                        <div
-                            key={v.num}
-                            className="agx-ab-card"
-                            style={{
-                                border: '1px solid rgba(255,255,255,0.08)',
-                                borderRadius: 16,
-                                padding: '28px 24px',
-                                background: 'rgba(255,255,255,0.02)',
-                            }}
-                        >
-                            <span style={{ fontFamily: "'Poppins', sans-serif", fontSize: 11, color: '#484848', letterSpacing: '0.06em' }}>
-                                {v.num}
-                            </span>
-                            <h3 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 17, fontWeight: 700, color: '#fff', margin: '14px 0 8px' }}>
-                                {v.title}
-                            </h3>
-                            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 13, color: '#a3a3a3', lineHeight: 1.7, margin: 0 }}>
-                                {v.desc}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-
-                {/* ── Team ── */}
-                <p style={{ textAlign: 'center', fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 36px', position: 'relative', zIndex: 1 }}>
-                    The Team
-                </p>
-                <div
-                    style={{
-                        position: 'relative', zIndex: 1,
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                        gap: 20,
-                        maxWidth: 980, margin: '0 auto',
-                    }}
-                >
-                    {TEAM.map((m) => (
-                        <div
-                            key={m.name + m.role}
-                            className="agx-ab-card"
-                            style={{
-                                border: '1px solid rgba(255,255,255,0.08)',
-                                borderRadius: 16,
-                                padding: '30px 20px',
-                                textAlign: 'center',
-                                background: 'rgba(255,255,255,0.02)',
-                            }}
-                        >
-                            <div
-                                className="agx-ab-avatar"
-                                style={{
-                                    width: 64, height: 64, borderRadius: '50%',
-                                    margin: '0 auto 16px',
-                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    background: 'rgba(255,255,255,0.06)',
-                                    border: '1px solid rgba(255,255,255,0.12)',
-                                    fontFamily: "'Poppins', sans-serif", fontSize: 16, fontWeight: 700, color: '#fff',
-                                }}
-                            >
-                                {m.initials}
-                            </div>
-                            <h4 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 15, fontWeight: 600, color: '#fff', margin: '0 0 4px' }}>
-                                {m.name}
-                            </h4>
-                            <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 12, color: '#777', margin: 0 }}>
-                                {m.role}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-        </>
-    );
-}   
+      {/* Team */}
+      <Reveal style={{ width: '100%', maxWidth: 1080, marginTop: 56, position: 'relative', zIndex: 1 }}>
+        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 20px', textAlign: 'center' }}>
+          The Team
+        </p>
+        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          {TEAM.map((t) => (
+            <div key={t.initials} style={{
+              display: 'flex', alignItems: 'center', gap: 14,
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 16, padding: '16px 22px',
+              background: 'rgba(255,255,255,0.02)',
+            }}>
+              <span style={{
+                width: 48, height: 48, borderRadius: '50%',
+                background: '#ffffff', color: '#000000',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 700,
+              }}>
+                {t.initials}
+              </span>
+              <div>
+                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>{t.name}</p>
+                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, color: '#a3a3a3', margin: 0 }}>{t.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Reveal>
+    </section>
+  );
+}
