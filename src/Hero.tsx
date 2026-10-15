@@ -20,9 +20,9 @@ export default function Hero() {
           font-family: 'Archivo', sans-serif; font-size: 13px; font-weight: 600;
           text-decoration: none; overflow: hidden; white-space: nowrap;
           cursor: pointer; flex-shrink: 0; border: none;
-          transition: padding 450ms ease;
+          transition: padding 450ms ease, transform 300ms ease, box-shadow 300ms ease;
         }
-        .agx-cta:hover { padding-left: 48px; padding-right: 20px; }
+        .agx-cta:hover { padding-left: 48px; padding-right: 20px; transform: scale(1.03); box-shadow: 0 14px 34px rgba(255,255,255,0.16); }
         .agx-cta:hover .agx-dot { right: calc(100% - 36px); transform: rotate(45deg); }
         .agx-dot {
           position: absolute; right: 4px; width: 32px; height: 32px;
@@ -95,9 +95,14 @@ export default function Hero() {
           {/* RIGHT — robot, clean on black. No glow behind it: the old
               orb + white light washed the robot out and looked cheap. */}
           <div className="agx-hr" style={{ flex: '1 1 48%', height: '100%', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}>
+            {/* Gentle continuous float — the hero keeps breathing after entrance */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}
+            >
               <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
-            </div>
+            </motion.div>
           </div>
 
         </div>

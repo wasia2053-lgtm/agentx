@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import Logo from './Logo';
 
 /**
- * Fantasy-style loader: full-screen black overlay, AGENTX letters
- * stagger in + thin progress bar. It stays until BOTH conditions hold:
- * (a) at least ~1800ms have passed, and (b) the window `load` event fired
- * (so it is never skipped on a slow connection), with a hard 4000ms
- * safety timeout so the page can never get trapped behind it.
+ * Fantasy-style loader: the SAME <Logo/> component as the navbar
+ * (gradient dot + AGENT + gradient X), entering with a smooth
+ * Fantasy-like ease — dot scales in first, then the wordmark glides
+ * up. No per-letter snap. Stays until BOTH: >=1800ms passed AND the
+ * window `load` event fired, with a hard 4000ms safety timeout.
  * The identical static splash in index.html covers the pre-React boot.
  */
 export default function Loader({ onDone }: { onDone: () => void }) {
@@ -54,8 +55,6 @@ export default function Loader({ onDone }: { onDone: () => void }) {
 
   if (reduceMotion) return null;
 
-  const letters = 'AGENTX'.split('');
-
   return (
     <div
       style={{
@@ -65,33 +64,14 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         alignItems: 'center', justifyContent: 'center', gap: 28,
       }}
     >
-      <div style={{ display: 'flex', gap: 4 }} aria-hidden="true">
-        {letters.map((ch, i) => (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.08 * i, duration: 0.4, ease: 'easeOut' }}
-            style={{
-              fontFamily: "'Archivo', sans-serif",
-              fontStretch: '70%',
-              fontSize: 'clamp(40px, 8vw, 72px)',
-              fontWeight: 800, letterSpacing: '0.06em',
-              ...(ch === 'X'
-                ? {
-                    background: 'linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    color: 'transparent',
-                  }
-                : { color: '#ffffff' }),
-            }}
-          >
-            {ch}
-          </motion.span>
-        ))}
-      </div>
+      {/* Same logo as the navbar — smooth Fantasy-like entrance */}
+      <motion.div
+        initial={{ opacity: 0, y: 18, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <Logo size={64} />
+      </motion.div>
       <div style={{ width: 180, height: 2, background: 'rgba(255,255,255,0.12)', borderRadius: 2, overflow: 'hidden' }}>
         <motion.div
           initial={{ width: '0%' }}

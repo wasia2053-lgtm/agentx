@@ -23,11 +23,20 @@
         position: fixed; inset: 0; z-index: 10001; background: #000;
         display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
       }
-      #agx-splash .agx-splash-letters { display: flex; gap: 4px; }
+      #agx-splash .agx-splash-letters { display: flex; gap: 6px; align-items: center; }
       #agx-splash .agx-splash-letters span {
         font-family: 'Archivo', sans-serif; font-stretch: 70%;
         font-size: clamp(40px, 8vw, 72px); font-weight: 800; color: #fff; letter-spacing: 0.06em;
         opacity: 0; animation: agxSplashIn 0.5s ease-out forwards;
+      }
+      #agx-splash .agx-splash-letters span.agx-splash-dot {
+        width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+        background: linear-gradient(135deg, #ff5ca8, #ff8a3d, #8b5cff);
+      }
+      #agx-splash .agx-splash-letters span.agx-splash-x {
+        background: linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
       }
       #agx-splash .agx-splash-letters span:nth-child(1) { animation-delay: 0.05s; }
       #agx-splash .agx-splash-letters span:nth-child(2) { animation-delay: 0.13s; }
@@ -35,6 +44,7 @@
       #agx-splash .agx-splash-letters span:nth-child(4) { animation-delay: 0.29s; }
       #agx-splash .agx-splash-letters span:nth-child(5) { animation-delay: 0.37s; }
       #agx-splash .agx-splash-letters span:nth-child(6) { animation-delay: 0.45s; }
+      #agx-splash .agx-splash-letters span:nth-child(7) { animation-delay: 0.53s; }
       @keyframes agxSplashIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
       #agx-splash .agx-splash-bar { width: 180px; height: 2px; background: rgba(255,255,255,0.12); border-radius: 2px; overflow: hidden; }
       #agx-splash .agx-splash-bar div { height: 100%; width: 0; background: #fff; border-radius: 2px; animation: agxSplashBar 1.6s ease-in-out forwards; }
@@ -43,7 +53,7 @@
   </head>
   <body>
     <div id="agx-splash" aria-hidden="true">
-      <div class="agx-splash-letters"><span>A</span><span>G</span><span>E</span><span>N</span><span>T</span><span>X</span></div>
+      <div class="agx-splash-letters"><span class="agx-splash-dot"></span><span>A</span><span>G</span><span>E</span><span>N</span><span>T</span><span class="agx-splash-x">X</span></div>
       <div class="agx-splash-bar"><div></div></div>
     </div>
     <div id="root"></div>

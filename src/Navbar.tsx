@@ -26,6 +26,7 @@ export default function Navbar() {
     <>
       <style>{`
         .agx-links  { display: flex; align-items: center; gap: 2px; }
+        .agx-navlink:hover { background: rgba(255,255,255,0.07) !important; }
         .agx-burger { display: none; align-items: center; justify-content: center; }
         .agx-mobile { display: none; }
         @media (max-width: 768px) {
@@ -82,7 +83,14 @@ export default function Navbar() {
                 flexShrink:     0,
               }}
             >
-              <Logo size={22} />
+              <motion.span
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                style={{ display: 'inline-flex' }}
+              >
+                <Logo size={22} />
+              </motion.span>
             </a>
 
             {/* NAV LINKS desktop */}
@@ -93,6 +101,7 @@ export default function Navbar() {
                   <motion.a
                     key={idx}
                     href={item.href}
+                    className="agx-navlink"
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setActiveIndex(idx)}
                     style={{
@@ -135,6 +144,8 @@ export default function Navbar() {
                 const el = e.currentTarget;
                 el.style.paddingLeft = "44px";
                 el.style.paddingRight = "20px";
+                el.style.transform = "scale(1.04)";
+                el.style.boxShadow = "0 10px 28px rgba(255,255,255,0.18)";
                 const dot = el.querySelector(".agx-arrow") as HTMLElement;
                 if (dot) { dot.style.right = "calc(100% - 36px)"; dot.style.transform = "rotate(45deg)"; }
               }}
@@ -142,6 +153,8 @@ export default function Navbar() {
                 const el = e.currentTarget;
                 el.style.paddingLeft = "20px";
                 el.style.paddingRight = "44px";
+                el.style.transform = "scale(1)";
+                el.style.boxShadow = "none";
                 const dot = el.querySelector(".agx-arrow") as HTMLElement;
                 if (dot) { dot.style.right = "4px"; dot.style.transform = "rotate(0deg)"; }
               }}
@@ -164,7 +177,7 @@ export default function Navbar() {
                 flexShrink:     0,
                 overflow:       "hidden",
                 whiteSpace:     "nowrap",
-                transition:     "padding 500ms ease",
+                transition:     "padding 500ms ease, transform 300ms ease, box-shadow 300ms ease",
                 cursor:         "pointer",
               }}
             >

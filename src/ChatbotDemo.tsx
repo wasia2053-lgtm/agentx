@@ -75,9 +75,16 @@ export default function ChatbotDemo() {
         }
         .agx-typing-dot:nth-child(2) { animation-delay: 0.15s; }
         .agx-typing-dot:nth-child(3) { animation-delay: 0.3s; }
-        .agx-demo-chip { transition: background 200ms, border-color 200ms, opacity 200ms; }
-        .agx-demo-chip:hover:not(:disabled) { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.30); }
+        @keyframes agxMsgIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .agx-demo-msg { animation: agxMsgIn 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+        .agx-demo-chip { transition: background 200ms, border-color 200ms, opacity 200ms, transform 200ms ease, box-shadow 200ms ease; }
+        .agx-demo-chip:hover:not(:disabled) { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.30); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.45); }
         .agx-demo-chip:disabled { opacity: 0.5; cursor: default; }
+        .agx-demo-cta { transition: transform 250ms ease, box-shadow 250ms ease; }
+        .agx-demo-cta:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 34px rgba(255,255,255,0.14); }
       `}</style>
 
       <section
@@ -120,7 +127,8 @@ export default function ChatbotDemo() {
               padding: '14px 20px',
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             }}>
-              <span style={{ width: 32, height: 32, borderRadius: '50%', background: '#ffffff', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Archivo', sans-serif", fontSize: 13, fontWeight: 700 }}>A</span>
+              {/* Logo mark — the same gradient dot as the navbar logo */}
+              <span style={{ width: 32, height: 32, borderRadius: '50%', background: 'linear-gradient(135deg, #ff5ca8, #ff8a3d, #8b5cff)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }} aria-hidden="true" />
               <div>
                 <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, fontWeight: 600, color: '#fff', margin: 0 }}>AgentX Assistant</p>
                 <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 11, color: '#4ade80', margin: 0 }}>● Online</p>
@@ -132,6 +140,7 @@ export default function ChatbotDemo() {
               {messages.map((msg, i) => (
                 <div
                   key={i}
+                  className="agx-demo-msg"
                   style={{
                     alignSelf: msg.role === 'bot' ? 'flex-start' : 'flex-end',
                     maxWidth: '82%',
@@ -195,6 +204,7 @@ export default function ChatbotDemo() {
               href="https://calendly.com/wasia2053/30min"
               target="_blank"
               rel="noreferrer"
+              className="agx-demo-cta"
               style={{
                 marginTop: 28,
                 display: 'inline-flex', alignItems: 'center', gap: 8,

@@ -41,12 +41,20 @@ export default function EmailCTA() {
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <a
             href="mailto:wasia2053@gmail.com"
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 14px 34px rgba(255,255,255,0.16)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '16px 30px', borderRadius: 100,
               background: '#ffffff', color: '#000000',
               fontFamily: "'Archivo', sans-serif", fontSize: 14, fontWeight: 600,
-              textDecoration: 'none',
+              textDecoration: 'none', transition: 'transform 250ms ease, box-shadow 250ms ease',
             }}
           >
             Email us — wasia2053@gmail.com
@@ -55,13 +63,21 @@ export default function EmailCTA() {
             href="https://calendly.com/wasia2053/30min"
             target="_blank"
             rel="noreferrer"
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.45)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)';
+            }}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '16px 30px', borderRadius: 100,
               background: 'transparent', border: '1px solid rgba(255,255,255,0.18)',
               color: '#ffffff',
               fontFamily: "'Archivo', sans-serif", fontSize: 14, fontWeight: 600,
-              textDecoration: 'none',
+              textDecoration: 'none', transition: 'transform 250ms ease, border-color 250ms ease',
             }}
           >
             Book a free strategy call →

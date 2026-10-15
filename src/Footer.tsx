@@ -173,12 +173,13 @@ const STYLES = `
   color: #ffffff;
   text-decoration: none;
   font-family: 'Archivo', sans-serif;
-  transition: background 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, box-shadow 0.4s, color 0.4s;
+  transition: background 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, box-shadow 0.4s, color 0.4s, transform 0.3s ease;
 }
 .agx-ft-pill:hover {
   background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
   border-color: rgba(255,255,255,0.2);
   box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.2);
+  transform: translateY(-2px) scale(1.03);
 }
 .agx-ft-pill-primary { padding: 18px 34px; border-radius: 100px; font-weight: 700; font-size: 14px; }
 .agx-ft-pill-sm { padding: 12px 22px; border-radius: 100px; font-weight: 500; font-size: 12px; color: #999; }
