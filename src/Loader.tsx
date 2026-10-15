@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
+/**
+ * Fantasy-style loader: full-screen black overlay, AGENTX letters
+ * stagger in + thin progress bar. Always unmounts — a hard safety
+ * timeout guarantees the page can never get trapped behind it.
+ */
 export default function Loader({ onDone }: { onDone: () => void }) {
   const reduceMotion = useReducedMotion();
   const doneRef = useRef(false);
@@ -22,10 +27,9 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       finish();
       return;
     }
-    // Normal path: hide after the intro plays, with a hard safety timeout
-    // so the overlay can never trap the page.
-    const t1 = window.setTimeout(finish, 1400);
-    const t2 = window.setTimeout(finish, 2200);
+    // Minimum display ~1800ms, hard safety timeout 2500ms.
+    const t1 = window.setTimeout(finish, 1800);
+    const t2 = window.setTimeout(finish, 2500);
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
@@ -37,10 +41,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
   const letters = 'AGENTX'.split('');
 
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.35 }}
+    <div
       style={{
         position: 'fixed', inset: 0, zIndex: 10000,
         background: '#000000',
@@ -56,9 +57,10 @@ export default function Loader({ onDone }: { onDone: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 * i, duration: 0.4, ease: 'easeOut' }}
             style={{
-              fontFamily: "'ClashDisplay', sans-serif",
+              fontFamily: "'Archivo', sans-serif",
+              fontStretch: '75%',
               fontSize: 'clamp(40px, 8vw, 72px)',
-              fontWeight: 700, color: '#ffffff', letterSpacing: '0.06em',
+              fontWeight: 800, color: '#ffffff', letterSpacing: '0.06em',
             }}
           >
             {ch}
@@ -69,10 +71,10 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         <motion.div
           initial={{ width: '0%' }}
           animate={{ width: '100%' }}
-          transition={{ duration: 1.1, ease: 'easeInOut' }}
+          transition={{ duration: 1.4, ease: 'easeInOut' }}
           style={{ height: '100%', background: '#ffffff', borderRadius: 2 }}
         />
       </div>
-    </motion.div>
+    </div>
   );
 }

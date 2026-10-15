@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 
 import Achievements from './Achievements';
 
@@ -11,14 +10,12 @@ import About from './About';
 // Testimonials hidden until real client testimonials are collected — see Testimonials.tsx
 // import Testimonials from './Testimonials';
 import Contact from './Contact';
+import EmailCTA from './EmailCTA';
 import Footer from './Footer';
 import Loader from './Loader';
 import ChatbotDemo from './ChatbotDemo';
 import Process from './Process';
 import FAQ from './FAQ';
-
-
-
 
 import './App.css';
 
@@ -27,9 +24,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <AnimatePresence>
-        {showLoader && <Loader onDone={() => setShowLoader(false)} />}
-      </AnimatePresence>
+      {showLoader && <Loader onDone={() => setShowLoader(false)} />}
       <Navbar />
       <Hero />
       <ChatbotDemo />
@@ -40,6 +35,7 @@ function App() {
       <FAQ />
       <About />
       <Contact />
+      <EmailCTA />
       <Footer />
     </div>
   );

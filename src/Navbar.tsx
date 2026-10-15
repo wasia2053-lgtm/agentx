@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "./Icons";
 
 const navItems = [
   { label: "Home",         href: "#home" },
@@ -24,19 +24,6 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-        @font-face {
-          font-family: 'ClashDisplay';
-          src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
-          font-weight: 700;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'ClashDisplay';
-          src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
-          font-weight: 600;
-          font-display: swap;
-        }
         .agx-links  { display: flex; align-items: center; gap: 2px; }
         .agx-burger { display: none; align-items: center; justify-content: center; }
         .agx-mobile { display: none; }
@@ -106,8 +93,10 @@ export default function Navbar() {
               />
               <span
                 style={{
-                  fontFamily:    "'ClashDisplay', sans-serif",
+                  fontFamily:    "'Archivo', sans-serif",
+                  fontStretch:   "75%",
                   fontSize:      22,
+                  fontWeight:    800,
                   color:         "#ffffff",
                   lineHeight:    1,
                   letterSpacing: "0.04em",
@@ -145,7 +134,7 @@ export default function Navbar() {
                   >
                     <span
                       style={{
-                        fontFamily: "'Poppins', sans-serif",
+                        fontFamily: "'Archivo', sans-serif",
                         fontSize:   13,
                         fontWeight: 500,
                         color:      active ? "#ffffff" : "#a3a3a3",
@@ -189,7 +178,7 @@ export default function Navbar() {
                 color:          "#000000",
                 fontSize:       "13px",
                 fontWeight:     600,
-                fontFamily:     "'Poppins', sans-serif",
+                fontFamily:     "'Archivo', sans-serif",
                 textDecoration: "none",
                 marginLeft:     "6px",
                 marginRight:    "2px",
@@ -271,7 +260,7 @@ export default function Navbar() {
             style={{
               display:        "block",
               padding:        "14px 20px",
-              fontFamily:     "'Poppins', sans-serif",
+              fontFamily:     "'Archivo', sans-serif",
               fontSize:       15,
               fontWeight:     500,
               color:          activeIndex === idx ? "#ffffff" : "#a3a3a3",
