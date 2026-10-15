@@ -76,7 +76,16 @@ export default function Loader({ onDone }: { onDone: () => void }) {
               fontFamily: "'Archivo', sans-serif",
               fontStretch: '70%',
               fontSize: 'clamp(40px, 8vw, 72px)',
-              fontWeight: 800, color: '#ffffff', letterSpacing: '0.06em',
+              fontWeight: 800, letterSpacing: '0.06em',
+              ...(ch === 'X'
+                ? {
+                    background: 'linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    color: 'transparent',
+                  }
+                : { color: '#ffffff' }),
             }}
           >
             {ch}

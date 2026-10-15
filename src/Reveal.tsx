@@ -2,8 +2,10 @@ import { motion, useReducedMotion } from 'framer-motion';
 import type { CSSProperties, ReactNode } from 'react';
 
 /**
- * Fantasy-style scroll reveal: content arrives with a blur-to-sharp
- * + slight upward slide, once only. Slow and cinematic, never flashy.
+ * Fantasy-style scroll reveal — VISIBLE motion, no jank.
+ * Scroll reveals use opacity + rise only: blur() on many elements
+ * was the main-thread cost behind the INP warnings (203ms blocked UI).
+ * Blur is kept ONLY for the hero headline (few words, one-time).
  */
 interface RevealProps {
   children: ReactNode;
@@ -13,7 +15,7 @@ interface RevealProps {
   y?: number;
 }
 
-export function Reveal({ children, delay = 0, className, style, y = 18 }: RevealProps) {
+export function Reveal({ children, delay = 0, className, style, y = 28 }: RevealProps) {
   const reduce = useReducedMotion();
   if (reduce) {
     return (
@@ -26,10 +28,10 @@ export function Reveal({ children, delay = 0, className, style, y = 18 }: Reveal
     <motion.div
       className={className}
       style={style}
-      initial={{ opacity: 0, y, filter: 'blur(8px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '-60px', amount: 0.2 }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px', amount: 0.15 }}
+      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
@@ -47,7 +49,7 @@ interface WordRevealProps {
 
 /**
  * Fantasy-style hero headline: arrives WORD-BY-WORD, each word
- * blur-to-sharp + slight upward slide, once only.
+ * blur-to-sharp + a bigger upward slide, once only.
  */
 export function WordReveal({ lines, delay = 0, className, style, gradientLine }: WordRevealProps) {
   const reduce = useReducedMotion();
@@ -69,15 +71,15 @@ export function WordReveal({ lines, delay = 0, className, style, gradientLine }:
         return (
           <div key={li} aria-hidden="true" className={isGradient ? 'agx-gradient-text' : undefined} style={{ overflow: 'hidden', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
             {words.map((word, j) => {
-              const d = delay + wordIndex * 0.07;
+              const d = delay + wordIndex * 0.09;
               wordIndex += 1;
               return (
                 <span key={j} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
                   <motion.span
                     style={{ display: 'inline-block' }}
-                    initial={{ opacity: 0, y: 22, filter: 'blur(10px)' }}
+                    initial={{ opacity: 0, y: 34, filter: 'blur(10px)' }}
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ duration: 0.75, delay: d, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.9, delay: d, ease: [0.22, 1, 0.36, 1] }}
                   >
                     {word}
                   </motion.span>

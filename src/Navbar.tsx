@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "./Icons";
+import Logo from "./Logo";
 
 const navItems = [
   { label: "Home",         href: "#home" },
@@ -81,29 +82,7 @@ export default function Navbar() {
                 flexShrink:     0,
               }}
             >
-              <span
-                style={{
-                  width:        8,
-                  height:       8,
-                  borderRadius: "50%",
-                  background:   "#ffffff",
-                  display:      "inline-block",
-                  flexShrink:   0,
-                }}
-              />
-              <span
-                style={{
-                  fontFamily:    "'Archivo', sans-serif",
-                  fontStretch:   "75%",
-                  fontSize:      22,
-                  fontWeight:    800,
-                  color:         "#ffffff",
-                  lineHeight:    1,
-                  letterSpacing: "0.04em",
-                }}
-              >
-                AgentX
-              </span>
+              <Logo size={22} />
             </a>
 
             {/* NAV LINKS desktop */}

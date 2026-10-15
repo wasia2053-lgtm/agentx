@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Reveal } from './Reveal';
 
 interface Project {
@@ -76,6 +77,45 @@ const PROJECTS: Project[] = [
 ];
 
 type Filter = 'All' | 'Web + SEO' | 'E-commerce';
+
+/**
+ * Fantasy-style scroll parallax: the image drifts slower than the page
+ * inside its card (useScroll + useTransform). This is the visible
+ * scroll motion — the page is never static while scrolling.
+ * Parallax lives on a wrapper div; the img keeps its own hover zoom.
+ */
+function ParallaxImage({ src, alt, gradient }: { src: string; alt: string; gradient: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], ['-7%', '7%']);
+  return (
+    <div ref={ref} style={{ position: 'relative', overflow: 'hidden', aspectRatio: '16 / 10', background: gradient }}>
+      <motion.div style={{ y, position: 'absolute', inset: '-8% 0' }}>
+        <img
+          className="agx-pj-img"
+          src={src}
+          alt={alt}
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        />
+      </motion.div>
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 45%)', pointerEvents: 'none' }} />
+      <div style={{
+        position: 'absolute', top: 16, left: 16,
+        display: 'inline-flex', alignItems: 'center', gap: 6,
+        background: 'rgba(0,0,0,0.45)',
+        border: '1px solid rgba(255,255,255,0.18)',
+        borderRadius: 100, padding: '4px 10px',
+        backdropFilter: 'blur(8px)',
+      }}>
+        <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px rgba(74,222,128,0.9)' }} />
+        <span style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', color: '#d1fae5' }}>
+          LIVE
+        </span>
+      </div>
+    </div>
+  );
+}
 
 const FILTERS: Filter[] = ['All', 'Web + SEO', 'E-commerce'];
 
@@ -203,30 +243,8 @@ export default function Projects() {
                   flexDirection: 'column',
                 }}
               >
-                {/* Image */}
-                <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '16 / 10', background: p.gradient }}>
-                  <img
-                    className="agx-pj-img"
-                    src={p.image}
-                    alt={`${p.title} website`}
-                    loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 45%)', pointerEvents: 'none' }} />
-                  <div style={{
-                    position: 'absolute', top: 16, left: 16,
-                    display: 'inline-flex', alignItems: 'center', gap: 6,
-                    background: 'rgba(0,0,0,0.45)',
-                    border: '1px solid rgba(255,255,255,0.18)',
-                    borderRadius: 100, padding: '4px 10px',
-                    backdropFilter: 'blur(8px)',
-                  }}>
-                    <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px rgba(74,222,128,0.9)' }} />
-                    <span style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', color: '#d1fae5' }}>
-                      LIVE
-                    </span>
-                  </div>
-                </div>
+                {/* Image — scroll parallax */}
+                <ParallaxImage src={p.image} alt={`${p.title} website`} gradient={p.gradient} />
 
                 {/* Content */}
                 <div style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
