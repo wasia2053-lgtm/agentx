@@ -28,7 +28,7 @@ export function Reveal({ children, delay = 0, className, style, y = 18 }: Reveal
       style={style}
       initial={{ opacity: 0, y, filter: 'blur(8px)' }}
       whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, margin: '-60px', amount: 0.2 }}
       transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
@@ -41,19 +41,21 @@ interface WordRevealProps {
   delay?: number;
   className?: string;
   style?: CSSProperties;
+  /** Index of the line rendered with the pink->orange->purple gradient. */
+  gradientLine?: number;
 }
 
 /**
  * Fantasy-style hero headline: arrives WORD-BY-WORD, each word
  * blur-to-sharp + slight upward slide, once only.
  */
-export function WordReveal({ lines, delay = 0, className, style }: WordRevealProps) {
+export function WordReveal({ lines, delay = 0, className, style, gradientLine }: WordRevealProps) {
   const reduce = useReducedMotion();
   if (reduce) {
     return (
       <div className={className} style={style}>
         {lines.map((line, i) => (
-          <div key={i}>{line}</div>
+          <div key={i} className={gradientLine === i ? 'agx-gradient-text' : undefined}>{line}</div>
         ))}
       </div>
     );
@@ -63,8 +65,9 @@ export function WordReveal({ lines, delay = 0, className, style }: WordRevealPro
     <div className={className} style={style} aria-label={lines.join(' ')}>
       {lines.map((line, li) => {
         const words = line.split(' ');
+        const isGradient = gradientLine === li;
         return (
-          <div key={li} aria-hidden="true" style={{ overflow: 'hidden', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
+          <div key={li} aria-hidden="true" className={isGradient ? 'agx-gradient-text' : undefined} style={{ overflow: 'hidden', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
             {words.map((word, j) => {
               const d = delay + wordIndex * 0.07;
               wordIndex += 1;

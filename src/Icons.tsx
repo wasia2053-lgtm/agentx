@@ -31,6 +31,15 @@ function Base({ size = 24, children }: IconProps & { children: ReactNode }) {
   );
 }
 
+export function ArrowUp({ size }: IconProps) {
+  return (
+    <Base size={size}>
+      <path d="M12 19V5" />
+      <path d="m5 12 7-7 7 7" />
+    </Base>
+  );
+}
+
 export function ArrowUpRight({ size }: IconProps) {
   return (
     <Base size={size}>

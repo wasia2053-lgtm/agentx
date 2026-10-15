@@ -4,10 +4,63 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>agentx</title>
+    <meta name="description" content="AgentX — websites, AI chatbots and SEO in one bundle. More leads while you sleep." />
+    <title>AgentX — More leads while you sleep</title>
+    <!-- Archivo (Fantasy-style condensed grotesque) loaded via <link> so it
+         cannot be skipped the way a CSS @import can be. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Instant static splash: shows the AGENTX logo before React even boots,
+         so the logo animation is visible on every load. Removed by the
+         inline script below (window load + 4s fallback). Identical look to
+         the React loader, so it reads as one continuous loader. */
+      #agx-splash {
+        position: fixed; inset: 0; z-index: 10001; background: #000;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+      }
+      #agx-splash .agx-splash-letters { display: flex; gap: 4px; }
+      #agx-splash .agx-splash-letters span {
+        font-family: 'Archivo', sans-serif; font-stretch: 70%;
+        font-size: clamp(40px, 8vw, 72px); font-weight: 800; color: #fff; letter-spacing: 0.06em;
+        opacity: 0; animation: agxSplashIn 0.5s ease-out forwards;
+      }
+      #agx-splash .agx-splash-letters span:nth-child(1) { animation-delay: 0.05s; }
+      #agx-splash .agx-splash-letters span:nth-child(2) { animation-delay: 0.13s; }
+      #agx-splash .agx-splash-letters span:nth-child(3) { animation-delay: 0.21s; }
+      #agx-splash .agx-splash-letters span:nth-child(4) { animation-delay: 0.29s; }
+      #agx-splash .agx-splash-letters span:nth-child(5) { animation-delay: 0.37s; }
+      #agx-splash .agx-splash-letters span:nth-child(6) { animation-delay: 0.45s; }
+      @keyframes agxSplashIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+      #agx-splash .agx-splash-bar { width: 180px; height: 2px; background: rgba(255,255,255,0.12); border-radius: 2px; overflow: hidden; }
+      #agx-splash .agx-splash-bar div { height: 100%; width: 0; background: #fff; border-radius: 2px; animation: agxSplashBar 1.6s ease-in-out forwards; }
+      @keyframes agxSplashBar { to { width: 100%; } }
+    </style>
   </head>
   <body>
+    <div id="agx-splash" aria-hidden="true">
+      <div class="agx-splash-letters"><span>A</span><span>G</span><span>E</span><span>N</span><span>T</span><span>X</span></div>
+      <div class="agx-splash-bar"><div></div></div>
+    </div>
     <div id="root"></div>
+    <script>
+      // Remove the static splash once the page has loaded (or after 4s max,
+      // so a slow/failed bundle can never trap the page behind it).
+      (function () {
+        var done = false;
+        function remove() {
+          if (done) return; done = true;
+          var el = document.getElementById('agx-splash');
+          if (el) el.remove();
+        }
+        window.addEventListener('load', function () { setTimeout(remove, 400); });
+        setTimeout(remove, 4000);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

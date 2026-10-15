@@ -3,6 +3,8 @@ import { Reveal } from './Reveal';
 /**
  * Final email CTA band — the last section before the footer.
  * One headline, one email button, one Calendly button.
+ * The orb artwork (public/images/orb-art.svg) sits behind the copy
+ * at low opacity — the single colour moment outside the hero.
  */
 export default function EmailCTA() {
   return (
@@ -19,19 +21,34 @@ export default function EmailCTA() {
         borderTop: '1px solid rgba(255,255,255,0.06)',
       }}
     >
+      <img
+        src="/images/orb-art.svg"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          right: '-120px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          width: 520,
+          height: 520,
+          opacity: 0.5,
+          pointerEvents: 'none',
+        }}
+      />
       <Reveal style={{ textAlign: 'center', position: 'relative', zIndex: 1, maxWidth: 760 }}>
         <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 16px' }}>
           Start Today
         </p>
         <h2 style={{
           fontFamily: "'Archivo', sans-serif",
-          fontStretch: '75%',
+          fontStretch: '70%',
           fontSize: 'clamp(36px,5.5vw,64px)',
           fontWeight: 800,
           color: '#ffffff',
           margin: '0 0 18px',
           lineHeight: 1.02,
-          letterSpacing: '-0.02em',
+          letterSpacing: '-0.03em',
         }}>
           Let&apos;s build something that sells while you sleep.
         </h2>

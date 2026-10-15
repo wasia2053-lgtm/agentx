@@ -8,6 +8,8 @@
   --text-muted: #a3a3a3;
   --border: rgba(255,255,255,0.08);
   --glass-bg: rgba(8,8,8,0.80);
+  /* Design accent: pink -> orange -> purple (the one gradient used sparingly) */
+  --accent: linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff);
 }
 
 * {
@@ -47,11 +49,28 @@ body {
   border-radius: 4px;
 }
 
-/* Condensed display type — Fantasy-style grotesque */
+/* Condensed display type — Fantasy-style grotesque.
+   Applied to ALL headings so no heading can silently fall back
+   to a wide, non-condensed look. Inline fontStretch (75%) still wins
+   where a component sets it. */
+h1, h2, h3 {
+  font-stretch: 70%;
+  letter-spacing: -0.02em;
+}
+
 .agx-display {
   font-family: 'Archivo', sans-serif;
-  font-stretch: 75%;
+  font-stretch: 70%;
   letter-spacing: -0.02em;
+}
+
+/* Gradient text for one accent word/line per section at most */
+.agx-gradient-text {
+  background: linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* ONE orb, slow morph — the only ambient hero motion */

@@ -3,8 +3,11 @@ import { motion, useReducedMotion } from 'framer-motion';
 
 /**
  * Fantasy-style loader: full-screen black overlay, AGENTX letters
- * stagger in + thin progress bar. Always unmounts — a hard safety
- * timeout guarantees the page can never get trapped behind it.
+ * stagger in + thin progress bar. It stays until BOTH conditions hold:
+ * (a) at least ~1800ms have passed, and (b) the window `load` event fired
+ * (so it is never skipped on a slow connection), with a hard 4000ms
+ * safety timeout so the page can never get trapped behind it.
+ * The identical static splash in index.html covers the pre-React boot.
  */
 export default function Loader({ onDone }: { onDone: () => void }) {
   const reduceMotion = useReducedMotion();
@@ -27,12 +30,25 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       finish();
       return;
     }
-    // Minimum display ~1800ms, hard safety timeout 2500ms.
-    const t1 = window.setTimeout(finish, 1800);
-    const t2 = window.setTimeout(finish, 2500);
+    let minElapsed = false;
+    let loaded = document.readyState === 'complete';
+    const tryFinish = () => {
+      if (minElapsed && loaded) finish();
+    };
+    const tMin = window.setTimeout(() => {
+      minElapsed = true;
+      tryFinish();
+    }, 1800);
+    const tMax = window.setTimeout(finish, 4000);
+    const onLoad = () => {
+      loaded = true;
+      tryFinish();
+    };
+    window.addEventListener('load', onLoad);
     return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
+      window.clearTimeout(tMin);
+      window.clearTimeout(tMax);
+      window.removeEventListener('load', onLoad);
     };
   }, [reduceMotion]);
 
@@ -58,7 +74,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
             transition={{ delay: 0.08 * i, duration: 0.4, ease: 'easeOut' }}
             style={{
               fontFamily: "'Archivo', sans-serif",
-              fontStretch: '75%',
+              fontStretch: '70%',
               fontSize: 'clamp(40px, 8vw, 72px)',
               fontWeight: 800, color: '#ffffff', letterSpacing: '0.06em',
             }}
@@ -75,6 +91,9 @@ export default function Loader({ onDone }: { onDone: () => void }) {
           style={{ height: '100%', background: '#ffffff', borderRadius: 2 }}
         />
       </div>
+      <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#777', margin: 0 }}>
+        Websites · AI Chatbots · SEO
+      </p>
     </div>
   );
 }

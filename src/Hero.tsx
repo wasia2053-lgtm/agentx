@@ -30,14 +30,18 @@ export default function Hero() {
           display: flex; align-items: center; justify-content: center;
           transition: right 450ms ease, transform 450ms ease;
         }
+        .agx-hero-sec { height: 100vh; min-height: 640px; }
         .agx-hi { display: flex; align-items: center; width: 100%; height: 100%; padding: 0 80px; gap: 40px; position: relative; z-index: 10; }
         @media (max-width: 900px) {
-          .agx-hi { flex-direction: column; padding: 120px 28px 40px; align-items: flex-start; gap: 0; }
-          .agx-hr { width: 100% !important; height: 50vh !important; min-width: unset !important; flex: none !important; }
+          /* Mobile: stack, never clip. The old 100vh + column layout
+             overflowed and clipped the headline and squashed the robot. */
+          .agx-hero-sec { height: auto !important; min-height: 100svh; padding-top: 96px; }
+          .agx-hi { flex-direction: column; padding: 24px 24px 8px; align-items: stretch; gap: 8px; height: auto; }
+          .agx-hr { width: 100% !important; height: 340px !important; min-height: 340px !important; min-width: unset !important; flex: none !important; }
         }
       `}</style>
 
-      <section id="home" style={{ position: 'relative', height: '100vh', background: '#000', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+      <section id="home" className="agx-hero-sec" style={{ position: 'relative', background: '#000', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
 
         {/* bottom fade */}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 180, background: 'linear-gradient(to top, #000 30%, transparent)', zIndex: 5, pointerEvents: 'none' }} />
@@ -56,14 +60,15 @@ export default function Hero() {
             <WordReveal
               lines={['More leads while', 'you sleep.']}
               delay={0.3}
+              gradientLine={1}
               style={{
                 fontFamily: "'Archivo', sans-serif",
-                fontStretch: '75%',
-                fontSize: 'clamp(56px, 6.8vw, 104px)',
+                fontStretch: '70%',
+                fontSize: 'clamp(44px, 6.8vw, 104px)',
                 fontWeight: 800,
                 color: '#fff',
                 lineHeight: 0.98,
-                letterSpacing: '-0.02em',
+                letterSpacing: '-0.03em',
                 margin: 0,
               }}
             />
@@ -87,18 +92,12 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — robot + ONE orb, kept low so the head/eyes stay clean */}
+          {/* RIGHT — robot, clean on black. No glow behind it: the old
+              orb + white light washed the robot out and looked cheap. */}
           <div className="agx-hr" style={{ flex: '1 1 48%', height: '100%', position: 'relative', overflow: 'hidden' }}>
-            {/* Soft neutral light behind the robot so it renders at full brightness */}
-            <div style={{ position: 'absolute', left: '50%', top: '38%', transform: 'translate(-50%, -50%)', width: 420, height: 420, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 65%)', pointerEvents: 'none', zIndex: 0 }} />
-            {/* The single orb — low, around the lower torso/legs, dim near the head */}
-            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '62%', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', pointerEvents: 'none', zIndex: 0 }}>
-              <div className="agx-orb" style={{ width: 460, height: 460, borderRadius: '50%', background: 'radial-gradient(circle at 40% 35%, rgba(255,92,168,0.20) 0%, rgba(255,138,61,0.16) 38%, rgba(139,92,255,0.18) 62%, transparent 72%)', filter: 'blur(56px)' }} />
-            </div>
             <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}>
               <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
             </div>
-            <div style={{ position: 'absolute', left: 0, top: 0, width: 140, height: '100%', background: 'linear-gradient(to right, #000, transparent)', pointerEvents: 'none', zIndex: 10 }} />
           </div>
 
         </div>
