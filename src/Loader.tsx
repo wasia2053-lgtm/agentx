@@ -5,15 +5,21 @@ import Logo from './Logo';
 /**
  * Fantasy-style loader: the SAME <Logo/> component as the navbar
  * (gradient dot + AGENT + gradient X), entering with a smooth
- * Fantasy-like ease — dot scales in first, then the wordmark glides
- * up. No per-letter snap. Stays until BOTH: >=1800ms passed AND the
- * window `load` event fired, with a hard 4000ms safety timeout.
+ * Fantasy-like ease — dot scales in first, then the letters glide
+ * in one by one. It stays until ALL hold: >=1800ms passed AND the
+ * window `load` event fired AND the robot (`ready`) is rendered —
+ * so the moment the loader lifts, the robot is already there and
+ * the banner is never blank. Hard 5000ms safety timeout.
  * The identical static splash in index.html covers the pre-React boot.
  */
-export default function Loader({ onDone }: { onDone: () => void }) {
+export default function Loader({ onDone, ready }: { onDone: () => void; ready: boolean }) {
   const reduceMotion = useReducedMotion();
   const doneRef = useRef(false);
   const onDoneRef = useRef(onDone);
+  const readyRef = useRef(ready);
+  const minRef = useRef(false);
+  const loadedRef = useRef(typeof document !== 'undefined' && document.readyState === 'complete');
+  readyRef.current = ready;
 
   useEffect(() => {
     onDoneRef.current = onDone;
@@ -31,27 +37,26 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       finish();
       return;
     }
-    let minElapsed = false;
-    let loaded = document.readyState === 'complete';
     const tryFinish = () => {
-      if (minElapsed && loaded) finish();
+      if (minRef.current && loadedRef.current && readyRef.current) finish();
     };
     const tMin = window.setTimeout(() => {
-      minElapsed = true;
+      minRef.current = true;
       tryFinish();
     }, 1800);
-    const tMax = window.setTimeout(finish, 4000);
+    const tMax = window.setTimeout(finish, 5000);
     const onLoad = () => {
-      loaded = true;
+      loadedRef.current = true;
       tryFinish();
     };
     window.addEventListener('load', onLoad);
+    tryFinish();
     return () => {
       window.clearTimeout(tMin);
       window.clearTimeout(tMax);
       window.removeEventListener('load', onLoad);
     };
-  }, [reduceMotion]);
+  }, [reduceMotion, ready]);
 
   if (reduceMotion) return null;
 
@@ -64,14 +69,8 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         alignItems: 'center', justifyContent: 'center', gap: 28,
       }}
     >
-      {/* Same logo as the navbar — smooth Fantasy-like entrance */}
-      <motion.div
-        initial={{ opacity: 0, y: 18, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <Logo size={64} />
-      </motion.div>
+      {/* Same logo as the navbar — dot scales in, letters glide in */}
+      <Logo size={64} stagger />
       <div style={{ width: 180, height: 2, background: 'rgba(255,255,255,0.12)', borderRadius: 2, overflow: 'hidden' }}>
         <motion.div
           initial={{ width: '0%' }}

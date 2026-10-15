@@ -41,13 +41,16 @@ function ScrollProgress() {
 
 function App() {
   const [showLoader, setShowLoader] = useState(true);
+  // The robot must be rendered BEFORE the loader lifts, so the hero
+  // banner is never blank after the logo animation.
+  const [robotReady, setRobotReady] = useState(false);
 
   return (
     <div className="app-container">
-      {showLoader && <Loader onDone={() => setShowLoader(false)} />}
+      {showLoader && <Loader onDone={() => setShowLoader(false)} ready={robotReady} />}
       <ScrollProgress />
       <Navbar />
-      <Hero />
+      <Hero onReady={() => setRobotReady(true)} />
       <ChatbotDemo />
       <Services />
       <Projects />

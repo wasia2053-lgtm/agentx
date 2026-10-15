@@ -9,7 +9,7 @@ const anim = (delay = 0) => ({
   transition: { type: 'spring' as const, stiffness: 260, damping: 22, delay },
 });
 
-export default function Hero() {
+export default function Hero({ onReady }: { onReady?: () => void }) {
   return (
     <>
       <style>{`
@@ -101,7 +101,7 @@ export default function Hero() {
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               style={{ position: 'relative', zIndex: 1, width: '100%', height: '100%' }}
             >
-              <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
+              <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" onReady={onReady} />
             </motion.div>
           </div>
 

@@ -15,7 +15,7 @@ interface RevealProps {
   y?: number;
 }
 
-export function Reveal({ children, delay = 0, className, style, y = 28 }: RevealProps) {
+export function Reveal({ children, delay = 0, className, style, y = 36 }: RevealProps) {
   const reduce = useReducedMotion();
   if (reduce) {
     return (
@@ -31,7 +31,7 @@ export function Reveal({ children, delay = 0, className, style, y = 28 }: Reveal
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px', amount: 0.15 }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 1.0, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -77,9 +77,9 @@ export function WordReveal({ lines, delay = 0, className, style, gradientLine }:
                 <span key={j} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', paddingBottom: '0.1em', marginBottom: '-0.1em' }}>
                   <motion.span
                     style={{ display: 'inline-block' }}
-                    initial={{ opacity: 0, y: 34, filter: 'blur(10px)' }}
+                    initial={{ opacity: 0, y: 36, filter: 'blur(10px)' }}
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    transition={{ duration: 0.9, delay: d, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 1.0, delay: d, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {word}
                   </motion.span>

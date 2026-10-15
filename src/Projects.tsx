@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Reveal } from './Reveal';
 
 interface Project {
@@ -129,6 +129,23 @@ export default function Projects() {
   const [filter, setFilter] = useState<Filter>('All');
   const visible = PROJECTS.filter((p) => matchesFilter(p, filter));
 
+  // Fantasy-style cursor: a "VIEW" pill follows the mouse over the
+  // project cards (fine pointers / desktop only).
+  const [cardHovered, setCardHovered] = useState(false);
+  const [finePointer, setFinePointer] = useState(false);
+  useEffect(() => {
+    setFinePointer(window.matchMedia('(pointer: fine)').matches);
+  }, []);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const pillX = useSpring(mx, { stiffness: 320, damping: 32 });
+  const pillY = useSpring(my, { stiffness: 320, damping: 32 });
+  const onSectionMove = (e: { currentTarget: HTMLElement; clientX: number; clientY: number }) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set(e.clientX - r.left);
+    my.set(e.clientY - r.top);
+  };
+
   return (
     <>
       <style>{`
@@ -136,6 +153,7 @@ export default function Projects() {
         .agx-pj-card { transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease; }
         .agx-pj-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.22) !important; box-shadow: 0 24px 60px rgba(0,0,0,0.6); }
         .agx-pj-card:hover .agx-pj-img { transform: scale(1.05); }
+        @media (pointer: fine) { .agx-pj-card { cursor: none; } }
         .agx-pj-img { transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }
         .agx-pj-filter { transition: background 200ms, color 200ms, border-color 200ms; }
         @media (max-width: 860px) {
@@ -145,6 +163,7 @@ export default function Projects() {
 
       <section
         id="projects"
+        onMouseMove={onSectionMove}
         style={{
           background: '#000000',
           position: 'relative',
@@ -232,6 +251,8 @@ export default function Projects() {
             <Reveal key={p.id} delay={(i % 2) * 0.08} style={{ height: '100%' }}>
               <article
                 className="agx-pj-card"
+                onMouseEnter={() => setCardHovered(true)}
+                onMouseLeave={() => setCardHovered(false)}
                 style={{
                   position: 'relative',
                   borderRadius: 20,
@@ -290,6 +311,26 @@ export default function Projects() {
             </Reveal>
           ))}
         </div>
+
+        {/* Cursor follower — "VIEW" pill (desktop only) */}
+        {finePointer && (
+          <motion.div
+            aria-hidden="true"
+            animate={{ opacity: cardHovered ? 1 : 0, scale: cardHovered ? 1 : 0.8 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: 'absolute', top: 0, left: 0, zIndex: 5,
+              x: pillX, y: pillY, translateX: '-50%', translateY: '-50%',
+              pointerEvents: 'none',
+              background: '#ffffff', color: '#000000',
+              fontFamily: "'Archivo', sans-serif", fontSize: 11, fontWeight: 700,
+              letterSpacing: '0.08em', borderRadius: 100, padding: '8px 14px',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.5)', whiteSpace: 'nowrap',
+            }}
+          >
+            VIEW ↗
+          </motion.div>
+        )}
       </section>
     </>
   );
