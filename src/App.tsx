@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 
 import Achievements from './Achievements';
 
@@ -47,7 +47,9 @@ function App() {
 
   return (
     <div className="app-container">
-      {showLoader && <Loader onDone={() => setShowLoader(false)} ready={robotReady} />}
+      <AnimatePresence>
+        {showLoader && <Loader onDone={() => setShowLoader(false)} ready={robotReady} />}
+      </AnimatePresence>
       <ScrollProgress />
       <Navbar />
       <Hero onReady={() => setRobotReady(true)} />

@@ -44,10 +44,14 @@ export default function EmailCTA() {
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
               e.currentTarget.style.boxShadow = '0 14px 34px rgba(255,255,255,0.16)';
+              e.currentTarget.style.background = 'linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)';
+              e.currentTarget.style.color = '#ffffff';
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'translateY(0) scale(1)';
               e.currentTarget.style.boxShadow = 'none';
+              e.currentTarget.style.background = '#ffffff';
+              e.currentTarget.style.color = '#000000';
             }}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -66,10 +70,14 @@ export default function EmailCTA() {
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
               e.currentTarget.style.borderColor = 'rgba(255,255,255,0.45)';
+              e.currentTarget.style.background = '#ffffff';
+              e.currentTarget.style.color = '#000000';
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'translateY(0) scale(1)';
               e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)';
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.color = '#ffffff';
             }}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,

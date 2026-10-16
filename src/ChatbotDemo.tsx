@@ -83,8 +83,8 @@ export default function ChatbotDemo() {
         .agx-demo-chip { transition: background 200ms, border-color 200ms, opacity 200ms, transform 200ms ease, box-shadow 200ms ease; }
         .agx-demo-chip:hover:not(:disabled) { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.30); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.45); }
         .agx-demo-chip:disabled { opacity: 0.5; cursor: default; }
-        .agx-demo-cta { transition: transform 250ms ease, box-shadow 250ms ease; }
-        .agx-demo-cta:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 34px rgba(255,255,255,0.14); }
+        .agx-demo-cta { transition: transform 250ms ease, box-shadow 250ms ease, background 400ms ease, color 400ms ease; }
+        .agx-demo-cta:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 34px rgba(255,255,255,0.14); background: linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff); color: #ffffff; }
       `}</style>
 
       <section
@@ -100,7 +100,7 @@ export default function ChatbotDemo() {
         }}
       >
         {/* Header */}
-        <Reveal style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
+        <Reveal blur style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
           <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
             Live Demo
           </p>

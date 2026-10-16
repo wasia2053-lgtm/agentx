@@ -146,6 +146,8 @@ export default function Navbar() {
                 el.style.paddingRight = "20px";
                 el.style.transform = "scale(1.04)";
                 el.style.boxShadow = "0 10px 28px rgba(255,255,255,0.18)";
+                el.style.background = "linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)";
+                el.style.color = "#ffffff";
                 const dot = el.querySelector(".agx-arrow") as HTMLElement;
                 if (dot) { dot.style.right = "calc(100% - 36px)"; dot.style.transform = "rotate(45deg)"; }
               }}
@@ -155,6 +157,8 @@ export default function Navbar() {
                 el.style.paddingRight = "44px";
                 el.style.transform = "scale(1)";
                 el.style.boxShadow = "none";
+                el.style.background = "#ffffff";
+                el.style.color = "#000000";
                 const dot = el.querySelector(".agx-arrow") as HTMLElement;
                 if (dot) { dot.style.right = "4px"; dot.style.transform = "rotate(0deg)"; }
               }}

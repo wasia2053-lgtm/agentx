@@ -168,7 +168,7 @@ export default function Services() {
         style={{ background: '#000000', position: 'relative', overflow: 'hidden', padding: '120px 24px 100px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
       >
         {/* ── Header ── */}
-        <Reveal style={{ textAlign: 'center', marginBottom: 64, position: 'relative', zIndex: 1 }}>
+        <Reveal blur style={{ textAlign: 'center', marginBottom: 64, position: 'relative', zIndex: 1 }}>
           <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>What We Do</p>
           <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>One bundle. Three core disciplines.</h2>
           <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 560, lineHeight: 1.8 }}>

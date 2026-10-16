@@ -59,7 +59,7 @@ export default function Contact() {
       }}
     >
       {/* Header */}
-      <Reveal style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
+      <Reveal blur style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
         <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
           Get In Touch
         </p>

@@ -192,7 +192,7 @@ export default function Projects() {
         />
 
         {/* ── Header ── */}
-        <Reveal style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
+        <Reveal blur style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
           <p
             style={{
               fontFamily: "'Archivo', sans-serif",

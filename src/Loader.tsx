@@ -9,7 +9,7 @@ import Logo from './Logo';
  * in one by one. It stays until ALL hold: >=1800ms passed AND the
  * window `load` event fired AND the robot (`ready`) is rendered —
  * so the moment the loader lifts, the robot is already there and
- * the banner is never blank. Hard 5000ms safety timeout.
+ * the banner is never blank. Hard 8000ms safety timeout.
  * The identical static splash in index.html covers the pre-React boot.
  */
 export default function Loader({ onDone, ready }: { onDone: () => void; ready: boolean }) {
@@ -24,6 +24,12 @@ export default function Loader({ onDone, ready }: { onDone: () => void; ready: b
   useEffect(() => {
     onDoneRef.current = onDone;
   });
+
+  // Seamless handoff: remove the static splash (index.html) the moment
+  // the React loader mounts — never a gap/flash between the two logos.
+  useEffect(() => {
+    document.getElementById('agx-splash')?.remove();
+  }, []);
 
   useEffect(() => {
     const finish = () => {
@@ -44,7 +50,7 @@ export default function Loader({ onDone, ready }: { onDone: () => void; ready: b
       minRef.current = true;
       tryFinish();
     }, 1800);
-    const tMax = window.setTimeout(finish, 5000);
+    const tMax = window.setTimeout(finish, 8000);
     const onLoad = () => {
       loadedRef.current = true;
       tryFinish();
@@ -61,7 +67,11 @@ export default function Loader({ onDone, ready }: { onDone: () => void; ready: b
   if (reduceMotion) return null;
 
   return (
-    <div
+    <motion.div
+      // Dissolve exit (no big->small jump): the big logo fades + scales
+      // down slightly as it leaves, while the page fades in behind it.
+      exit={{ opacity: 0, scale: 0.92 }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       style={{
         position: 'fixed', inset: 0, zIndex: 10000,
         background: '#000000',
@@ -82,6 +92,6 @@ export default function Loader({ onDone, ready }: { onDone: () => void; ready: b
       <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#777', margin: 0 }}>
         Websites · AI Chatbots · SEO
       </p>
-    </div>
+    </motion.div>
   );
 }

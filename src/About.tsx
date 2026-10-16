@@ -1,5 +1,5 @@
 import { Reveal } from './Reveal';
-import { WASI_PHOTO, ALI_PHOTO } from './TeamPhotos';
+import { AboutVisual } from './Visuals';
 
 const VALUES = [
   {
@@ -17,8 +17,8 @@ const VALUES = [
 ];
 
 const TEAM = [
-  { photo: WASI_PHOTO, name: 'Wasi Ahmed', role: 'Founder — Development' },
-  { photo: ALI_PHOTO, name: 'Ali Ahmed', role: 'Founder — SEO' },
+  { initials: 'WA', name: 'Wasi Ahmed', role: 'Founder — Development' },
+  { initials: 'AA', name: 'Ali Ahmed', role: 'Founder — SEO' },
 ];
 
 export default function About() {
@@ -36,7 +36,7 @@ export default function About() {
       }}
     >
       {/* Header */}
-      <Reveal style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
+      <Reveal blur style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
         <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
           About AgentX
         </p>
@@ -48,8 +48,13 @@ export default function About() {
         </p>
       </Reveal>
 
+      {/* Visual */}
+      <Reveal style={{ width: '100%', maxWidth: 1080, position: 'relative', zIndex: 1 }}>
+        <AboutVisual style={{ height: 220 }} />
+      </Reveal>
+
       {/* Team positioning */}
-      <Reveal style={{ textAlign: 'center', margin: '56px 0 0', position: 'relative', zIndex: 1, maxWidth: 720 }}>
+      <Reveal blur style={{ textAlign: 'center', margin: '56px 0 0', position: 'relative', zIndex: 1, maxWidth: 720 }}>
         <h3 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(24px,3vw,34px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
           You work directly with the people who build it.
         </h3>
@@ -94,19 +99,20 @@ export default function About() {
         </p>
         <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
           {TEAM.map((t) => (
-            <div key={t.name} style={{
+            <div key={t.initials} style={{
               display: 'flex', alignItems: 'center', gap: 14,
               border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: 16, padding: '14px 22px 14px 14px',
+              borderRadius: 16, padding: '16px 22px',
               background: 'rgba(255,255,255,0.02)',
             }}>
-              <img
-                src={t.photo}
-                alt={`${t.name} — ${t.role}`}
-                width={56}
-                height={56}
-                style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.15)', flexShrink: 0 }}
-              />
+              <span style={{
+                width: 48, height: 48, borderRadius: '50%',
+                background: '#ffffff', color: '#000000',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 700,
+              }}>
+                {t.initials}
+              </span>
               <div>
                 <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>{t.name}</p>
                 <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, color: '#a3a3a3', margin: 0 }}>{t.role}</p>

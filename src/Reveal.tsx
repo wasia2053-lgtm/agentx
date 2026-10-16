@@ -13,9 +13,15 @@ interface RevealProps {
   className?: string;
   style?: CSSProperties;
   y?: number;
+  /**
+   * Fantasy-style unblur reveal for section headings: text arrives
+   * blurred + rising, then sharpens. Headings only (one element per
+   * section) — blur on many elements was the old INP jank.
+   */
+  blur?: boolean;
 }
 
-export function Reveal({ children, delay = 0, className, style, y = 36 }: RevealProps) {
+export function Reveal({ children, delay = 0, className, style, y = 36, blur = false }: RevealProps) {
   const reduce = useReducedMotion();
   if (reduce) {
     return (
@@ -28,8 +34,8 @@ export function Reveal({ children, delay = 0, className, style, y = 36 }: Reveal
     <motion.div
       className={className}
       style={style}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y, filter: blur ? 'blur(10px)' : 'blur(0px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-60px', amount: 0.15 }}
       transition={{ duration: 1.0, delay, ease: [0.16, 1, 0.3, 1] }}
     >

@@ -22,7 +22,7 @@ export default function Hero({ onReady }: { onReady?: () => void }) {
           cursor: pointer; flex-shrink: 0; border: none;
           transition: padding 450ms ease, transform 300ms ease, box-shadow 300ms ease;
         }
-        .agx-cta:hover { padding-left: 48px; padding-right: 20px; transform: scale(1.03); box-shadow: 0 14px 34px rgba(255,255,255,0.16); }
+        .agx-cta:hover { padding-left: 48px; padding-right: 20px; transform: scale(1.03); box-shadow: 0 14px 34px rgba(255,255,255,0.16); background: linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff); color: #ffffff; }
         .agx-cta:hover .agx-dot { right: calc(100% - 36px); transform: rotate(45deg); }
         .agx-dot {
           position: absolute; right: 4px; width: 32px; height: 32px;
@@ -94,7 +94,7 @@ export default function Hero({ onReady }: { onReady?: () => void }) {
 
           {/* RIGHT — robot, clean on black. No glow behind it: the old
               orb + white light washed the robot out and looked cheap. */}
-          <div className="agx-hr" style={{ flex: '1 1 48%', height: '100%', position: 'relative', overflow: 'hidden' }}>
+          <div className="agx-hr" style={{ flex: '1 1 48%', height: '100%', minHeight: 520, position: 'relative', overflow: 'hidden' }}>
             {/* Gentle continuous float — the hero keeps breathing after entrance */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
