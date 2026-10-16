@@ -14,7 +14,7 @@ import Contact from './Contact';
 import EmailCTA from './EmailCTA';
 import Footer from './Footer';
 import Loader from './Loader';
-import ChatbotDemo from './ChatbotDemo';
+import AgentXChatbot from './AgentXChatbot';
 import Process from './Process';
 import FAQ from './FAQ';
 
@@ -53,7 +53,7 @@ function App() {
       <ScrollProgress />
       <Navbar />
       <Hero onReady={() => setRobotReady(true)} />
-      <ChatbotDemo />
+      <AgentXChatbot />
       <Services />
       <Projects />
       <Achievements />
