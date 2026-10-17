@@ -184,7 +184,7 @@ const STYLES = `
 }
 .agx-ft-pill-primary { padding: 18px 34px; border-radius: 100px; font-weight: 700; font-size: 14px; }
 .agx-ft-pill-sm { padding: 12px 22px; border-radius: 100px; font-weight: 500; font-size: 12px; color: #999; }
-.agx-ft-pill-sm:hover { color: #ffffff; }
+.agx-ft-pill-sm:hover { color: #000000; }
 
 .agx-ft-bottom {
   position: relative;

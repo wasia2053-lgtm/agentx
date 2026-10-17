@@ -1,5 +1,5 @@
 import { Reveal } from './Reveal';
-import { AboutVisual } from './Visuals';
+import { WASI_PHOTO, ALI_PHOTO } from './TeamPhotos';
 
 const VALUES = [
   {
@@ -17,8 +17,8 @@ const VALUES = [
 ];
 
 const TEAM = [
-  { initials: 'WA', name: 'Wasi Ahmed', role: 'Founder — Development' },
-  { initials: 'AA', name: 'Ali Ahmed', role: 'Founder — SEO' },
+  { name: 'Wasi Ahmed', role: 'Founder — Development', photo: WASI_PHOTO },
+  { name: 'Ali Ahmed', role: 'Founder — SEO', photo: ALI_PHOTO },
 ];
 
 export default function About() {
@@ -46,11 +46,6 @@ export default function About() {
         <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 560, lineHeight: 1.8 }}>
           AgentX is an AI-powered agency. We don’t sell websites — we build systems that bring you customers.
         </p>
-      </Reveal>
-
-      {/* Visual */}
-      <Reveal style={{ width: '100%', maxWidth: 1080, position: 'relative', zIndex: 1 }}>
-        <AboutVisual style={{ height: 220 }} />
       </Reveal>
 
       {/* Team positioning */}
@@ -99,20 +94,13 @@ export default function About() {
         </p>
         <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
           {TEAM.map((t) => (
-            <div key={t.initials} style={{
+            <div key={t.name} style={{
               display: 'flex', alignItems: 'center', gap: 14,
               border: '1px solid rgba(255,255,255,0.08)',
               borderRadius: 16, padding: '16px 22px',
               background: 'rgba(255,255,255,0.02)',
             }}>
-              <span style={{
-                width: 48, height: 48, borderRadius: '50%',
-                background: '#ffffff', color: '#000000',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 700,
-              }}>
-                {t.initials}
-              </span>
+              <img src={t.photo} alt={t.name} style={{ width: 48, height: 48, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
               <div>
                 <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>{t.name}</p>
                 <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, color: '#a3a3a3', margin: 0 }}>{t.role}</p>
