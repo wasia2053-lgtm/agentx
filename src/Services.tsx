@@ -107,11 +107,11 @@ function ServiceCard({ svc, index }: { svc: Service; index: number }) {
 
         {/* Top row */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, color: '#484848', letterSpacing: '0.06em' }}>
+          <span style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, color: '#484848', letterSpacing: '0.06em' }}>
             {svc.num} / 06
           </span>
           <span style={{
-            fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600,
+            fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600,
             letterSpacing: '0.15em', color: '#a3a3a3',
             background: 'rgba(255,255,255,0.05)',
             border: '1px solid rgba(255,255,255,0.09)',
@@ -123,7 +123,7 @@ function ServiceCard({ svc, index }: { svc: Service; index: number }) {
 
         {/* Content */}
         <h3 style={{
-          fontFamily: "'Archivo', sans-serif",
+          fontFamily: "'Inter Tight', sans-serif",
           fontStretch: '75%',
           fontSize: svc.core ? 'clamp(20px,2.4vw,26px)' : 19,
           fontWeight: 800, color: '#ffffff',
@@ -133,7 +133,7 @@ function ServiceCard({ svc, index }: { svc: Service; index: number }) {
           {svc.title}
         </h3>
         <p style={{
-          fontFamily: "'Archivo', sans-serif",
+          fontFamily: "'Inter Tight', sans-serif",
           fontSize: 13, color: '#c9c9d1',
           lineHeight: 1.8, margin: 0,
         }}>
@@ -143,7 +143,7 @@ function ServiceCard({ svc, index }: { svc: Service; index: number }) {
         {/* Outcome */}
         <div style={{ marginTop: 'auto', paddingTop: 20 }}>
           <div style={{ width: 36, height: 1.5, background: 'rgba(255,255,255,0.25)', borderRadius: 2, marginBottom: 12 }} />
-          <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 13, color: '#ffffff', lineHeight: 1.7, margin: 0 }}>
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, color: '#ffffff', lineHeight: 1.7, margin: 0 }}>
             <span style={{ color: '#777' }}>What you get: </span>
             {svc.outcome}
           </p>
@@ -169,9 +169,9 @@ export default function Services() {
       >
         {/* ── Header ── */}
         <Reveal blur style={{ textAlign: 'center', marginBottom: 64, position: 'relative', zIndex: 1 }}>
-          <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>What We Do</p>
-          <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>One bundle. Three core disciplines.</h2>
-          <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 560, lineHeight: 1.8 }}>
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>What We Do</p>
+          <h2 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>One bundle. Three core disciplines.</h2>
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 560, lineHeight: 1.8 }}>
             Website, AI chatbot, and SEO — one team, one bundle — plus supporting services when you need them.
           </p>
         </Reveal>
@@ -185,7 +185,7 @@ export default function Services() {
 
         {/* ── Supporting label ── */}
         <Reveal style={{ position: 'relative', zIndex: 1 }}>
-          <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '56px 0 24px', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '56px 0 24px', textAlign: 'center' }}>
             Supporting services
           </p>
         </Reveal>

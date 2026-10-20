@@ -109,7 +109,7 @@ function ParallaxImage({ src, alt, gradient }: { src: string; alt: string; gradi
         backdropFilter: 'blur(8px)',
       }}>
         <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px rgba(74,222,128,0.9)' }} />
-        <span style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', color: '#d1fae5' }}>
+        <span style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', color: '#d1fae5' }}>
           LIVE
         </span>
       </div>
@@ -195,7 +195,7 @@ export default function Projects() {
         <Reveal blur style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
           <p
             style={{
-              fontFamily: "'Archivo', sans-serif",
+              fontFamily: "'Inter Tight', sans-serif",
               fontSize: 10, fontWeight: 600,
               letterSpacing: '0.22em', color: '#555',
               textTransform: 'uppercase', margin: '0 0 14px',
@@ -204,7 +204,7 @@ export default function Projects() {
             Our Work
           </p>
           <h2 style={{
-            fontFamily: "'Archivo', sans-serif",
+            fontFamily: "'Inter Tight', sans-serif",
             fontStretch: '75%',
             fontSize: 'clamp(36px,5vw,58px)',
             fontWeight: 800,
@@ -212,7 +212,7 @@ export default function Projects() {
           }}>
             Projects We&apos;ve Worked On
           </h2>
-          <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
             SEO + development work delivered for real clients — projects by AnaxDesign.
           </p>
         </Reveal>
@@ -230,7 +230,7 @@ export default function Projects() {
                   aria-pressed={active}
                   className="agx-pj-filter"
                   style={{
-                    fontFamily: "'Archivo', sans-serif",
+                    fontFamily: "'Inter Tight', sans-serif",
                     fontSize: 13, fontWeight: 600,
                     color: active ? '#000000' : '#ffffff',
                     background: active ? '#ffffff' : 'rgba(255,255,255,0.04)',
@@ -270,7 +270,7 @@ export default function Projects() {
                 {/* Content */}
                 <div style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <span style={{
-                    fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600,
+                    fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600,
                     letterSpacing: '0.15em', color: '#a3a3a3',
                     background: 'rgba(255,255,255,0.05)',
                     border: '1px solid rgba(255,255,255,0.09)',
@@ -280,17 +280,17 @@ export default function Projects() {
                     {p.tag}
                   </span>
                   <h3 style={{
-                    fontFamily: "'Archivo', sans-serif",
+                    fontFamily: "'Inter Tight', sans-serif",
                     fontStretch: '75%',
                     fontSize: 24, fontWeight: 800, color: '#ffffff',
                     lineHeight: 1.1, margin: '16px 0 10px', letterSpacing: '-0.02em',
                   }}>
                     {p.title}
                   </h3>
-                  <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>
                     {p.description}
                   </p>
-                  <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, color: '#777', margin: '16px 0 0' }}>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, color: '#777', margin: '16px 0 0' }}>
                     Worked on — SEO + Development
                   </p>
                   <a
@@ -300,7 +300,7 @@ export default function Projects() {
                     style={{
                       marginTop: 'auto', paddingTop: 20,
                       display: 'inline-flex', alignItems: 'center', gap: 6,
-                      fontFamily: "'Archivo', sans-serif", fontSize: 13, fontWeight: 600,
+                      fontFamily: "'Inter Tight', sans-serif", fontSize: 13, fontWeight: 600,
                       color: '#ffffff', textDecoration: 'none',
                     }}
                   >
@@ -323,7 +323,7 @@ export default function Projects() {
               x: pillX, y: pillY, translateX: '-50%', translateY: '-50%',
               pointerEvents: 'none',
               background: '#ffffff', color: '#000000',
-              fontFamily: "'Archivo', sans-serif", fontSize: 11, fontWeight: 700,
+              fontFamily: "'Inter Tight', sans-serif", fontSize: 11, fontWeight: 700,
               letterSpacing: '0.08em', borderRadius: 100, padding: '8px 14px',
               boxShadow: '0 10px 30px rgba(0,0,0,0.5)', whiteSpace: 'nowrap',
             }}

@@ -59,13 +59,13 @@ export default function Process() {
       >
         {/* Header */}
         <Reveal blur style={{ textAlign: 'center', marginBottom: 64, position: 'relative', zIndex: 1 }}>
-          <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
             How It Works
           </p>
-          <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
+          <h2 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
             Three steps. No surprises.
           </h2>
-          <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 520, lineHeight: 1.8 }}>
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 520, lineHeight: 1.8 }}>
             Here is exactly what happens when you work with AgentX.
           </p>
         </Reveal>
@@ -107,19 +107,19 @@ export default function Process() {
                     }}>
                       <Icon size={22} />
                     </span>
-                    <span style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, color: '#484848', letterSpacing: '0.06em' }}>
+                    <span style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, color: '#484848', letterSpacing: '0.06em' }}>
                       {step.num}
                     </span>
                   </div>
                   <h3 style={{
-                    fontFamily: "'Archivo', sans-serif",
+                    fontFamily: "'Inter Tight', sans-serif",
                     fontStretch: '75%',
                     fontSize: 22, fontWeight: 800, color: '#ffffff',
                     lineHeight: 1.15, margin: '22px 0 10px', letterSpacing: '-0.02em',
                   }}>
                     {step.title}
                   </h3>
-                  <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>
                     {step.desc}
                   </p>
                   {step.cta && (
@@ -129,7 +129,7 @@ export default function Process() {
                       rel="noreferrer"
                       style={{
                         marginTop: 'auto', paddingTop: 20,
-                        fontFamily: "'Archivo', sans-serif", fontSize: 13, fontWeight: 600,
+                        fontFamily: "'Inter Tight', sans-serif", fontSize: 13, fontWeight: 600,
                         color: '#ffffff', textDecoration: 'none',
                       }}
                     >

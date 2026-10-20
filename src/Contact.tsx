@@ -60,13 +60,13 @@ export default function Contact() {
     >
       {/* Header */}
       <Reveal blur style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
           Get In Touch
         </p>
-        <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
           Let&apos;s build your growth machine
         </h2>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
           Tell us about your project and we&apos;ll get back to you within 24 hours.
         </p>
       </Reveal>
@@ -85,8 +85,8 @@ export default function Contact() {
               }}>
                 <span style={{ fontSize: 24, flexShrink: 0 }}>{item.icon}</span>
                 <div>
-                  <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', color: '#777', textTransform: 'uppercase', margin: '0 0 4px' }}>{item.label}</p>
-                  <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 500, color: '#ffffff', margin: 0, wordBreak: 'break-all' }}>{item.value}</p>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', color: '#777', textTransform: 'uppercase', margin: '0 0 4px' }}>{item.label}</p>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 15, fontWeight: 500, color: '#ffffff', margin: 0, wordBreak: 'break-all' }}>{item.value}</p>
                 </div>
               </div>
             ))}
@@ -99,12 +99,12 @@ export default function Contact() {
                 background: '#ffffff', color: '#000000',
                 display: 'flex', flexDirection: 'column', gap: 8,
               }}>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', color: '#555', textTransform: 'uppercase', margin: 0 }}>Prefer to talk first?</p>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 22, fontWeight: 800, color: '#000000', margin: 0, lineHeight: 1.15 }}>Book a free 30-minute strategy call</p>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 13, color: '#555', margin: 0, lineHeight: 1.7 }}>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', color: '#555', textTransform: 'uppercase', margin: 0 }}>Prefer to talk first?</p>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 22, fontWeight: 800, color: '#000000', margin: 0, lineHeight: 1.15 }}>Book a free 30-minute strategy call</p>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, color: '#555', margin: 0, lineHeight: 1.7 }}>
                   Get your website + chatbot + SEO roadmap — no pressure, no obligation.
                 </p>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, fontWeight: 600, color: '#000000', margin: '8px 0 0' }}>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, fontWeight: 600, color: '#000000', margin: '8px 0 0' }}>
                   Book a call →
                 </p>
               </div>
@@ -117,16 +117,16 @@ export default function Contact() {
             borderRadius: 20, padding: '28px 26px',
             background: 'rgba(255,255,255,0.02)',
           }}>
-            <h3 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 22, fontWeight: 800, color: '#ffffff', margin: '0 0 20px', lineHeight: 1.15 }}>
+            <h3 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 22, fontWeight: 800, color: '#ffffff', margin: '0 0 20px', lineHeight: 1.15 }}>
               Send us a message
             </h3>
 
             {sent ? (
               <div style={{ padding: '20px 0' }}>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 15, color: '#4ade80', margin: '0 0 8px', fontWeight: 600 }}>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 15, color: '#4ade80', margin: '0 0 8px', fontWeight: 600 }}>
                   Message sent ✓
                 </p>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, lineHeight: 1.7 }}>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, lineHeight: 1.7 }}>
                   Thanks for reaching out — we&apos;ll get back to you within 24 hours.
                 </p>
               </div>
@@ -140,7 +140,7 @@ export default function Contact() {
                   style={{
                     width: '100%', padding: '14px 16px', borderRadius: 12,
                     background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.12)',
-                    color: '#ffffff', fontFamily: "'Archivo', sans-serif", fontSize: 14,
+                    color: '#ffffff', fontFamily: "'Inter Tight', sans-serif", fontSize: 14,
                     outline: 'none',
                   }}
                 />
@@ -152,7 +152,7 @@ export default function Contact() {
                   style={{
                     width: '100%', padding: '14px 16px', borderRadius: 12,
                     background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.12)',
-                    color: '#ffffff', fontFamily: "'Archivo', sans-serif", fontSize: 14,
+                    color: '#ffffff', fontFamily: "'Inter Tight', sans-serif", fontSize: 14,
                     outline: 'none',
                   }}
                 />
@@ -164,7 +164,7 @@ export default function Contact() {
                   style={{
                     width: '100%', padding: '14px 16px', borderRadius: 12,
                     background: '#0a0a0a', border: '1px solid rgba(255,255,255,0.12)',
-                    color: '#ffffff', fontFamily: "'Archivo', sans-serif", fontSize: 14,
+                    color: '#ffffff', fontFamily: "'Inter Tight', sans-serif", fontSize: 14,
                     outline: 'none', resize: 'vertical',
                   }}
                 />
@@ -174,7 +174,7 @@ export default function Contact() {
                   style={{
                     padding: '16px', borderRadius: 12,
                     background: '#ffffff', color: '#000000',
-                    fontFamily: "'Archivo', sans-serif", fontSize: 14, fontWeight: 600,
+                    fontFamily: "'Inter Tight', sans-serif", fontSize: 14, fontWeight: 600,
                     border: 'none', cursor: sending ? 'default' : 'pointer',
                     opacity: sending ? 0.6 : 1,
                   }}
@@ -182,7 +182,7 @@ export default function Contact() {
                   {sending ? 'Sending…' : 'Send message →'}
                 </button>
                 {error && (
-                  <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 13, color: '#f87171', margin: 0 }}>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, color: '#f87171', margin: 0 }}>
                     Something went wrong — please email us at wasia2053@gmail.com instead.
                   </p>
                 )}

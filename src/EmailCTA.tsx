@@ -20,11 +20,11 @@ export default function EmailCTA() {
       }}
     >
       <Reveal style={{ textAlign: 'center', position: 'relative', zIndex: 1, maxWidth: 760 }}>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 16px' }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 16px' }}>
           Start Today
         </p>
         <h2 style={{
-          fontFamily: "'Archivo', sans-serif",
+          fontFamily: "'Inter Tight', sans-serif",
           fontStretch: '75%',
           fontSize: 'clamp(36px,5.5vw,64px)',
           fontWeight: 800,
@@ -35,7 +35,7 @@ export default function EmailCTA() {
         }}>
           Let&apos;s build something that sells while you sleep.
         </h2>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 15, color: '#a3a3a3', margin: '0 0 36px', lineHeight: 1.8 }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 15, color: '#a3a3a3', margin: '0 0 36px', lineHeight: 1.8 }}>
           Tell us about your project — or skip the typing and book a free 30-minute strategy call.
         </p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -57,7 +57,7 @@ export default function EmailCTA() {
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '16px 30px', borderRadius: 100,
               background: '#ffffff', color: '#000000',
-              fontFamily: "'Archivo', sans-serif", fontSize: 14, fontWeight: 600,
+              fontFamily: "'Inter Tight', sans-serif", fontSize: 14, fontWeight: 600,
               textDecoration: 'none', transition: 'transform 250ms ease, box-shadow 250ms ease',
             }}
           >
@@ -84,7 +84,7 @@ export default function EmailCTA() {
               padding: '16px 30px', borderRadius: 100,
               background: 'transparent', border: '1px solid rgba(255,255,255,0.18)',
               color: '#ffffff',
-              fontFamily: "'Archivo', sans-serif", fontSize: 14, fontWeight: 600,
+              fontFamily: "'Inter Tight', sans-serif", fontSize: 14, fontWeight: 600,
               textDecoration: 'none', transition: 'transform 250ms ease, border-color 250ms ease',
             }}
           >

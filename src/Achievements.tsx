@@ -126,7 +126,7 @@ export default function Achievements() {
         .agx-dotcard-text {
           position: relative;
           z-index: 1;
-          font-family: 'Archivo', sans-serif;
+          font-family: 'Inter Tight', sans-serif;
           font-stretch: 75%;
           font-size: clamp(38px, 4.6vw, 60px);
           font-weight: 800;
@@ -141,7 +141,7 @@ export default function Achievements() {
         .agx-dotcard-label {
           position: relative;
           z-index: 1;
-          font-family: 'Archivo', sans-serif;
+          font-family: 'Inter Tight', sans-serif;
           font-size: 10px;
           font-weight: 600;
           letter-spacing: 0.16em;
@@ -195,13 +195,13 @@ export default function Achievements() {
 
         {/* Header */}
         <Reveal blur style={{ textAlign:'center', marginBottom:64, position:'relative', zIndex:1 }}>
-          <p style={{ fontFamily:"'Archivo', sans-serif", fontSize:10, fontWeight:600, letterSpacing:'0.22em', color:'#555', textTransform:'uppercase', margin:'0 0 14px' }}>
+          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:10, fontWeight:600, letterSpacing:'0.22em', color:'#555', textTransform:'uppercase', margin:'0 0 14px' }}>
             By The Numbers
           </p>
-          <h2 style={{ fontFamily:"'Archivo', sans-serif", fontStretch:'75%', fontSize:'clamp(36px,5vw,58px)', fontWeight:800, color:'#ffffff', margin:'0 0 14px', lineHeight:1.02, letterSpacing:'-0.02em' }}>
+          <h2 style={{ fontFamily:"'Inter Tight', sans-serif", fontStretch:'75%', fontSize:'clamp(36px,5vw,58px)', fontWeight:800, color:'#ffffff', margin:'0 0 14px', lineHeight:1.02, letterSpacing:'-0.02em' }}>
             Our Achievements
           </h2>
-          <p style={{ fontFamily:"'Archivo', sans-serif", fontSize:14, color:'#555', margin:0 }}>
+          <p style={{ fontFamily:"'Inter Tight', sans-serif", fontSize:14, color:'#555', margin:0 }}>
             Results that speak louder than words
           </p>
         </Reveal>

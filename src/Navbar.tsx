@@ -122,7 +122,7 @@ export default function Navbar() {
                   >
                     <span
                       style={{
-                        fontFamily: "'Archivo', sans-serif",
+                        fontFamily: "'Inter Tight', sans-serif",
                         fontSize:   13,
                         fontWeight: 500,
                         color:      active ? "#ffffff" : "#a3a3a3",
@@ -146,7 +146,7 @@ export default function Navbar() {
                 el.style.paddingRight = "20px";
                 el.style.transform = "scale(1.04)";
                 el.style.boxShadow = "0 10px 28px rgba(255,255,255,0.18)";
-                el.style.background = "linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)";
+                el.style.background = "#26262b";
                 el.style.color = "#ffffff";
                 const dot = el.querySelector(".agx-arrow") as HTMLElement;
                 if (dot) { dot.style.right = "calc(100% - 36px)"; dot.style.transform = "rotate(45deg)"; }
@@ -174,7 +174,7 @@ export default function Navbar() {
                 color:          "#000000",
                 fontSize:       "13px",
                 fontWeight:     600,
-                fontFamily:     "'Archivo', sans-serif",
+                fontFamily:     "'Inter Tight', sans-serif",
                 textDecoration: "none",
                 marginLeft:     "6px",
                 marginRight:    "2px",
@@ -256,7 +256,7 @@ export default function Navbar() {
             style={{
               display:        "block",
               padding:        "14px 20px",
-              fontFamily:     "'Archivo', sans-serif",
+              fontFamily:     "'Inter Tight', sans-serif",
               fontSize:       15,
               fontWeight:     500,
               color:          activeIndex === idx ? "#ffffff" : "#a3a3a3",

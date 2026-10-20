@@ -37,23 +37,23 @@ export default function About() {
     >
       {/* Header */}
       <Reveal blur style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
           About AgentX
         </p>
-        <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
           A small team, obsessed with results
         </h2>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 560, lineHeight: 1.8 }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, maxWidth: 560, lineHeight: 1.8 }}>
           AgentX is an AI-powered agency. We don’t sell websites — we build systems that bring you customers.
         </p>
       </Reveal>
 
       {/* Team positioning */}
       <Reveal blur style={{ textAlign: 'center', margin: '56px 0 0', position: 'relative', zIndex: 1, maxWidth: 720 }}>
-        <h3 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(24px,3vw,34px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+        <h3 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 'clamp(24px,3vw,34px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
           You work directly with the people who build it.
         </h3>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, lineHeight: 1.8 }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0, lineHeight: 1.8 }}>
           Wasi leads development, Ali leads SEO. No account-manager telephone game — the people you talk to are the people who build your website, chatbot, and rankings.
         </p>
       </Reveal>
@@ -80,8 +80,8 @@ export default function About() {
                 e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
               }}
             >
-              <h3 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 20, fontWeight: 800, color: '#ffffff', margin: '0 0 10px', lineHeight: 1.2, letterSpacing: '-0.02em' }}>{v.title}</h3>
-              <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>{v.desc}</p>
+              <h3 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 20, fontWeight: 800, color: '#ffffff', margin: '0 0 10px', lineHeight: 1.2, letterSpacing: '-0.02em' }}>{v.title}</h3>
+              <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>{v.desc}</p>
             </div>
           </Reveal>
         ))}
@@ -89,7 +89,7 @@ export default function About() {
 
       {/* Team */}
       <Reveal style={{ width: '100%', maxWidth: 1080, marginTop: 56, position: 'relative', zIndex: 1 }}>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 20px', textAlign: 'center' }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 20px', textAlign: 'center' }}>
           The Team
         </p>
         <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -102,8 +102,8 @@ export default function About() {
             }}>
               <img src={t.photo} alt={t.name} style={{ width: 48, height: 48, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
               <div>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>{t.name}</p>
-                <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 12, color: '#a3a3a3', margin: 0 }}>{t.role}</p>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>{t.name}</p>
+                <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, color: '#a3a3a3', margin: 0 }}>{t.role}</p>
               </div>
             </div>
           ))}

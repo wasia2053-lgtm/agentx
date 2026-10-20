@@ -52,13 +52,13 @@ export default function FAQ() {
     >
       {/* Header */}
       <Reveal blur style={{ textAlign: 'center', marginBottom: 56, position: 'relative', zIndex: 1 }}>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
           Questions
         </p>
-        <h2 style={{ fontFamily: "'Archivo', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontFamily: "'Inter Tight', sans-serif", fontStretch: '75%', fontSize: 'clamp(36px,5vw,58px)', fontWeight: 800, color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em' }}>
           Frequently asked questions
         </h2>
-        <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
+        <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
           Everything you need to know before booking your free call.
         </p>
       </Reveal>
@@ -90,7 +90,7 @@ export default function FAQ() {
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
                     padding: '20px 24px',
                     background: 'transparent', border: 'none', cursor: 'pointer',
-                    fontFamily: "'Archivo', sans-serif", fontSize: 15, fontWeight: 600,
+                    fontFamily: "'Inter Tight', sans-serif", fontSize: 15, fontWeight: 600,
                     color: '#ffffff', textAlign: 'left',
                   }}
                 >
@@ -116,7 +116,7 @@ export default function FAQ() {
                   style={{ overflow: 'hidden' }}
                 >
                   <p style={{
-                    fontFamily: "'Archivo', sans-serif", fontSize: 14,
+                    fontFamily: "'Inter Tight', sans-serif", fontSize: 14,
                     color: '#c9c9d1', lineHeight: 1.8,
                     margin: 0, padding: '0 24px 20px',
                   }}>

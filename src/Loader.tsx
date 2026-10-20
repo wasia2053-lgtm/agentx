@@ -49,7 +49,7 @@ export default function Loader({ onDone, ready }: { onDone: () => void; ready: b
     const tMin = window.setTimeout(() => {
       minRef.current = true;
       tryFinish();
-    }, 1800);
+    }, 2200);
     const tMax = window.setTimeout(finish, 8000);
     const onLoad = () => {
       loadedRef.current = true;
@@ -68,30 +68,16 @@ export default function Loader({ onDone, ready }: { onDone: () => void; ready: b
 
   return (
     <motion.div
-      // Dissolve exit (no big->small jump): the big logo fades + scales
-      // down slightly as it leaves, while the page fades in behind it.
-      exit={{ opacity: 0, scale: 0.92 }}
-      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      // Fantasy-style exit: the whole black screen lifts away.
+      exit={{ y: '-100%' }}
+      transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
       style={{
         position: 'fixed', inset: 0, zIndex: 10000,
         background: '#000000',
-        display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', gap: 28,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}
     >
-      {/* Same logo as the navbar — dot scales in, letters glide in */}
-      <Logo size={64} stagger />
-      <div style={{ width: 180, height: 2, background: 'rgba(255,255,255,0.12)', borderRadius: 2, overflow: 'hidden' }}>
-        <motion.div
-          initial={{ width: '0%' }}
-          animate={{ width: '100%' }}
-          transition={{ duration: 1.4, ease: 'easeInOut' }}
-          style={{ height: '100%', background: '#ffffff', borderRadius: 2 }}
-        />
-      </div>
-      <p style={{ fontFamily: "'Archivo', sans-serif", fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#777', margin: 0 }}>
-        Websites · AI Chatbots · SEO
-      </p>
+      <Logo size={34} stagger />
     </motion.div>
   );
 }

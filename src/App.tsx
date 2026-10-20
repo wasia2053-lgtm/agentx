@@ -14,6 +14,7 @@ import Contact from './Contact';
 import EmailCTA from './EmailCTA';
 import Footer from './Footer';
 import Loader from './Loader';
+import SmoothScroll from './SmoothScroll';
 import AgentXChatWidget from './AgentXChatWidget';
 import Process from './Process';
 import FAQ from './FAQ';
@@ -31,8 +32,8 @@ function ScrollProgress() {
     <motion.div
       aria-hidden="true"
       style={{
-        position: 'fixed', top: 0, left: 0, right: 0, height: 3, zIndex: 9998,
-        background: 'linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)',
+        position: 'fixed', top: 0, left: 0, right: 0, height: 2, zIndex: 9998,
+        background: '#ffffff',
         transformOrigin: '0 50%', scaleX,
       }}
     />
@@ -50,6 +51,7 @@ function App() {
       <AnimatePresence>
         {showLoader && <Loader onDone={() => setShowLoader(false)} ready={robotReady} />}
       </AnimatePresence>
+      <SmoothScroll locked={showLoader} />
       <ScrollProgress />
       <Navbar />
       <Hero onReady={() => setRobotReady(true)} />

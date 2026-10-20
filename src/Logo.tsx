@@ -1,17 +1,24 @@
 import { motion } from 'framer-motion';
 
 /**
- * AgentX wordmark logo, built from the Archivo font (Fantasy-style:
- * a clean condensed wordmark, no icon file needed).
- * "AGENT" in white + "X" in the pink->orange->purple gradient,
- * with a small gradient dot. Used in the navbar, loader and footer.
- *
- * `stagger` (loader only): the dot scales in first, then the letters
- * glide in one by one with a smooth Fantasy-like ease — the same
- * logo component everywhere, never two different logos.
+ * AgentX logo, Fantasy-style: a small four-lobed mark followed by a
+ * light, wide-tracked AGENTX wordmark. Pure white, no gradient.
+ * `stagger` (loader only): the letters fade in one by one from dim
+ * grey to white while the blur clears.
  */
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
-const LETTERS = ['A', 'G', 'E', 'N', 'T'];
+const LETTERS = ['A', 'G', 'E', 'N', 'T', 'X'];
+
+function Mark({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
+      <path
+        d="M12 1.2C12.9 6.8 17.2 11.1 22.8 12C17.2 12.9 12.9 17.2 12 22.8C11.1 17.2 6.8 12.9 1.2 12C6.8 11.1 11.1 6.8 12 1.2Z"
+        fill="#ffffff"
+      />
+    </svg>
+  );
+}
 
 export default function Logo({
   size = 22,
@@ -22,103 +29,51 @@ export default function Logo({
   withDot?: boolean;
   stagger?: boolean;
 }) {
-  const dot = (
-    <span
-      aria-hidden="true"
-      style={{
-        width: Math.max(8, size * 0.36),
-        height: Math.max(8, size * 0.36),
-        borderRadius: '50%',
-        background: 'linear-gradient(135deg, #ff5ca8, #ff8a3d, #8b5cff)',
-        display: 'inline-block',
-        flexShrink: 0,
-      }}
-    />
-  );
-
-  const wordmark = (
-    <span
-      aria-label="AgentX"
-      style={{
-        fontFamily: "'Archivo', sans-serif",
-        fontStretch: '70%',
-        fontSize: size,
-        fontWeight: 800,
-        letterSpacing: '0.04em',
-        color: '#ffffff',
-        whiteSpace: 'nowrap',
-        display: 'inline-flex',
-      }}
-    >
-      {LETTERS.map((ch, i) =>
-        stagger ? (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 14, filter: 'blur(6px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 0.8, delay: 0.15 + i * 0.07, ease: EASE }}
-            style={{ display: 'inline-block' }}
-          >
-            {ch}
-          </motion.span>
-        ) : (
-          <span key={i}>{ch}</span>
-        ),
-      )}
-      {stagger ? (
-        <motion.span
-          initial={{ opacity: 0, y: 14, filter: 'blur(6px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ duration: 0.8, delay: 0.15 + LETTERS.length * 0.07, ease: EASE }}
-          style={{
-            display: 'inline-block',
-            background: 'linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            color: 'transparent',
-          }}
-        >
-          X
-        </motion.span>
-      ) : (
-        <span
-          style={{
-            background: 'linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            color: 'transparent',
-          }}
-        >
-          X
-        </span>
-      )}
-    </span>
-  );
-
-  if (!stagger) {
-    return (
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, lineHeight: 1 }}>
-        {withDot && dot}
-        {wordmark}
-      </span>
-    );
-  }
+  const wordStyle = {
+    fontFamily: "'Inter Tight', sans-serif",
+    fontSize: size,
+    fontWeight: 300,
+    letterSpacing: '0.34em',
+    color: '#ffffff',
+    whiteSpace: 'nowrap' as const,
+    display: 'inline-flex',
+    lineHeight: 1,
+    marginRight: '-0.34em',
+  };
 
   return (
-    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, lineHeight: 1 }}>
+    <span aria-label="AgentX" style={{ display: 'inline-flex', alignItems: 'center', gap: size * 0.55, lineHeight: 1 }}>
       {withDot && (
-        <motion.span
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: EASE }}
-          style={{ display: 'inline-flex' }}
-        >
-          {dot}
-        </motion.span>
+        stagger ? (
+          <motion.span
+            initial={{ opacity: 0, scale: 0.4 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: EASE }}
+            style={{ display: 'inline-flex' }}
+          >
+            <Mark size={size * 1.1} />
+          </motion.span>
+        ) : (
+          <Mark size={size * 1.1} />
+        )
       )}
-      {wordmark}
+      <span style={wordStyle} aria-hidden="true">
+        {LETTERS.map((ch, i) =>
+          stagger ? (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, color: '#555555', filter: 'blur(8px)' }}
+              animate={{ opacity: 1, color: '#ffffff', filter: 'blur(0px)' }}
+              transition={{ duration: 1.1, delay: 0.35 + i * 0.12, ease: EASE }}
+              style={{ display: 'inline-block' }}
+            >
+              {ch}
+            </motion.span>
+          ) : (
+            <span key={i}>{ch}</span>
+          ),
+        )}
+      </span>
     </span>
   );
 }
