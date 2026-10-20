@@ -1,211 +1,336 @@
-import { useState, useEffect } from "react";
-import { CardStack } from "./Cardstack";
-import type { CardStackItem } from "./Cardstack";
+import { useEffect, useRef, useState } from 'react';
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
+import { Reveal } from './Reveal';
 
-const PROJECTS: CardStackItem[] = [
-  {
-    id: 1,
-    tag: "WEB + SEO",
-    title: "Tainted Flesh Body Art",
-    description: "Full website design, development, and local SEO for a tattoo studio in Wilmington, DE — built to convert visitors into booked consultations.",
-    gradient: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
-    image: "https://taintedfleshbodyartnorth.com/wp-content/uploads/2026/05/Picture-for-how-it-works-section.jpg",
-    href: "https://taintedfleshbodyartnorth.com/",
-  },
+interface Project {
+  id: number;
+  tag: string;
+  title: string;
+  description: string;
+  outcome: string;
+  gradient: string;
+  image: string;
+  href: string;
+}
+
+const PROJECTS: Project[] = [
   {
     id: 2,
-    tag: "WEB + SEO",
-    title: "Pixiest Photography",
-    description: "Portfolio website and local SEO for a Delaware-based photographer — service pages built around wedding, event, and drone photography search terms.",
-    gradient: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
-    image: "https://pixiestphotography.com/wp-content/uploads/2025/11/Event-Photography-in-Newark-Delaware.jpg",
-    href: "https://pixiestphotography.com/",
-  },
-  {
-    id: 3,
-    tag: "WEB + E-COMMERCE",
-    title: "Black Eden 420",
-    description: "Full e-commerce build for a licensed cannabis delivery service in California — product catalog, ordering flow, and location-based SEO across service areas.",
-    gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
-    image: "https://blackeden420.com/wp-content/uploads/2025/11/Black-Eden.png",
-    href: "https://blackeden420.com/",
-  },
-  {
-    id: 4,
-    tag: "WEB + SEO",
-    title: "DM Power Construction",
-    description: "Website design and development for a Massachusetts home renovation contractor — project galleries, service pages, and local SEO for the Greater Boston area.",
-    gradient: "linear-gradient(135deg, #200122 0%, #6f0000 100%)",
-    image: "https://www.dmpowerconstruction.com/wp-content/uploads/2025/07/IMG-20250714-WA0005.jpg",
-    href: "https://www.dmpowerconstruction.com/",
+    tag: 'WEB + SEO',
+    title: 'Pixiest Photography',
+    description: 'SEO + development work for a Delaware-based photographer — service pages built around wedding, event, and drone photography search terms.',
+    outcome: 'Service pages built around wedding, event, and drone photography search terms.',
+    gradient: 'linear-gradient(135deg, #134e5e 0%, #71b280 100%)',
+    image: 'https://pixiestphotography.com/wp-content/uploads/2025/11/Event-Photography-in-Newark-Delaware.jpg',
+    href: 'https://pixiestphotography.com/',
   },
   {
     id: 5,
-    tag: "WEB + SEO",
-    title: "The Bean Guys",
-    description: "Website build for a mobile coffee cart and event catering brand serving the Dallas-Fort Worth area — booking flow and content across service and location pages.",
-    gradient: "linear-gradient(135deg, #0d0d0d 0%, #1a3a2a 50%, #0a2a1a 100%)",
-    image: "https://images.squarespace-cdn.com/content/v1/67ad5879262782591823fa86/c3ba25f8-9d5c-49b6-847a-46faa15ff257/Bean+Guys-9.jpg",
-    href: "https://www.thebeanguys.com/",
+    tag: 'WEB + SEO',
+    title: 'The Bean Guys',
+    description: 'SEO + development work for a mobile coffee cart and event catering brand serving the Dallas-Fort Worth area — booking flow and content across service and location pages.',
+    outcome: 'Booking flow and content across service and location pages.',
+    gradient: 'linear-gradient(135deg, #0d0d0d 0%, #1a3a2a 50%, #0a2a1a 100%)',
+    image: 'https://images.squarespace-cdn.com/content/v1/67ad5879262782591823fa86/c3ba25f8-9d5c-49b6-847a-46faa15ff257/Bean+Guys-9.jpg',
+    href: 'https://www.thebeanguys.com/',
+  },
+  {
+    id: 4,
+    tag: 'WEB + SEO',
+    title: 'DM Power Construction',
+    description: 'SEO + development work for a Massachusetts home renovation contractor — project galleries, service pages, and local SEO for the Greater Boston area.',
+    outcome: 'Project galleries, service pages, and local SEO for the Greater Boston area.',
+    gradient: 'linear-gradient(135deg, #200122 0%, #6f0000 100%)',
+    image: 'https://www.dmpowerconstruction.com/wp-content/uploads/2025/07/IMG-20250714-WA0005.jpg',
+    href: 'https://www.dmpowerconstruction.com/',
+  },
+  {
+    id: 1,
+    tag: 'WEB + SEO',
+    title: 'Tainted Flesh Body Art',
+    description: 'SEO + development work for a tattoo studio in Wilmington, DE — built to convert visitors into booked consultations.',
+    outcome: 'Built to convert visitors into booked consultations.',
+    gradient: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)',
+    image: 'https://taintedfleshbodyartnorth.com/wp-content/uploads/2026/05/Picture-for-how-it-works-section.jpg',
+    href: 'https://taintedfleshbodyartnorth.com/',
   },
   {
     id: 6,
-    tag: "WEB + SEO",
-    title: "Estelles Lighting",
-    description: "Website design, development, and SEO for a lighting brand — product pages and site structure built for search visibility.",
-    gradient: "linear-gradient(135deg, #1a0533 0%, #3d1166 50%, #6b21a8 100%)",
-    image: "/estelles-lighting.jpg",
-    href: "https://estelleslighting.com/",
+    tag: 'WEB + SEO',
+    title: 'Estelles Lighting',
+    description: 'SEO + development work for a lighting brand — product pages and site structure built for search visibility.',
+    outcome: 'Product pages and site structure built for search visibility.',
+    gradient: 'linear-gradient(135deg, #1a0533 0%, #3d1166 50%, #6b21a8 100%)',
+    image: '/estelles-lighting.jpg',
+    href: 'https://estelleslighting.com/',
+  },
+  {
+    id: 3,
+    tag: 'WEB + E-COMMERCE',
+    title: 'Black Eden 420',
+    description: 'E-commerce + SEO work for a licensed cannabis delivery service in California — product catalog, ordering flow, and location-based SEO across service areas.',
+    outcome: 'Product catalog, ordering flow, and location-based SEO across service areas.',
+    gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)',
+    image: 'https://blackeden420.com/wp-content/uploads/2025/11/Black-Eden.png',
+    href: 'https://blackeden420.com/',
   },
 ];
 
+type Filter = 'All' | 'Web + SEO' | 'E-commerce';
+
+/**
+ * Fantasy-style scroll parallax: the image drifts slower than the page
+ * inside its card (useScroll + useTransform). This is the visible
+ * scroll motion — the page is never static while scrolling.
+ * Parallax lives on a wrapper div; the img keeps its own hover zoom.
+ */
+function ParallaxImage({ src, alt, gradient }: { src: string; alt: string; gradient: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], ['-7%', '7%']);
+  return (
+    <div ref={ref} style={{ position: 'relative', overflow: 'hidden', aspectRatio: '16 / 10', background: gradient }}>
+      <motion.div style={{ y, position: 'absolute', inset: '-8% 0' }}>
+        <img
+          className="agx-pj-img"
+          src={src}
+          alt={alt}
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        />
+      </motion.div>
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 45%)', pointerEvents: 'none' }} />
+      <div style={{
+        position: 'absolute', top: 16, left: 16,
+        display: 'inline-flex', alignItems: 'center', gap: 6,
+        background: 'rgba(0,0,0,0.45)',
+        border: '1px solid rgba(255,255,255,0.18)',
+        borderRadius: 100, padding: '4px 10px',
+        backdropFilter: 'blur(8px)',
+      }}>
+        <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px rgba(74,222,128,0.9)' }} />
+        <span style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', color: '#d1fae5' }}>
+          LIVE
+        </span>
+      </div>
+    </div>
+  );
+}
+
+const FILTERS: Filter[] = ['All', 'Web + SEO', 'E-commerce'];
+
+function matchesFilter(p: Project, filter: Filter): boolean {
+  if (filter === 'All') return true;
+  if (filter === 'E-commerce') return p.tag === 'WEB + E-COMMERCE';
+  return p.tag === 'WEB + SEO';
+}
+
 export default function Projects() {
-  const [vw, setVw] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
+  const [filter, setFilter] = useState<Filter>('All');
+  const visible = PROJECTS.filter((p) => matchesFilter(p, filter));
 
+  // Fantasy-style cursor: a "VIEW" pill follows the mouse over the
+  // project cards (fine pointers / desktop only).
+  const [cardHovered, setCardHovered] = useState(false);
+  const [finePointer, setFinePointer] = useState(false);
   useEffect(() => {
-    const onResize = () => setVw(window.innerWidth);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    setFinePointer(window.matchMedia('(pointer: fine)').matches);
   }, []);
-
-  const isMobile = vw < 640;
-  const cardWidth = isMobile ? Math.min(300, vw - 56) : 480;
-  const cardHeight = isMobile ? Math.round(cardWidth * (300 / 480)) : 300;
-  const spreadDeg = isMobile ? 24 : 42;
-  const depthPx = isMobile ? 40 : 120;
-  // Higher overlap + fewer visible side-cards = the stage needs less total width,
-  // so it doesn't have to scale the active card down so much to fit.
-  const overlap = isMobile ? 0.8 : 0.72;
-  const maxVisible = isMobile ? 3 : 5;
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const pillX = useSpring(mx, { stiffness: 320, damping: 32 });
+  const pillY = useSpring(my, { stiffness: 320, damping: 32 });
+  const onSectionMove = (e: { currentTarget: HTMLElement; clientX: number; clientY: number }) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set(e.clientX - r.left);
+    my.set(e.clientY - r.top);
+  };
 
   return (
     <>
       <style>{`
-        @font-face { font-family:'ClashDisplay'; src:url('/fonts/ClashDisplay-Regular-BF69e8470be9b15.otf') format('opentype'); font-display:swap; }
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-        @keyframes agxGlowBreathe {
-          0%,100% { opacity:0.18; transform:scale(1); }
-          50%      { opacity:0.32; transform:scale(1.08); }
+        .agx-pj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; max-width: 1080px; }
+        .agx-pj-card { transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease; }
+        .agx-pj-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.22) !important; box-shadow: 0 24px 60px rgba(0,0,0,0.6); }
+        .agx-pj-card:hover .agx-pj-img { transform: scale(1.05); }
+        @media (pointer: fine) { .agx-pj-card { cursor: none; } }
+        .agx-pj-img { transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }
+        .agx-pj-filter { transition: background 200ms, color 200ms, border-color 200ms; }
+        @media (max-width: 860px) {
+          .agx-pj-grid { grid-template-columns: 1fr; max-width: 580px; }
         }
-        @keyframes agxGlowBreathe2 {
-          0%,100% { opacity:0.10; transform:scale(1.05); }
-          50%      { opacity:0.22; transform:scale(0.95); }
-        }
-        .agx-glow1 { animation: agxGlowBreathe  5s ease-in-out infinite; }
-        .agx-glow2 { animation: agxGlowBreathe2 7s ease-in-out infinite; }
       `}</style>
 
       <section
         id="projects"
+        onMouseMove={onSectionMove}
         style={{
-          background: "#000000",
-          position: "relative",
-          overflow: "hidden",
-          padding: "120px 24px 100px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          background: '#000000',
+          position: 'relative',
+          overflow: 'hidden',
+          padding: '120px 24px 100px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
-        {/* ── Breathing glow bg ── */}
+        {/* ── Static soft glow (no animation — Fantasy is calm) ── */}
         <div
-          className="agx-glow1"
           style={{
-            position: "absolute",
-            top: "20%",
-            left: "50%",
-            transform: "translateX(-50%)",
+            position: 'absolute',
+            top: '20%',
+            left: '50%',
+            transform: 'translateX(-50%)',
             width: 600,
             height: 600,
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 70%)",
-            filter: "blur(60px)",
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
-        <div
-          className="agx-glow2"
-          style={{
-            position: "absolute",
-            top: "40%",
-            left: "30%",
-            width: 400,
-            height: 400,
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(180,100,255,0.08) 0%, transparent 70%)",
-            filter: "blur(80px)",
-            pointerEvents: "none",
-            zIndex: 0,
-          }}
-        />
-        <div
-          className="agx-glow2"
-          style={{
-            position: "absolute",
-            top: "35%",
-            right: "25%",
-            width: 350,
-            height: 350,
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(0,160,255,0.07) 0%, transparent 70%)",
-            filter: "blur(80px)",
-            pointerEvents: "none",
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+            pointerEvents: 'none',
             zIndex: 0,
           }}
         />
 
         {/* ── Header ── */}
-        <div style={{ textAlign: "center", marginBottom: isMobile ? 32 : 80, position: "relative", zIndex: 1 }}>
-          <p style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 10, fontWeight: 600,
-            letterSpacing: "0.22em", color: "#555",
-            textTransform: "uppercase", margin: "0 0 14px",
-          }}>
+        <Reveal blur style={{ textAlign: 'center', marginBottom: 48, position: 'relative', zIndex: 1 }}>
+          <p
+            style={{
+              fontFamily: "'Inter Tight', sans-serif",
+              fontSize: 10, fontWeight: 600,
+              letterSpacing: '0.22em', color: '#555',
+              textTransform: 'uppercase', margin: '0 0 14px',
+            }}
+          >
             Our Work
           </p>
           <h2 style={{
-            fontFamily: "'ClashDisplay',sans-serif",
-            fontSize: "clamp(36px,5vw,58px)",
-            color: "#ffffff", margin: "0 0 14px", lineHeight: 1.05,
+            fontFamily: "'Inter Tight', sans-serif",
+            fontStretch: '75%',
+            fontSize: 'clamp(36px,5vw,58px)',
+            fontWeight: 800,
+            color: '#ffffff', margin: '0 0 14px', lineHeight: 1.02, letterSpacing: '-0.02em',
           }}>
-            Featured Projects
+            Projects We&apos;ve Worked On
           </h2>
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: "#555", margin: 0 }}>
-            Real results we've delivered for real clients
+          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#a3a3a3', margin: 0 }}>
+            SEO + development work delivered for real clients — projects by AnaxDesign.
           </p>
+        </Reveal>
+
+        {/* ── Filter controls ── */}
+        <Reveal style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', marginBottom: 40 }} role="group" aria-label="Filter projects">
+            {FILTERS.map((f) => {
+              const active = filter === f;
+              return (
+                <button
+                  key={f}
+                  type="button"
+                  onClick={() => setFilter(f)}
+                  aria-pressed={active}
+                  className="agx-pj-filter"
+                  style={{
+                    fontFamily: "'Inter Tight', sans-serif",
+                    fontSize: 13, fontWeight: 600,
+                    color: active ? '#000000' : '#ffffff',
+                    background: active ? '#ffffff' : 'rgba(255,255,255,0.04)',
+                    border: active ? '1px solid #ffffff' : '1px solid rgba(255,255,255,0.15)',
+                    borderRadius: 100, padding: '10px 22px', cursor: 'pointer',
+                  }}
+                >
+                  {f}
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
+
+        {/* ── Grid ── */}
+        <div className="agx-pj-grid" style={{ position: 'relative', zIndex: 1 }}>
+          {visible.map((p, i) => (
+            <Reveal key={p.id} delay={(i % 2) * 0.08} style={{ height: '100%' }}>
+              <article
+                className="agx-pj-card"
+                onMouseEnter={() => setCardHovered(true)}
+                onMouseLeave={() => setCardHovered(false)}
+                style={{
+                  position: 'relative',
+                  borderRadius: 20,
+                  border: '1px solid rgba(255,255,255,0.10)',
+                  background: '#080808',
+                  overflow: 'hidden',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                {/* Image — scroll parallax */}
+                <ParallaxImage src={p.image} alt={`${p.title} website`} gradient={p.gradient} />
+
+                {/* Content */}
+                <div style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <span style={{
+                    fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600,
+                    letterSpacing: '0.15em', color: '#a3a3a3',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.09)',
+                    borderRadius: 100, padding: '4px 14px',
+                    alignSelf: 'flex-start',
+                  }}>
+                    {p.tag}
+                  </span>
+                  <h3 style={{
+                    fontFamily: "'Inter Tight', sans-serif",
+                    fontStretch: '75%',
+                    fontSize: 24, fontWeight: 800, color: '#ffffff',
+                    lineHeight: 1.1, margin: '16px 0 10px', letterSpacing: '-0.02em',
+                  }}>
+                    {p.title}
+                  </h3>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 13, color: '#c9c9d1', lineHeight: 1.8, margin: 0 }}>
+                    {p.description}
+                  </p>
+                  <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, color: '#777', margin: '16px 0 0' }}>
+                    Worked on — SEO + Development
+                  </p>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      marginTop: 'auto', paddingTop: 20,
+                      display: 'inline-flex', alignItems: 'center', gap: 6,
+                      fontFamily: "'Inter Tight', sans-serif", fontSize: 13, fontWeight: 600,
+                      color: '#ffffff', textDecoration: 'none',
+                    }}
+                  >
+                    Visit Site ↗
+                  </a>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
 
-        {/* ── Card Stack ── */}
-        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 900 }}>
-          <CardStack
-            items={PROJECTS}
-            cardWidth={cardWidth}
-            cardHeight={cardHeight}
-            spreadDeg={spreadDeg}
-            overlap={overlap}
-            depthPx={depthPx}
-            maxVisible={maxVisible}
-            minStageHeight={isMobile ? 240 : 420}
-            autoAdvance
-            intervalMs={3200}
-            pauseOnHover
-            loop
-            showDots
-          />
-        </div>
-
-        {/* ── Drag hint ── */}
-        <p style={{
-          position: "relative", zIndex: 1,
-          fontFamily: "'Poppins', sans-serif",
-          fontSize: 11, color: "#333",
-          marginTop: 16,
-        }}>
-          Drag or click side cards to navigate
-        </p>
+        {/* Cursor follower — "VIEW" pill (desktop only) */}
+        {finePointer && (
+          <motion.div
+            aria-hidden="true"
+            animate={{ opacity: cardHovered ? 1 : 0, scale: cardHovered ? 1 : 0.8 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: 'absolute', top: 0, left: 0, zIndex: 5,
+              x: pillX, y: pillY, translateX: '-50%', translateY: '-50%',
+              pointerEvents: 'none',
+              background: '#ffffff', color: '#000000',
+              fontFamily: "'Inter Tight', sans-serif", fontSize: 11, fontWeight: 700,
+              letterSpacing: '0.08em', borderRadius: 100, padding: '8px 14px',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.5)', whiteSpace: 'nowrap',
+            }}
+          >
+            VIEW ↗
+          </motion.div>
+        )}
       </section>
     </>
   );

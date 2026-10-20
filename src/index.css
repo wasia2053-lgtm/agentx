@@ -1,18 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-@font-face {
-  font-family: 'ClashDisplay';
-  src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'ClashDisplay';
-  src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --bg-base: #000000;
@@ -22,6 +8,8 @@
   --text-muted: #a3a3a3;
   --border: rgba(255,255,255,0.08);
   --glass-bg: rgba(8,8,8,0.80);
+  /* Design accent: pink -> orange -> purple (the one gradient used sparingly) */
+  --accent: linear-gradient(90deg, #ff5ca8, #ff8a3d, #8b5cff);
 }
 
 * {
@@ -33,12 +21,13 @@
 html {
   overflow-x: hidden;
   width: 100%;
-}
+  }
 
 body {
   background-color: var(--bg-base);
   color: var(--text-primary);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
+  font-stretch: 100%;
   overflow-x: hidden;
   width: 100%;
 }
@@ -47,3 +36,63 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+
+::selection {
+  background: rgba(255,255,255,0.9);
+  color: #000000;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.8);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Condensed display type — Fantasy-style grotesque.
+   Applied to ALL headings so no heading can silently fall back
+   to a wide, non-condensed look. Inline fontStretch (75%) still wins
+   where a component sets it. */
+h1, h2, h3 {
+  font-weight: 500 !important;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.agx-display {
+  font-family: 'Inter Tight', sans-serif;
+  font-stretch: 70%;
+  letter-spacing: -0.02em;
+}
+
+/* Gradient text for one accent word/line per section at most */
+.agx-gradient-text {
+  background: none !important;
+  -webkit-text-fill-color: #8f8f98 !important;
+  color: #8f8f98 !important;
+}
+
+/* ONE orb, slow morph — the only ambient hero motion */
+@keyframes agxOrbMorph {
+  0%, 100% { transform: scale(1) rotate(0deg); border-radius: 50%; }
+  33% { transform: scale(1.08) rotate(6deg); border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%; }
+  66% { transform: scale(0.96) rotate(-5deg); border-radius: 54% 46% 48% 52% / 48% 54% 46% 52%; }
+}
+
+.agx-orb {
+  animation: agxOrbMorph 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }

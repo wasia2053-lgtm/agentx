@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from './Icons';
 import GLSLHills from './GLSLHills';
 
 const SQRT_5000 = Math.sqrt(5000);
@@ -91,7 +91,7 @@ function TestimonialCard({ position, testimonial, handleMove, cardSize }: Testim
             />
             <h3
                 style={{
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Inter Tight', sans-serif",
                     fontSize: 'clamp(15px,1.6vw,19px)',
                     fontWeight: 500,
                     lineHeight: 1.45,
@@ -108,7 +108,7 @@ function TestimonialCard({ position, testimonial, handleMove, cardSize }: Testim
                     left: 32,
                     right: 32,
                     marginTop: 8,
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Inter Tight', sans-serif",
                     fontSize: 13,
                     fontStyle: 'italic',
                     color: isCenter ? 'rgba(0,0,0,0.65)' : '#a3a3a3',
@@ -157,7 +157,7 @@ export default function Testimonials() {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
         .agx-ts-card:hover { border-color: rgba(255,255,255,0.4) !important; }
         .agx-ts-btn {
           display: flex; align-items: center; justify-content: center;
@@ -182,13 +182,13 @@ export default function Testimonials() {
             >
                 {/* ── Header ── */}
                 <div style={{ textAlign: 'center', marginBottom: 40, position: 'relative', zIndex: 2 }}>
-                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
+                    <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', color: '#555', textTransform: 'uppercase', margin: '0 0 14px' }}>
                         What Clients Say
                     </p>
-                    <h2 style={{ fontFamily: "'ClashDisplay',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 14px', lineHeight: 1.05 }}>
+                    <h2 style={{ fontFamily: "'Inter Tight',sans-serif", fontSize: 'clamp(36px,5vw,58px)', color: '#ffffff', margin: '0 0 14px', lineHeight: 1.05 }}>
                         Testimonials
                     </h2>
-                    <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: '#555', margin: 0 }}>
+                    <p style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 14, color: '#555', margin: 0 }}>
                         Real results, from real businesses we've worked with
                     </p>
                 </div>

@@ -1,13 +1,20 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUp, ArrowUpRight } from 'lucide-react';
+import { ArrowUp, ArrowUpRight } from './Icons';
 import MagneticButton from './MagneticButton';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+/**
+ * ORIGINAL AgentX footer, restored per Wasi (Oct 15, 2026):
+ * GSAP curtain reveal, marquee, giant AGENTX text, magnetic buttons.
+ * Only changes vs the original: Archivo font (was Poppins/ClashDisplay),
+ * Book a Call now points to the real Calendly link, and icons come from
+ * ./Icons (lucide-react's .d.ts files are broken in this repo).
+ */
 const STYLES = `
 .agx-ft-curtain {
   position: relative;
@@ -27,7 +34,7 @@ const STYLES = `
   overflow: hidden;
   background: #000000;
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -79,7 +86,8 @@ const STYLES = `
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
-  font-family: 'ClashDisplay', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
+  font-stretch: 70%;
   font-size: min(24vw, 260px);
   line-height: 0.75;
   letter-spacing: -0.01em;
@@ -109,7 +117,7 @@ const STYLES = `
   display: flex;
   width: max-content;
   animation: agxFtMarquee 40s linear infinite;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.3em;
@@ -137,7 +145,8 @@ const STYLES = `
 }
 
 .agx-ft-heading {
-  font-family: 'ClashDisplay', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
+  font-stretch: 70%;
   font-size: clamp(32px, 6.5vw, 82px);
   line-height: 1.03;
   margin: 0 0 44px;
@@ -163,17 +172,19 @@ const STYLES = `
   backdrop-filter: blur(16px);
   color: #ffffff;
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-  transition: background 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, box-shadow 0.4s, color 0.4s;
+  font-family: 'Inter Tight', sans-serif;
+  transition: background 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, box-shadow 0.4s, color 0.4s, transform 0.3s ease;
 }
 .agx-ft-pill:hover {
-  background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
-  border-color: rgba(255,255,255,0.2);
+  background: #ffffff;
+  border-color: #ffffff;
   box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.2);
+  transform: translateY(-2px) scale(1.03);
+  color: #000000;
 }
 .agx-ft-pill-primary { padding: 18px 34px; border-radius: 100px; font-weight: 700; font-size: 14px; }
 .agx-ft-pill-sm { padding: 12px 22px; border-radius: 100px; font-weight: 500; font-size: 12px; color: #999; }
-.agx-ft-pill-sm:hover { color: #ffffff; }
+.agx-ft-pill-sm:hover { color: #000000; }
 
 .agx-ft-bottom {
   position: relative;
@@ -186,7 +197,7 @@ const STYLES = `
   gap: 18px;
 }
 .agx-ft-copy {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
   font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
   text-transform: uppercase; color: #555;
   order: 2;
@@ -197,7 +208,7 @@ const STYLES = `
   cursor: default; order: 1;
 }
 .agx-ft-credit span {
-  font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700;
+  font-family: 'Inter Tight', sans-serif; font-size: 11px; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase; color: #777;
 }
 .agx-ft-brand { color: #ffffff !important; }
@@ -300,7 +311,7 @@ export default function Footer() {
 
                         <div ref={linksRef} className="agx-ft-links">
                             <div className="agx-ft-cta-row">
-                                <MagneticButton as="a" href="#contact" className="agx-ft-pill agx-ft-pill-primary">
+                                <MagneticButton as="a" href="https://calendly.com/wasia2053/30min" target="_blank" rel="noreferrer" className="agx-ft-pill agx-ft-pill-primary">
                                     Book a Call <ArrowUpRight size={16} />
                                 </MagneticButton>
                                 <MagneticButton as="a" href="#projects" className="agx-ft-pill agx-ft-pill-primary">

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <defs>
+    <radialGradient id="orbCore" cx="42%" cy="36%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="18%" stop-color="#ffd7ea" stop-opacity="0.9"/>
+      <stop offset="38%" stop-color="#ff5ca8" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#ff8a3d" stop-opacity="0.7"/>
+      <stop offset="80%" stop-color="#8b5cff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8b5cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff5ca8" stop-opacity="0.35"/>
+      <stop offset="55%" stop-color="#ff8a3d" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#8b5cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff5ca8"/>
+      <stop offset="50%" stop-color="#ff8a3d"/>
+      <stop offset="100%" stop-color="#8b5cff"/>
+    </linearGradient>
+  </defs>
+  <!-- soft outer glow -->
+  <circle cx="320" cy="320" r="300" fill="url(#orbGlow)"/>
+  <!-- orbit rings -->
+  <ellipse cx="320" cy="320" rx="290" ry="110" fill="none" stroke="url(#ringGrad)" stroke-opacity="0.35" stroke-width="1.5" transform="rotate(-18 320 320)"/>
+  <ellipse cx="320" cy="320" rx="240" ry="240" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <!-- the orb -->
+  <circle cx="320" cy="320" r="175" fill="url(#orbCore)"/>
+  <!-- highlight -->
+  <ellipse cx="258" cy="238" rx="72" ry="44" fill="#ffffff" opacity="0.5" transform="rotate(-24 258 238)"/>
+  <!-- small satellite dots -->
+  <circle cx="562" cy="208" r="7" fill="#ff5ca8"/>
+  <circle cx="118" cy="452" r="5" fill="#ff8a3d"/>
+  <circle cx="480" cy="492" r="4" fill="#8b5cff"/>
+</svg>

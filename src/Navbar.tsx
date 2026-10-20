@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "./Icons";
+import Logo from "./Logo";
 
 const navItems = [
   { label: "Home",         href: "#home" },
@@ -24,20 +25,8 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-        @font-face {
-          font-family: 'ClashDisplay';
-          src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
-          font-weight: 700;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'ClashDisplay';
-          src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
-          font-weight: 600;
-          font-display: swap;
-        }
         .agx-links  { display: flex; align-items: center; gap: 2px; }
+        .agx-navlink:hover { background: rgba(255,255,255,0.07) !important; }
         .agx-burger { display: none; align-items: center; justify-content: center; }
         .agx-mobile { display: none; }
         @media (max-width: 768px) {
@@ -94,27 +83,14 @@ export default function Navbar() {
                 flexShrink:     0,
               }}
             >
-              <span
-                style={{
-                  width:        8,
-                  height:       8,
-                  borderRadius: "50%",
-                  background:   "#ffffff",
-                  display:      "inline-block",
-                  flexShrink:   0,
-                }}
-              />
-              <span
-                style={{
-                  fontFamily:    "'ClashDisplay', sans-serif",
-                  fontSize:      22,
-                  color:         "#ffffff",
-                  lineHeight:    1,
-                  letterSpacing: "0.04em",
-                }}
+              <motion.span
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                style={{ display: 'inline-flex' }}
               >
-                AgentX
-              </span>
+                <Logo size={22} />
+              </motion.span>
             </a>
 
             {/* NAV LINKS desktop */}
@@ -125,6 +101,7 @@ export default function Navbar() {
                   <motion.a
                     key={idx}
                     href={item.href}
+                    className="agx-navlink"
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setActiveIndex(idx)}
                     style={{
@@ -145,7 +122,7 @@ export default function Navbar() {
                   >
                     <span
                       style={{
-                        fontFamily: "'Poppins', sans-serif",
+                        fontFamily: "'Inter Tight', sans-serif",
                         fontSize:   13,
                         fontWeight: 500,
                         color:      active ? "#ffffff" : "#a3a3a3",
@@ -167,6 +144,10 @@ export default function Navbar() {
                 const el = e.currentTarget;
                 el.style.paddingLeft = "44px";
                 el.style.paddingRight = "20px";
+                el.style.transform = "scale(1.04)";
+                el.style.boxShadow = "0 10px 28px rgba(255,255,255,0.18)";
+                el.style.background = "#26262b";
+                el.style.color = "#ffffff";
                 const dot = el.querySelector(".agx-arrow") as HTMLElement;
                 if (dot) { dot.style.right = "calc(100% - 36px)"; dot.style.transform = "rotate(45deg)"; }
               }}
@@ -174,6 +155,10 @@ export default function Navbar() {
                 const el = e.currentTarget;
                 el.style.paddingLeft = "20px";
                 el.style.paddingRight = "44px";
+                el.style.transform = "scale(1)";
+                el.style.boxShadow = "none";
+                el.style.background = "#ffffff";
+                el.style.color = "#000000";
                 const dot = el.querySelector(".agx-arrow") as HTMLElement;
                 if (dot) { dot.style.right = "4px"; dot.style.transform = "rotate(0deg)"; }
               }}
@@ -189,14 +174,14 @@ export default function Navbar() {
                 color:          "#000000",
                 fontSize:       "13px",
                 fontWeight:     600,
-                fontFamily:     "'Poppins', sans-serif",
+                fontFamily:     "'Inter Tight', sans-serif",
                 textDecoration: "none",
                 marginLeft:     "6px",
                 marginRight:    "2px",
                 flexShrink:     0,
                 overflow:       "hidden",
                 whiteSpace:     "nowrap",
-                transition:     "padding 500ms ease",
+                transition:     "padding 500ms ease, transform 300ms ease, box-shadow 300ms ease",
                 cursor:         "pointer",
               }}
             >
@@ -271,7 +256,7 @@ export default function Navbar() {
             style={{
               display:        "block",
               padding:        "14px 20px",
-              fontFamily:     "'Poppins', sans-serif",
+              fontFamily:     "'Inter Tight', sans-serif",
               fontSize:       15,
               fontWeight:     500,
               color:          activeIndex === idx ? "#ffffff" : "#a3a3a3",

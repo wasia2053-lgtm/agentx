@@ -1,79 +1,60 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 
+/**
+ * Magnetic button: leans toward the cursor and springs back on leave.
+ * Desktop pointers only; skipped for reduced-motion users.
+ */
 export type MagneticButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-    React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-        as?: React.ElementType;
-    };
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    as?: React.ElementType;
+  };
 
 const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
-    ({ className, children, as: Component = 'button', ...props }, forwardedRef) => {
-        const localRef = useRef<HTMLElement>(null);
+  ({ className, children, as: Component = 'button', ...props }, forwardedRef) => {
+    const inner = React.useRef<HTMLElement | null>(null);
 
-        useEffect(() => {
-            const element = localRef.current;
-            if (!element) return;
+    const setRef = React.useCallback(
+      (node: HTMLElement | null) => {
+        inner.current = node;
+        if (typeof forwardedRef === 'function') forwardedRef(node);
+        else if (forwardedRef) forwardedRef.current = node;
+      },
+      [forwardedRef],
+    );
 
-            const ctx = gsap.context(() => {
-                const handleMouseMove = (e: MouseEvent) => {
-                    const rect = element.getBoundingClientRect();
-                    const h = rect.width / 2;
-                    const w = rect.height / 2;
-                    const x = e.clientX - rect.left - h;
-                    const y = e.clientY - rect.top - w;
+    React.useEffect(() => {
+      const el = inner.current;
+      if (!el) return;
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const opts = { duration: 0.8, ease: 'elastic.out(1, 0.5)' };
+      const xTo = gsap.quickTo(el, 'x', opts);
+      const yTo = gsap.quickTo(el, 'y', opts);
+      const move = (e: MouseEvent) => {
+        const r = el.getBoundingClientRect();
+        xTo((e.clientX - r.left - r.width / 2) * 0.35);
+        yTo((e.clientY - r.top - r.height / 2) * 0.5);
+      };
+      const leave = () => {
+        xTo(0);
+        yTo(0);
+      };
+      el.addEventListener('mousemove', move);
+      el.addEventListener('mouseleave', leave);
+      return () => {
+        el.removeEventListener('mousemove', move);
+        el.removeEventListener('mouseleave', leave);
+        gsap.killTweensOf(el);
+      };
+    }, []);
 
-                    gsap.to(element, {
-                        x: x * 0.4,
-                        y: y * 0.4,
-                        rotationX: -y * 0.15,
-                        rotationY: x * 0.15,
-                        scale: 1.05,
-                        ease: 'power2.out',
-                        duration: 0.4,
-                    });
-                };
-
-                const handleMouseLeave = () => {
-                    gsap.to(element, {
-                        x: 0,
-                        y: 0,
-                        rotationX: 0,
-                        rotationY: 0,
-                        scale: 1,
-                        ease: 'elastic.out(1, 0.3)',
-                        duration: 1.2,
-                    });
-                };
-
-                element.addEventListener('mousemove', handleMouseMove as EventListener);
-                element.addEventListener('mouseleave', handleMouseLeave);
-
-                return () => {
-                    element.removeEventListener('mousemove', handleMouseMove as EventListener);
-                    element.removeEventListener('mouseleave', handleMouseLeave);
-                };
-            }, element);
-
-            return () => ctx.revert();
-        }, []);
-
-        const combinedClassName = className ? `agx-ft-magnetic ${className}` : 'agx-ft-magnetic';
-
-        return (
-            <Component
-                ref={(node: HTMLElement) => {
-                    (localRef as React.MutableRefObject<HTMLElement | null>).current = node;
-                    if (typeof forwardedRef === 'function') forwardedRef(node);
-                    else if (forwardedRef) (forwardedRef as React.MutableRefObject<HTMLElement | null>).current = node;
-                }}
-                className={combinedClassName}
-                {...props}
-            >
-                {children}
-            </Component>
-        );
-    }
+    return (
+      <Component ref={setRef} className={className} {...props}>
+        {children}
+      </Component>
+    );
+  },
 );
 MagneticButton.displayName = 'MagneticButton';
 

@@ -86,7 +86,7 @@ function GradientCard({ item, active, cardWidth, cardHeight }: { item: CardStack
       {item.tag && (
         <div style={{
           position: "absolute", top: 20, left: 20,
-          fontFamily: "'Poppins', sans-serif", fontSize: 10, fontWeight: 600,
+          fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 600,
           letterSpacing: "0.14em", color: "rgba(255,255,255,0.7)",
           background: "rgba(0,0,0,0.3)",
           border: "1px solid rgba(255,255,255,0.15)",
@@ -120,8 +120,24 @@ function GradientCard({ item, active, cardWidth, cardHeight }: { item: CardStack
             padding,
             zIndex: 10,
           }}>
+            {/* Live badge */}
+            {item.href && item.href !== "#" && (
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                marginBottom: isSmall ? 6 : 10,
+                background: "rgba(0,0,0,0.35)",
+                border: "1px solid rgba(255,255,255,0.18)",
+                borderRadius: 100, padding: "4px 10px",
+                backdropFilter: "blur(8px)",
+              }}>
+                <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ade80", boxShadow: "0 0 8px rgba(74,222,128,0.9)" }} />
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", color: "#d1fae5" }}>
+                  LIVE
+                </span>
+              </div>
+            )}
             <div style={{
-              fontFamily: "'Poppins', sans-serif",
+              fontFamily: "'Archivo', sans-serif",
               fontSize: titleSize, fontWeight: 700,
               color: "#ffffff", letterSpacing: "-0.02em",
               lineHeight: 1.15, marginBottom: isSmall ? 4 : 8,
@@ -131,7 +147,7 @@ function GradientCard({ item, active, cardWidth, cardHeight }: { item: CardStack
             </div>
             {item.description && (
               <div style={{
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Archivo', sans-serif",
                 fontSize: descSize, color: "rgba(255,255,255,0.75)",
                 lineHeight: 1.5,
                 textShadow: "0 1px 4px rgba(0,0,0,0.5)",
@@ -152,7 +168,7 @@ function GradientCard({ item, active, cardWidth, cardHeight }: { item: CardStack
                 style={{
                   display: "inline-flex", alignItems: "center", gap: 6,
                   marginTop: isSmall ? 8 : 14,
-                  fontFamily: "'Poppins', sans-serif", fontSize: isSmall ? 11 : 12, fontWeight: 600,
+                  fontFamily: "'Archivo', sans-serif", fontSize: isSmall ? 11 : 12, fontWeight: 600,
                   color: "#ffffff",
                   textDecoration: "none",
                   border: "1px solid rgba(255,255,255,0.3)",

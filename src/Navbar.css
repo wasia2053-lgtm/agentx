@@ -46,7 +46,9 @@
 }
 
 .logo-text {
-  font-family: 'ClashDisplay', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
+  font-stretch: 75%;
+  font-weight: 800;
   font-size: 20px;
   color: #ffffff;
 }
@@ -65,7 +67,7 @@
 }
 
 .nav-link-pill {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
   font-size: 13px;
   font-weight: 500;
   color: #a3a3a3;
@@ -91,7 +93,7 @@
 .cta-button {
   background: #ffffff;
   color: #000000;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter Tight', sans-serif;
   font-size: 13px;
   font-weight: 600;
   padding: 9px 18px;

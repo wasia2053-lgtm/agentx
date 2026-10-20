@@ -4,10 +4,37 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>agentx</title>
+    <meta name="description" content="AgentX — websites, AI chatbots and SEO in one bundle. More leads while you sleep." />
+    <title>AgentX — More leads while you sleep</title>
+    <!-- Inter Tight (Fantasy-style grotesque) loaded via <link> so it
+         cannot be skipped the way a CSS @import can be. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>#agx-splash{position:fixed;inset:0;z-index:10001;background:#000}html,body{background:#000}</style>
   </head>
   <body>
+    <div id="agx-splash" aria-hidden="true"></div>
     <div id="root"></div>
+    <script>
+      // Remove the static splash once the page has loaded. React removes
+      // it itself the moment its loader mounts (Loader.tsx) — seamless
+      // handoff, no gap. NO timed fallback: removing the splash on a
+      // timer while the JS bundle is still downloading flashes a
+      // half-built page ("site ghayab").
+      (function () {
+        var done = false;
+        function remove() {
+          if (done) return; done = true;
+          var el = document.getElementById('agx-splash');
+          if (el) el.remove();
+        }
+        window.addEventListener('load', function () { setTimeout(remove, 400); });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
