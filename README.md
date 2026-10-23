@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# AgentX: New Website (multi-file build)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proper static website structure: no build step, no framework. Open it through
+any static server or deploy the whole folder as-is (Vercel / Netlify / any host).
 
-Currently, two official plugins are available:
+## Structure
+- `index.html`: page markup only
+- `css/style.css`: all styles
+- `js/main.js`: all interactions (loader, menu, smooth scroll, reveals,
+  services parallax, work accordion, cursor View button, achievement counters)
+- `js/robot.js`: hero robot bootstrap (Spline)
+- `js/vendor/`: libraries, vendored locally (GSAP 3.12.5, ScrollTrigger,
+  Lenis, Spline runtime)
+- `assets/scene.splinecode`: the hero robot scene
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
+Double-click will NOT work (browser security blocks local modules): use a server:
 
-## React Compiler
+    cd agentx-new-site
+    python3 -m http.server 8000
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+then open http://localhost:8000
 
-## Expanding the ESLint configuration
+## Deploy
+Upload the whole folder, keeping the structure. On Vercel: `vercel deploy`
+from inside the folder, or drag the folder onto Netlify Drop.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Note: the hero robot is fully self-contained: the Spline runtime, its
+process.js glue and the modelling WASM (assets/wasm/process.wasm) all ship
+inside this project, so the robot loads from the same server as the page.
+The only external loads are Google Fonts and the Work section's project
+images, which load from the clients' own live sites.
