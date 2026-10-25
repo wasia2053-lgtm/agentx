@@ -66,6 +66,7 @@ body.sub #menu a.big{font-size:clamp(36px,6.2vw,84px)}
 .pwide h3{font-size:clamp(22px,2.4vw,30px);font-weight:500;letter-spacing:-.02em}
 .pwide p{color:#a8a8b0;font-size:16px;line-height:1.6;max-width:56ch;flex:1;min-width:min(420px,100%)}
 .pwide .btn{flex:none}
+.pwide + .pgrid{margin-top:46px}
 .pnote{margin-top:30px;color:#8c8c92;font-size:15px;line-height:1.65;max-width:76ch}
 .pnote b{color:#d8d8de;font-weight:600}
 .pcross{margin-top:22px;border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:22px 26px;font-size:16.5px;line-height:1.6;color:#d8d8de;background:rgba(255,255,255,.03)}
