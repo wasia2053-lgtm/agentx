@@ -8,7 +8,7 @@
   "use strict";
 
   var CONTACT = {
-    email: "wasia2053@gmail.com",
+    email: "info@agentxwebsolutions.com",
     phone: "+92 311 3013137",
     calendly: "https://calendly.com/wasia2053/30min"
   };

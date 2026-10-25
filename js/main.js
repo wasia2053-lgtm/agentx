@@ -168,8 +168,8 @@ if(gform){gform.addEventListener("submit",function(ev){
   st.textContent="";st.className="gstatus";
   fetch(gform.action,{method:"POST",body:new FormData(gform),headers:{"Accept":"application/json"}}).then(function(r){
     if(r.ok){gform.reset();st.textContent="Message sent. We will reply within one business day.";st.classList.add("ok");}
-    else{st.textContent="Something went wrong. Please email us at wasia2053@gmail.com instead.";st.classList.add("err");}
-  }).catch(function(){st.textContent="Network problem. Please email us at wasia2053@gmail.com instead.";st.classList.add("err");})
+    else{st.textContent="Something went wrong. Please email us at info@agentxwebsolutions.com instead.";st.classList.add("err");}
+  }).catch(function(){st.textContent="Network problem. Please email us at info@agentxwebsolutions.com instead.";st.classList.add("err");})
   .then(function(){btn.disabled=false;if(label)label.textContent="Send message";});
 });}
 
