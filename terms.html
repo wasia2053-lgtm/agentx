@@ -16,31 +16,23 @@
 <body class="sub">
 
 <header>
-  <a href="index.html" class="logo" aria-label="AgentX home"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><g transform="rotate(45 24 24)"><ellipse cx="24" cy="15" rx="7.5" ry="12"/><ellipse cx="24" cy="33" rx="7.5" ry="12"/><ellipse cx="15" cy="24" rx="12" ry="7.5"/><ellipse cx="33" cy="24" rx="12" ry="7.5"/></g></svg><span class="wm">AgentX</span></a>
+  <a href="index" class="logo" aria-label="AgentX home"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><g transform="rotate(45 24 24)"><ellipse cx="24" cy="15" rx="7.5" ry="12"/><ellipse cx="24" cy="33" rx="7.5" ry="12"/><ellipse cx="15" cy="24" rx="12" ry="7.5"/><ellipse cx="33" cy="24" rx="12" ry="7.5"/></g></svg><span class="wm">AgentX</span></a>
   <button class="pill" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
 </header>
 
 <nav id="menu" aria-label="Main">
-  <a class="big" href="index.html"><span>Home</span></a>
-  <a class="big" href="index.html#work"><span>Work</span></a>
-  <a class="big" href="index.html#services"><span>Services</span></a>
-  <a class="big" href="pricing.html"><span>Pricing</span></a>
-  <a class="big" href="index.html#contact"><span>Contact</span></a>
-  <div class="subrow pricerow">
-    <span class="plabel">Pricing by service</span>
-    <a href="pricing-web.html"><span>Web</span></a>
-    <a href="pricing-chatbot.html"><span>Chatbot</span></a>
-    <a href="pricing-seo.html"><span>SEO</span></a>
-    <a href="pricing-automation.html"><span>Automation</span></a>
-    <a href="pricing-voice.html"><span>Voice</span></a>
-    <a href="pricing-design.html"><span>Design</span></a>
-  </div>
+  <a class="big" href="index"><span>Home</span></a>
+  <a class="big" href="index#work"><span>Work</span></a>
+  <a class="big" href="index#services"><span>Services</span></a>
+  <button class="big" id="priceToggle" aria-expanded="false" aria-controls="priceSub"><span>Pricing <svg class="pchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+  <div class="pricesub" id="priceSub"><div class="pricesub-in"><a href="pricing"><span>All pricing</span></a><a href="pricing-web"><span>Web</span></a><a href="pricing-chatbot"><span>Chatbot</span></a><a href="pricing-seo"><span>SEO</span></a><a href="pricing-automation"><span>Automation</span></a><a href="pricing-voice"><span>Voice</span></a><a href="pricing-design"><span>Design</span></a></div></div>
+  <a class="big" href="index#contact"><span>Contact</span></a>
   <div class="subrow">
     <a href="mailto:wasia2053@gmail.com"><span>Email us</span></a>
     <a href="https://wa.me/923113013137" target="_blank" rel="noopener"><span>WhatsApp</span></a>
     <a href="https://calendly.com/wasia2053/30min" target="_blank" rel="noopener"><span>Book a call</span></a>
   </div>
-  <div class="menutalk">Have a project in mind?<br>Tell us about it. <a href="index.html#contact">Let’s talk</a></div>
+  <div class="menutalk">Have a project in mind?<br>Tell us about it. <a href="index#contact">Let’s talk</a></div>
 </nav>
 
 <main>
@@ -68,7 +60,7 @@
 </section>
 
 <footer class="wrap">
-  <div class="links"><span>© AgentX, Karachi, Pakistan</span><span><a href="pricing.html">Pricing</a> &nbsp; <a href="#">Privacy Policy</a> &nbsp; <a href="terms.html">Terms of Service</a></span></div>
+  <div class="links"><span>© AgentX, Karachi, Pakistan</span><span><a href="pricing">Pricing</a> &nbsp; <a href="privacy">Privacy Policy</a> &nbsp; <a href="terms">Terms of Service</a></span></div>
   <div class="big rv">AGENTX</div>
 </footer>
 
@@ -76,6 +68,7 @@
 <script src="js/vendor/ScrollTrigger.min.js"></script>
 <script src="js/vendor/lenis.min.js"></script>
 <script src="js/subpage.js"></script>
+<script src="js/pricing-menu.js"></script>
 <script src="js/chatbot.js"></script>
 </body>
 </html>

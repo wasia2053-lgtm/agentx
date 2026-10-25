@@ -26,8 +26,12 @@ body.sub #menu a.big{font-size:clamp(36px,6.2vw,84px)}
 .psec .phead h2{font-size:clamp(34px,4.6vw,58px);font-weight:500;letter-spacing:-.03em;line-height:1.05}
 .psec .phead p{margin-top:16px;color:#a8a8b0;font-size:17px;line-height:1.6}
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-.pcard{position:relative;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.13);border-radius:24px;padding:36px 30px 32px;background:linear-gradient(180deg,#121215,#0a0a0c);transition:transform .5s cubic-bezier(.22,1,.36,1),border-color .4s}
-.pcard:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.3)}
+.pcard{position:relative;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.13);border-radius:24px;padding:36px 30px 32px;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.09) 50%,transparent 68%) -120% 0/240% 100% no-repeat,linear-gradient(180deg,#121215,#0a0a0c);transition:transform .55s cubic-bezier(.22,1,.36,1),border-color .4s,box-shadow .55s cubic-bezier(.22,1,.36,1),background-position .9s cubic-bezier(.22,1,.36,1)}
+.pcard:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.34);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05);background-position:120% 0,0 0}
+.pcard .pamt{transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.pcard:hover .pamt{transform:translateY(-2px) scale(1.02)}
+.pcard.pop{background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.5) 50%,transparent 68%) -120% 0/240% 100% no-repeat,#f4f4f2}
+.pcard.pop:hover{background-position:120% 0,0 0;box-shadow:0 30px 60px rgba(0,0,0,.55)}
 .pcard.pop{background:#f4f4f2;color:#0c0c0e;border-color:#f4f4f2}
 @media(min-width:1081px){.pcard.pop{transform:translateY(-14px)}.pcard.pop:hover{transform:translateY(-20px)}}
 .ptag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#f4f4f2;color:#000;border-radius:99px;padding:7px 16px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}

@@ -79,12 +79,12 @@ var menu=document.getElementById("menu"),mbtn=document.getElementById("menuBtn")
 function openMenu(){open=true;mbtn.textContent="✕";mbtn.classList.add("isx");mbtn.setAttribute("aria-expanded","true");lenis&&lenis.stop();
   gsap.set(menu,{visibility:"visible"});
   gsap.to(menu,{clipPath:"inset(0 0 0% 0)",duration:.9,ease:"power4.inOut"});
-  gsap.to("#menu a.big span",{y:0,yPercent:0,duration:1,stagger:.08,delay:.35,ease:"power4.out"});
-  gsap.to("#menu .subrow a span",{y:0,yPercent:0,duration:.9,stagger:.05,delay:.62,ease:"power4.out"});
+  gsap.to("#menu .big span",{y:0,yPercent:0,duration:1,stagger:.08,delay:.35,ease:"power4.out"});
+  gsap.to("#menu .subrow a span, #menu .pricesub a span",{y:0,yPercent:0,duration:.9,stagger:.05,delay:.62,ease:"power4.out"});
   gsap.to("#menu .menutalk",{opacity:1,duration:.8,delay:.78,ease:"power2.out"})}
 function closeMenu(){if(!open)return;open=false;mbtn.textContent="Menu";mbtn.classList.remove("isx");mbtn.setAttribute("aria-expanded","false");lenis&&lenis.start();
-  gsap.to(menu,{clipPath:"inset(0 0 100% 0)",duration:.8,ease:"power4.inOut",onComplete:function(){gsap.set(menu,{visibility:"hidden"});gsap.set("#menu a span",{yPercent:110});gsap.set("#menu .menutalk",{opacity:0})}})}
-gsap.set("#menu a span",{yPercent:110});
+  gsap.to(menu,{clipPath:"inset(0 0 100% 0)",duration:.8,ease:"power4.inOut",onComplete:function(){gsap.set(menu,{visibility:"hidden"});gsap.set("#menu a span, #menu button.big span",{yPercent:110});gsap.set("#menu .menutalk",{opacity:0})}})}
+gsap.set("#menu a span, #menu button.big span",{yPercent:110});
 mbtn.addEventListener("click",function(){open?closeMenu():openMenu()});
 addEventListener("keydown",function(e){if(e.key==="Escape")closeMenu()});
 })();

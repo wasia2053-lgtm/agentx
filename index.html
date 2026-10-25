@@ -29,17 +29,17 @@
 <nav id="menu" aria-label="Main">
   <a class="big" href="#work"><span>Work</span></a>
   <a class="big" href="#services"><span>Services</span></a>
-  <a class="big" href="pricing.html"><span>Pricing</span></a>
+  <button class="big" id="priceToggle" aria-expanded="false" aria-controls="priceSub"><span>Pricing <svg class="pchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+  <div class="pricesub" id="priceSub"><div class="pricesub-in">
+    <a href="pricing"><span>All pricing</span></a>
+    <a href="pricing-web"><span>Web</span></a>
+    <a href="pricing-chatbot"><span>Chatbot</span></a>
+    <a href="pricing-seo"><span>SEO</span></a>
+    <a href="pricing-automation"><span>Automation</span></a>
+    <a href="pricing-voice"><span>Voice</span></a>
+    <a href="pricing-design"><span>Design</span></a>
+  </div></div>
   <a class="big" href="#contact"><span>Contact</span></a>
-  <div class="subrow pricerow">
-    <span class="plabel">Pricing by service</span>
-    <a href="pricing-web.html"><span>Web</span></a>
-    <a href="pricing-chatbot.html"><span>Chatbot</span></a>
-    <a href="pricing-seo.html"><span>SEO</span></a>
-    <a href="pricing-automation.html"><span>Automation</span></a>
-    <a href="pricing-voice.html"><span>Voice</span></a>
-    <a href="pricing-design.html"><span>Design</span></a>
-  </div>
   <div class="subrow">
     <a href="mailto:wasia2053@gmail.com"><span>Email us</span></a>
     <a href="https://wa.me/923113013137" target="_blank" rel="noopener"><span>WhatsApp</span></a>
@@ -242,7 +242,7 @@
     </div>
     <div class="faqitem">
       <button class="faqrow" aria-expanded="false"><span class="q">How much does it cost?</span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
-      <div class="faqpanel"><p class="faqans">Our prices are published, see the <a href="pricing.html" style="text-decoration:underline">pricing page</a>: websites from $749, chatbots from $299, SEO from $300/mo, and the Launch Package (website + chatbot + first month of SEO) is $1,199. Custom work gets a fixed quote after a free strategy call. No hourly billing, no surprises later.</p></div>
+      <div class="faqpanel"><p class="faqans">Our prices are published, see the <a href="pricing" style="text-decoration:underline">pricing page</a>: websites from $749, chatbots from $299, SEO from $300/mo, and the Launch Package (website + chatbot + first month of SEO) is $1,199. Custom work gets a fixed quote after a free strategy call. No hourly billing, no surprises later.</p></div>
     </div>
     <div class="faqitem">
       <button class="faqrow" aria-expanded="false"><span class="q">How long does it take?</span><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
@@ -322,7 +322,7 @@
 </section>
 
 <footer class="wrap">
-  <div class="links"><span>© AgentX, Karachi, Pakistan</span><span><a href="pricing.html">Pricing</a> &nbsp; <a href="#">Privacy Policy</a> &nbsp; <a href="terms.html">Terms of Service</a></span></div>
+  <div class="links"><span>© AgentX, Karachi, Pakistan</span><span><a href="pricing">Pricing</a> &nbsp; <a href="privacy">Privacy Policy</a> &nbsp; <a href="terms">Terms of Service</a></span></div>
   <div class="big rv">AGENTX</div>
 </footer>
 
@@ -332,6 +332,7 @@
 <script src="js/vendor/lenis.min.js"></script>
 <script type="module" src="js/robot.js"></script>
 <script src="js/main.js"></script>
+<script src="js/pricing-menu.js"></script>
 <script src="js/flow.js"></script>
 <script src="js/land.js"></script>
 <script src="js/globe.js"></script>
