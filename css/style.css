@@ -516,3 +516,7 @@ body.sub #menu button.big{font-size:clamp(36px,6.2vw,84px)}
 /* footer links: visibly links, with a hover effect (Oct 26, 2026) */
 footer .links a{color:#dcdce0;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.32);transition:color .3s ease,text-decoration-color .3s ease}
 footer .links a:hover{color:#fff;text-decoration-color:#b8f135}
+
+/* footer wordmark is decoration: never let it swallow clicks (Oct 26, 2026) */
+footer .big{pointer-events:none}
+footer .links{position:relative;z-index:2}
