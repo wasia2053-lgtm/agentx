@@ -520,3 +520,4 @@ footer .links a:hover{color:#fff;text-decoration-color:#b8f135}
 /* footer wordmark is decoration: never let it swallow clicks (Oct 26, 2026) */
 footer .big{pointer-events:none}
 footer .links{position:relative;z-index:2}
+.hcombo .btn.ghost:hover{color:#000;border-color:#fff}
